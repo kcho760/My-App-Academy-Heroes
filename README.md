@@ -38,9 +38,9 @@ My App Academy Heroes is a Mern stack web based game where the player can fight 
 
 ## Hosting
 
-Team:
-Team Leader: Kevin Cho
-Front-end Lead: Henry Lin
-Back-end Lead: Hong Chen
-Flex Lead: Jia Min
+## Team:
+- Team Leader: Kevin Cho
+- Front-end Lead: Henry Lin
+- Back-end Lead: Hong Chen
+- Flex Lead: Jia Min
 
