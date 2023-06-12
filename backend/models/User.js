@@ -20,8 +20,12 @@ const userSchema = new Schema(
       type: String,
       required: false, // This can be false if the image is not mandatory
     },
-  },
-  {
+    health: {
+      type: Number,
+      default: 100,
+      required: true,
+    },
+    
     timestamps: true,
   }
 );

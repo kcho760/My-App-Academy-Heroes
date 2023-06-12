@@ -113,6 +113,24 @@ router.get("/current", restoreUser, (req, res) => {
     _id: req.user._id,
     username: req.user.username,
     email: req.user.email,
+    imageUrl: req.user.imageUrl,
+    health: req.user.health,
+  });
+});
+
+router.update("/:id", async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+  if (!user) {
+    const err = new Error("User not found");
+    err.statusCode = 404;
+    return next(err);
+  }
+  res.json({
+    _id: user._id,
+    username: user.username,
+    email: user.email,
+    imageUrl: user.imageUrl,
+    health: user.health,
   });
 });
 
