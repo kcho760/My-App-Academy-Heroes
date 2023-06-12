@@ -24,8 +24,9 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({ error: 'Server Error' });
     }
 });
-//Create
-router.post('/cards', async (req, res) => {
+//Create have a current user and pull card to link to user
+//also refactor to choose at random from all predefined cards
+router.post('/', async (req, res) => {
     try {
       const newCard = new Card(req.body);
       const savedCard = await newCard.save();
@@ -38,7 +39,7 @@ router.post('/cards', async (req, res) => {
 
 
 // DELETE a card by ID
-router.delete('cards/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
       const card = await Card.findByIdAndDelete(req.params.id);
       if (!card) {
