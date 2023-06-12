@@ -26,8 +26,8 @@ function NavBar () {
     } else {
       return (
         <div className="links-auth">
-          <Link to={'/signup'} className = "signupButton">SIGNUP</Link>
           <Link to={'/login'} className = "loginButton">LOGIN</Link>
+          <Link to={'/signup'} className = "signupButton">SIGNUP</Link>
         </div>
       );
     }
