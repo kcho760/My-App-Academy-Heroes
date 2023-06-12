@@ -10,7 +10,7 @@ import LoginForm from "./components/SessionForms/LoginForm";
 import SignupForm from "./components/SessionForms/SignupForm";
 
 import { getCurrentUser } from "./store/session";
-import Questions from "./components/Questions/Questions";
+import GamePage from "./components/GamePage/GamePage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -27,8 +27,8 @@ function App() {
           <AuthRoute exact path="/" component={MainPage} />
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
-          <Route exact path="/questions">
-            <Questions />
+          <Route exact path="/game">
+            <GamePage />
           </Route>
         </Switch>
       </>
