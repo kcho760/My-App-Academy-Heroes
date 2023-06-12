@@ -118,7 +118,7 @@ router.get("/current", restoreUser, (req, res) => {
   });
 });
 
-router.update("/:id", async (req, res, next) => {
+router.patch("/:id", async (req, res, next) => {
   const user = await User.findById(req.params.id);
   if (!user) {
     const err = new Error("User not found");
