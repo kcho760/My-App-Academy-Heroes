@@ -1,23 +1,25 @@
-
 const express = require("express");
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const debug = require('debug');
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const debug = require("debug");
 
-const cors = require('cors');
-const csurf = require('csurf');
-const { isProduction } = require('./config/keys');
-require('./models/Card')
-require('./models/User');
-require('./config/passport'); // <-- ADD THIS LINE
-const passport = require('passport'); // <-- ADD THIS LINE
-const cardRouter = require('./routes/api/cards');
-const usersRouter = require('./routes/api/users');
-const csrfRouter = require('./routes/api/csrf');
+const cors = require("cors");
+const csurf = require("csurf");
+const { isProduction } = require("./config/keys");
+require("./models/Enemy");
+require("./models/Card");
+require("./models/User");
+require("./config/passport"); // <-- ADD THIS LINE
+const passport = require("passport"); // <-- ADD THIS LINE
+const enemyRouter = require("./routes/api/enemies");
+const cardsRouter = require("./routes/api/cards");
+const usersRouter = require("./routes/api/users");
+const csrfRouter = require("./routes/api/csrf");
+const questionsRouter = require("./routes/api/questions");
 
 const app = express();
 
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -37,41 +39,41 @@ app.use(
     cookie: {
       secure: isProduction,
       sameSite: isProduction && "Lax",
-      httpOnly: true
-    }
+      httpOnly: true,
+    },
   })
 );
 
-
-
 // Attach Express routers
-app.use('/api/users', usersRouter);
-app.use('/api/csrf', csrfRouter);
-
+app.use("/api/users", usersRouter);
+app.use("/api/csrf", csrfRouter);
+app.use("/api/cards", cardsRouter);
+app.use("/api/questions", questionsRouter);
+app.use("/api/enemies", enemyRouter);
 
 // Express custom middleware for catching all unmatched requests and formatting
 // a 404 error to be sent as the response.
 app.use((req, res, next) => {
-    const err = new Error('Not Found');
-    err.statusCode = 404;
-    next(err);
+  const err = new Error("Not Found");
+  err.statusCode = 404;
+  next(err);
+});
+
+const serverErrorLogger = debug("backend:error");
+
+// Express custom error handler that will be called whenever a route handler or
+// middleware throws an error or invokes the `next` function with a truthy value
+app.use((err, req, res, next) => {
+  serverErrorLogger(err);
+  const statusCode = err.statusCode || 500;
+  res.status(statusCode);
+  res.json({
+    message: err.message,
+    statusCode,
+    errors: err.errors,
   });
-  
-  const serverErrorLogger = debug('backend:error');
-  
-  // Express custom error handler that will be called whenever a route handler or
-  // middleware throws an error or invokes the `next` function with a truthy value
-  app.use((err, req, res, next) => {
-    serverErrorLogger(err);
-    const statusCode = err.statusCode || 500;
-    res.status(statusCode);
-    res.json({
-      message: err.message,
-      statusCode,
-      errors: err.errors
-    })
-  });
-  
-  module.exports = app;
+});
+
+module.exports = app;
 
 module.exports = app;

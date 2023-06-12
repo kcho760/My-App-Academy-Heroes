@@ -1,0 +1,12 @@
+.webcam-capture {
+  width: 320px;
+  /* height: 280px; */
+  display: flex;
+  flex-direction: column;
+}
+
+.capture-button {
+  width: 100px; /* Adjust the width as per your preference */
+  margin-top: 10px; /* Add spacing between the webcam and the button */
+  
+}
