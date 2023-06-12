@@ -43,7 +43,7 @@ for (let i = 0; i < NUM_SEED_CARDS; i++) {
     rarity: 'Common',
     abilityType: 'Attack',
     abilityValue: 10,
-    image: 'https://example.com/card1.png',
+    imageUrl: 'https://example.com/card1.png',
     owner: null  // Set owner to null as it will be associated with a player later
   });
   cards.push(card);
@@ -56,7 +56,7 @@ const enemy1 = new Enemy({
   name: 'Enemy 1',
   health: 100,
   attack: 10,
-  image: '../assets/enemy1.png'
+  imageUrl: '../assets/enemy1.png'
 });
 enemies.push(enemy1);
 
@@ -64,7 +64,7 @@ const enemy2 = new Enemy({
   name: 'Enemy 2',
   health: 200,
   attack: 20,
-  image: '../assets/enemy2.png'
+  imageUrl: '../assets/enemy2.png'
 });
 enemies.push(enemy2);
 
@@ -86,8 +86,12 @@ mongoose
     .then(() => {
       return Card.collection.drop();
     })
+    .then(() => {
+      return Enemy.collection.drop();
+    })
       .then(() => User.insertMany(users))
       .then(() => Card.insertMany(cards))
+      .then(() => Enemy.insertMany(enemies))
       .then(() => {
         mongoose.disconnect();
       })
@@ -96,3 +100,6 @@ mongoose
         process.exit(1);
       });
   };
+
+
+  //dotenv node seeders/seeds.js
