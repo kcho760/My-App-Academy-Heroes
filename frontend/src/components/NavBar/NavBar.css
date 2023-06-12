@@ -1,0 +1,56 @@
+.navHeader {
+  position: flex;
+  background-color: red;
+  border: solid black;
+}
+
+.logo {
+  width: 250px;
+  height: 250px;
+  background-color: white;
+}
+.loginButton {
+  color: white;
+  background-color:transparent;
+  text-decoration: none;
+  font-size: 25px;
+  border-radius: 5px;
+  position: relative;
+  /* right: 130px; */
+  margin-left: 85.4%;
+  margin-right: 10px;
+  padding: 5px;
+  font-style: italic;
+  /* margin-top: 4px; */
+}
+
+.signupButton {
+  color:white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 25px;
+  border-radius: 5px;
+  position: relative;
+  /* right: 0; */
+  padding: 5px;
+  font-style: italic;
+  /* margin-top: 4px; */
+  /* margin-left: 85%; */
+}
+
+
+.loginButton:hover {
+  color: red;
+  background-color: black;
+  border: solid goldenrod;
+  border-radius: 8x;
+  font-weight: bold;
+}
+
+.signupButton:hover {
+  color: red;
+  background-color: black;
+  border: solid goldenrod;
+  border-radius: 8px;
+  font-weight: bold;
+}

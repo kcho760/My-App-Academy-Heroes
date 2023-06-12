@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
+import "./NavBar.css";
+import MernLogo from '../Images/MernLogo.png'
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
@@ -24,8 +26,8 @@ function NavBar () {
     } else {
       return (
         <div className="links-auth">
-          <Link to={'/signup'}>Signup</Link>
-          <Link to={'/login'}>Login</Link>
+          <Link to={'/login'} className = "loginButton">LOGIN</Link>
+          <Link to={'/signup'} className = "signupButton">SIGNUP</Link>
         </div>
       );
     }
@@ -33,8 +35,13 @@ function NavBar () {
 
   return (
     <>
-      <h1>Chirper</h1>
+    <div className='navHeader'>
+      {/* <h1>Chirper </h1> */}
+      <a href='/'>
+          <img src={MernLogo} className='logo' alt="Logo" />
+      </a>
       { getLinks() }
+    </div>
     </>
   );
 }

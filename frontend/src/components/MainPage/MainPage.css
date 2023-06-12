@@ -1,0 +1,50 @@
+footer {
+  color: red;
+  background-color: goldenrod;
+  border: solid black;
+  border-radius: 3px;
+  bottom: 10px;
+  position: fixed;
+  width: 100%;
+}
+
+.MainSplashDiv {
+  position: relative;
+  height: 600px;
+  width: 100;
+  background-color:black;
+}
+
+.aaCardImg {
+  width: 100px;
+  height: 100px;
+}
+
+.gameIntro {
+  background-color: rgba(226, 187, 98, 0.477);
+  width: 75%;
+  height: 50%;
+  border-radius: 8px;
+  margin-left: 175px;
+  margin-top: 75px;
+  border: solid red;
+  
+}
+
+.introText {
+  color:wheat;  
+  font-size: 50px;
+  margin-left: 6%;
+  margin-top: 2.5%;
+}
+
+.cardLogo1 {
+  width: 150px;
+  height: 150px;
+}
+
+.cardLogo2 {
+  width: 150px;
+  height: 150px;
+  position: relative;
+}
