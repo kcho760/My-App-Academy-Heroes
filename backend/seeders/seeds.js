@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { mongoURI: db} = require('../config/keys.js');
 const User = require('../models/User');
 const Card = require('../models/Card');
+const Enemy = require('../models/Enemy.js');
 const bcrypt = require('bcryptjs');
 const { faker } = require('@faker-js/faker');
 
@@ -48,7 +49,25 @@ for (let i = 0; i < NUM_SEED_CARDS; i++) {
   cards.push(card);
 }
 
-console.log(db)
+//seed enemies
+const enemies = [];
+
+const enemy1 = new Enemy({
+  name: 'Enemy 1',
+  health: 100,
+  attack: 10,
+  image: '../assets/enemy1.png'
+});
+enemies.push(enemy1);
+
+const enemy2 = new Enemy({
+  name: 'Enemy 2',
+  health: 200,
+  attack: 20,
+  image: '../assets/enemy2.png'
+});
+enemies.push(enemy2);
+
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {

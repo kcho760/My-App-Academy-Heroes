@@ -6,10 +6,12 @@ const debug = require("debug");
 const cors = require("cors");
 const csurf = require("csurf");
 const { isProduction } = require("./config/keys");
+require("./models/Enemy");
 require("./models/Card");
 require("./models/User");
 require("./config/passport"); // <-- ADD THIS LINE
 const passport = require("passport"); // <-- ADD THIS LINE
+const enemyRouter = require("./routes/api/enemies");
 const cardsRouter = require("./routes/api/cards");
 const usersRouter = require("./routes/api/users");
 const csrfRouter = require("./routes/api/csrf");
@@ -47,6 +49,7 @@ app.use("/api/users", usersRouter);
 app.use("/api/csrf", csrfRouter);
 app.use("/api/cards", cardsRouter);
 app.use("/api/questions", questionsRouter);
+app.use("/api/enemies", enemyRouter);
 
 // Express custom middleware for catching all unmatched requests and formatting
 // a 404 error to be sent as the response.
