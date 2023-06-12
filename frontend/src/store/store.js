@@ -1,8 +1,10 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session';
+import errors from './errors';
 const rootReducer = combineReducers({
-  session
+  session,
+  errors
 });
 
 let enhancer;
@@ -20,18 +22,6 @@ const configureStore = (preloadedState) => {
   return createStore(rootReducer, preloadedState, enhancer);
 };
 
-const nullErrors = null;
 
-export const sessionErrorsReducer = (state = nullErrors, action) => {
-  switch(action.type) {
-    case RECEIVE_SESSION_ERRORS:
-      return action.errors;
-    case RECEIVE_CURRENT_USER:
-    case CLEAR_SESSION_ERRORS:
-      return nullErrors;
-    default:
-      return state;
-  }
-};
 
 export default configureStore;
