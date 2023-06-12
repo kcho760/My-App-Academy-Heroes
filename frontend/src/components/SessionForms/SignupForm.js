@@ -1,14 +1,17 @@
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { signup, clearSessionErrors } from '../../store/session';
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { signup, clearSessionErrors } from "../../store/session";
+import WebcamCapture from "../Webcam";
+// import "./SignupForm.css";
 
-function SignupForm () {
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [password2, setPassword2] = useState('');
-  const errors = useSelector(state => state.errors.session);
+function SignupForm() {
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  const errors = useSelector((state) => state.errors.session);
   const dispatch = useDispatch();
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     return () => {
@@ -16,87 +19,103 @@ function SignupForm () {
     };
   }, [dispatch]);
 
-  const update = field => {
+  const update = (field) => {
     let setState;
 
     switch (field) {
-      case 'email':
+      case "email":
         setState = setEmail;
         break;
-      case 'username':
+      case "username":
         setState = setUsername;
         break;
-      case 'password':
+      case "password":
         setState = setPassword;
         break;
-      case 'password2':
+      case "password2":
         setState = setPassword2;
         break;
       default:
-        throw Error('Unknown field in Signup Form');
+        throw Error("Unknown field in Signup Form");
     }
 
-    return e => setState(e.currentTarget.value);
-  }
+    return (e) => setState(e.currentTarget.value);
+  };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
       email,
       username,
-      password
+      password,
+      image,
     };
 
-    dispatch(signup(user)); 
-  }
+    dispatch(signup(user));
+  };
 
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Sign Up Form</h2>
-      <div className="errors">{errors?.email}</div>
-      <label>
-        <span>Email</span>
-        <input type="text"
-          value={email}
-          onChange={update('email')}
-          placeholder="Email"
+    <>
+      {image ? (
+        <div>
+          <img src={image} alt="Captured selfie" />
+          <button onClick={() => setImage(null)}>Retake</button>
+        </div>
+      ) : (
+        <WebcamCapture onCapture={setImage} />
+      )}
+      <form className="session-form" onSubmit={handleSubmit}>
+        <h2>Sign Up Form</h2>
+
+        <div className="errors">{errors?.email}</div>
+        <label>
+          <span>Email</span>
+          <input
+            type="text"
+            value={email}
+            onChange={update("email")}
+            placeholder="Email"
+          />
+        </label>
+        <div className="errors">{errors?.username}</div>
+        <label>
+          <span>Username</span>
+          <input
+            type="text"
+            value={username}
+            onChange={update("username")}
+            placeholder="Username"
+          />
+        </label>
+        <div className="errors">{errors?.password}</div>
+        <label>
+          <span>Password</span>
+          <input
+            type="password"
+            value={password}
+            onChange={update("password")}
+            placeholder="Password"
+          />
+        </label>
+        <div className="errors">
+          {password !== password2 && "Confirm Password field must match"}
+        </div>
+        <label>
+          <span>Confirm Password</span>
+          <input
+            type="password"
+            value={password2}
+            onChange={update("password2")}
+            placeholder="Confirm Password"
+          />
+        </label>
+        <input
+          type="submit"
+          value="Sign Up"
+          disabled={!email || !username || !password || password !== password2}
         />
-      </label>
-      <div className="errors">{errors?.username}</div>
-      <label>
-        <span>Username</span>
-        <input type="text"
-          value={username}
-          onChange={update('username')}
-          placeholder="Username"
-        />
-      </label>
-      <div className="errors">{errors?.password}</div>
-      <label>
-        <span>Password</span>
-        <input type="password"
-          value={password}
-          onChange={update('password')}
-          placeholder="Password"
-        />
-      </label>
-      <div className="errors">
-        {password !== password2 && 'Confirm Password field must match'}
-      </div>
-      <label>
-        <span>Confirm Password</span>
-        <input type="password"
-          value={password2}
-          onChange={update('password2')}
-          placeholder="Confirm Password"
-        />
-      </label>
-      <input
-        type="submit"
-        value="Sign Up"
-        disabled={!email || !username || !password || password !== password2}
-      />
-    </form>
+      </form>
+    </>
   );
 }
 
