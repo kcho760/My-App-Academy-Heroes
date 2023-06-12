@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
-const { mongoURI: db } = require('../config/keys.js');
+const { mongoURI: db} = require('../config/keys.js');
 const User = require('../models/User');
+const Card = require('../models/Card');
 const bcrypt = require('bcryptjs');
 const { faker } = require('@faker-js/faker');
 
@@ -29,6 +30,25 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
   )
 }
 
+//seed cards
+
+const NUM_SEED_CARDS = 3;
+
+const cards = [];
+
+for (let i = 0; i < NUM_SEED_CARDS; i++) {
+  const card = new Card({
+    name: 'Card 1',
+    rarity: 'Common',
+    abilityType: 'Attack',
+    abilityValue: 10,
+    image: 'https://example.com/card1.png',
+    owner: null  // Set owner to null as it will be associated with a player later
+  });
+  cards.push(card);
+}
+
+console.log(db)
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
@@ -44,13 +64,16 @@ mongoose
     console.log("Resetting db and seeding users...");
   
     User.collection.drop()
-                   .then(() => User.insertMany(users))
-                   .then(() => {
-                     console.log("Done!");
-                     mongoose.disconnect();
-                   })
-                   .catch(err => {
-                     console.error(err.stack);
-                     process.exit(1);
-                   });
-  }
+    .then(() => {
+      return Card.collection.drop();
+    })
+      .then(() => User.insertMany(users))
+      .then(() => Card.insertMany(cards))
+      .then(() => {
+        mongoose.disconnect();
+      })
+      .catch(err => {
+        console.error(err.stack);
+        process.exit(1);
+      });
+  };

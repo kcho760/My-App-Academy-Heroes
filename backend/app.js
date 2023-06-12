@@ -7,10 +7,11 @@ const debug = require('debug');
 const cors = require('cors');
 const csurf = require('csurf');
 const { isProduction } = require('./config/keys');
+require('./models/Card')
 require('./models/User');
 require('./config/passport'); // <-- ADD THIS LINE
 const passport = require('passport'); // <-- ADD THIS LINE
-
+const cardRouter = require('./routes/api/cards');
 const usersRouter = require('./routes/api/users');
 const csrfRouter = require('./routes/api/csrf');
 
