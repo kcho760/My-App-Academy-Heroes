@@ -1,0 +1,21 @@
+.errors {
+  color: red;
+}
+
+h2 {
+  position: relative
+}
+
+.email-label-su {
+  position: absolute;
+  font-size: 30px;
+  left: 50px;
+  top: 100px;
+}
+
+.email-SU {
+  position: absolute;
+  font-size: 30px;
+  left: 130px;
+  top: 97px;
+}

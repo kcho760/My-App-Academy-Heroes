@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { signup, clearSessionErrors } from "../../store/session";
 import WebcamCapture from "../Webcam";
-// import "./SignupForm.css";
+import "./SignupForm.css";
 
 function SignupForm() {
   const [email, setEmail] = useState("");
@@ -69,9 +69,10 @@ function SignupForm() {
 
         <div className="errors">{errors?.email}</div>
         <label>
-          <span>Email</span>
+          <span className="email-label-su">Email</span>
           <input
             type="text"
+            className="email-SU"
             value={email}
             onChange={update("email")}
             placeholder="Email"
@@ -79,8 +80,9 @@ function SignupForm() {
         </label>
         <div className="errors">{errors?.username}</div>
         <label>
-          <span>Username</span>
+          <span className="username-label">Username</span>
           <input
+            className="username-SU"
             type="text"
             value={username}
             onChange={update("username")}
@@ -89,9 +91,10 @@ function SignupForm() {
         </label>
         <div className="errors">{errors?.password}</div>
         <label>
-          <span>Password</span>
+          <span className="password-label-su">Password</span>
           <input
             type="password"
+            className="password-SU"
             value={password}
             onChange={update("password")}
             placeholder="Password"
@@ -101,15 +104,17 @@ function SignupForm() {
           {password !== password2 && "Confirm Password field must match"}
         </div>
         <label>
-          <span>Confirm Password</span>
+          <span className="confirmPW">Confirm Password</span>
           <input
             type="password"
+            className="confirmPW-SU"
             value={password2}
             onChange={update("password2")}
             placeholder="Confirm Password"
           />
         </label>
         <input
+          className="signup"
           type="submit"
           value="Sign Up"
           disabled={!email || !username || !password || password !== password2}
