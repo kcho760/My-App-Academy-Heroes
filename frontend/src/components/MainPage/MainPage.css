@@ -1,0 +1,9 @@
+footer {
+  color: red;
+  background-color: goldenrod;
+  border: solid black;
+  bottom: 10px;
+
+  position: fixed;
+  width: 100%;
+}

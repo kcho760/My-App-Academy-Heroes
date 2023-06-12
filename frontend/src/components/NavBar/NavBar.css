@@ -1,12 +1,13 @@
 .navHeader {
   position: flex;
-  align-items: center;
-  justify-content: space-between;
+  background-color: red;
+  border: solid black;
 }
 
 .logo {
   width: 250px;
   height: 250px;
+  background-color: white;
 }
 
 .signupButton {
@@ -17,7 +18,10 @@
   border-radius: 5px;
   position: fixed;
   right: 0;
-  padding: 5px;
+  padding: 8px;
+  font-style: italic;
+  margin-top: 4px;
+  margin-right: 8px;
 }
 
 .loginButton {
@@ -27,6 +31,24 @@
   font-size: 25px;
   border-radius: 5px;
   position: fixed;
-  right: 90px;
-  padding: 5px;
+  right: 130px;
+  padding: 8px;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.loginButton:hover {
+  color: red;
+  background-color: black;
+  border: solid goldenrod;
+  border-radius: 8x;
+  font-weight: bold;
+}
+
+.signupButton:hover {
+  color: red;
+  background-color: black;
+  border: solid goldenrod;
+  border-radius: 8px;
+  font-weight: bold;
 }
