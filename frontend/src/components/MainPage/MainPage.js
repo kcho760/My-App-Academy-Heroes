@@ -6,14 +6,16 @@ function MainPage() {
       <>
       
         <div className="MainSplashDiv">A Twitter Clone
-        <img src={CardLogo} className="cardLogo1"></img>
-        <img src={CardLogo} className="cardLogo2"></img>
-          <div className="gameIntro">
-            <div className="introText">
-              Welcome to MyAppAcademy Hero; 
-              where the goal of the game is to waste your time and take 
-              your money.
-            </div>
+          <div>
+              <div className="gameIntro">
+                <div className="introText">
+            <img src={CardLogo} className="cardLogo1"></img>
+                  Welcome to MyAppAcademy Hero; 
+                  where the goal of the game is to waste your time and take 
+                  your money.
+                </div>
+              </div>
+            <img src={CardLogo} className="cardLogo2"></img>
           </div>
         </div>
         <footer>
