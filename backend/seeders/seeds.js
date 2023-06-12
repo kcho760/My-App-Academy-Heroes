@@ -48,7 +48,6 @@ for (let i = 0; i < NUM_SEED_CARDS; i++) {
   cards.push(card);
 }
 
-console.log(db)
 mongoose
   .connect(db, { useNewUrlParser: true })
   .then(() => {
