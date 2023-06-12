@@ -1,0 +1,32 @@
+.navHeader {
+  position: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 250px;
+  height: 250px;
+}
+
+.signupButton {
+  color:white;
+  background-color: #1485cc;
+  text-decoration: none;
+  font-size: 25px;
+  border-radius: 5px;
+  position: fixed;
+  right: 0;
+  padding: 5px;
+}
+
+.loginButton {
+  color: white;
+  background-color: #1485cc;
+  text-decoration: none;
+  font-size: 25px;
+  border-radius: 5px;
+  position: fixed;
+  right: 90px;
+  padding: 5px;
+}
