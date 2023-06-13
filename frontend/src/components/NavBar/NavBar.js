@@ -2,7 +2,8 @@ import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
 import "./NavBar.css";
-import MernLogo from '../../assets/images/MernLogo.png'
+import MernLogo from '../../assets/images/MernLogo.png';
+import GamePage from '../GamePage/GamePage';
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
@@ -18,10 +19,10 @@ function NavBar () {
     if (loggedIn) {
       return (
         <div className="links-nav">
-          <Link to={'/tweets'}>All Tweets</Link>
-          <Link to={'/profile'}>Profile</Link>
-          <Link to={'/tweets/new'}>Write a Tweet</Link>
-          <button onClick={logoutUser}>Logout</button>
+          <Link to={'/profile'} className="profile-link">Profile</Link>
+          <Link to={'/game'} className="game-link">Game</Link>
+          {/* <Link to={'/tweets/new'}>Write a Tweet</Link> */}
+          <button onClick={logoutUser} className="logout-button">Logout</button>
         </div>
       );
     } else {
