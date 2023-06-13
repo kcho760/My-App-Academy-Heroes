@@ -1,65 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { getCurrentUser } from '../../store/session';
-
+import { useDispatch } from 'react-redux'; // Import useDispatch from react-redux
+import jwtFetch from '../../store/jwt';
+import { useSelector } from 'react-redux';
 
 const Shop = () => {
-  const [gold, setGold] = useState(0);
-  const [playerCards, setPlayerCards] = useState([]);
-
-  
+  // const [gold, setGold] = useState(0);
+  // const [playerCards, setPlayerCards] = useState([]);
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.session.user);
+  // const gold = useSelector(state => state.session.user.gold);
+  const gold = currentUser.gold;
+  const playerCards = useSelector(state => state.session.user.ownedCards);
+  const [pulling, setPulling] = useState(false);
   const pullCard = async () => {
     if (gold >= 10) {
       try {
-        // Dispatch getCurrentUser action to get the user's data
-        const user = await getCurrentUser();
-        const userId = user.userId; // Assuming the user object contains the userId property
-  
-        const response = await fetch('/cards', {
+        setPulling(true);
+        const response = await jwtFetch('/api/cards', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ userId }),
+          body: JSON.stringify({user: currentUser}),
         });
         
         if (response.ok) {
-          const updatedCard = await response.json();
-          setPlayerCards([...playerCards, updatedCard]);
-          setGold(gold - 10);
+          // const updatedCard = await response.json();
+          
         } else {
           console.error('Failed to assign card:', response.status);
         }
       } catch (error) {
         console.error('Error assigning card:', error);
+      } finally {
+        setPulling(false); // Set pulling back to false after the request is complete
       }
     } else {
       alert("You don't have enough gold to pull a card.");
     }
   };
   
-  useEffect(() => {
-    const fetchPlayerGoldAndCards = async () => {
-      try {
-        // Dispatch getCurrentUser action to get the user's data
-        const user = await getCurrentUser();
-        console.log(user)
-        // Set the user's gold
-        setGold(user.gold);
-        // Retrieve the user's cards
-        const response = await fetch(`/cards/user/${user._id}`);
-        if (response.ok) {
-          const cards = await response.json();
-          setPlayerCards(cards);
-        } else {
-          console.error('Failed to fetch player cards:', response.status);
-        }
-      } catch (error) {
-        console.error('Error fetching player gold and cards:', error);
-      }
-    };
-  
-    fetchPlayerGoldAndCards();
-  }, []);
+useEffect(() => {
+  dispatch(getCurrentUser());
+}, [pulling,dispatch]);
+
   
   return (
     <div>

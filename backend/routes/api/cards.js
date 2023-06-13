@@ -1,6 +1,7 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
 const Card = mongoose.model('Card');
+const User = mongoose.model('User');
 const router = require('express').Router();
 const path = require('path');
 
@@ -56,14 +57,19 @@ router.post('/', async (req, res) => {
 
     const randomIndex = Math.floor(Math.random() * filteredCards.length);
     const randomCard = filteredCards[randomIndex];
-
     const newCard = new Card({
       ...randomCard,
-      owner: req.body.userId,
+      owner: req.body.user._id,
     });
-
+    const user = await User.findById(req.body.user._id);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+  
     const savedCard = await newCard.save();
-
+    user.gold -= 10;
+    await user.save();
+  
     res.json(savedCard);
   } catch (err) {
     console.error(err);
