@@ -42,6 +42,7 @@ const Question = ({ question, idx, setIdx, max }) => {
   return (
     <div className="question-field">
       <h2 className="question-title">Question: {title}</h2>
+      <p className="question-tag">Tags: {Object.values(...question.tags).join(",")}</p>
       <div className="separator">
         <hr />
       </div>
