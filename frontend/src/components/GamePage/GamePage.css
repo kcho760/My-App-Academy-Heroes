@@ -7,17 +7,15 @@
 }
 .game-page-content {
     box-sizing: border-box;
-    border: 1px solid black;
+    height: 100%;
 }
 
 .game-page-content.left{
     display: grid;
     grid-template-rows: 20% 20% 60%;
-    height: 100%;
     box-sizing: border-box;
 }
 
 .game-content {
     box-sizing: border-box;
-    border: 1px solid black;
 }
