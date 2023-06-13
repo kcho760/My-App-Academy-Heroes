@@ -19,8 +19,8 @@ function NavBar () {
     if (loggedIn) {
       return (
         <div className="links-nav">
-          <Link to={'/game'}>Game</Link>
           <Link to={'/profile'} className="profile-link">Profile</Link>
+          <Link to={'/game'} className="game-link">Game</Link>
           {/* <Link to={'/tweets/new'}>Write a Tweet</Link> */}
           <button onClick={logoutUser} className="logout-button">Logout</button>
         </div>
