@@ -6,6 +6,8 @@ const User = mongoose.model('User');
 const jwt = require('jsonwebtoken');
 const { secretOrKey } = require('./keys');
 const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
+const Card = mongoose.model("Card");
+
 
 passport.use(new LocalStrategy({
     session: false,
@@ -24,12 +26,15 @@ passport.use(new LocalStrategy({
 
 
   exports.loginUser = async function(user) {
+    const cards = await Card.find({ owner: user._id });
     const userInfo = {
       _id: user._id,
       username: user.username,
       email: user.email,
       imageUrl: user.imageUrl,
       health: user.health,
+      gold: user.gold,
+      ownedCards: cards,
     };
     const token = await jwt.sign(
       userInfo, // payload
