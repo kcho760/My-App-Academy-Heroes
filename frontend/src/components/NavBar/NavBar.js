@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
 import "./NavBar.css";
-import MernLogo from '../Images/MernLogo.png'
+import MernLogo from '../../assets/images/MernLogo.png'
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);

@@ -1,15 +1,3 @@
-.errors {
-  color: red;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  position: relative;
-}
-
-.signup-form {
-  margin-left: 46%;
-  margin-top: 100px;
-  position: relative;
-}
 
 
 /* label {
@@ -28,28 +16,52 @@ input {
   margin-top: 10px;
 } */
 
-.signup {
+.session-page{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.session-form {
+  width: 80%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.retake, .input-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.session-btn, .capture-button {
+  /* border: none; */
+  background: none;
   display: relative;
   color: white;
   background-color: goldenrod;
   margin-top: 30px;
-  margin-left: 34px;
   border-radius: 8px;
   font-weight: bold;
   background: linear-gradient(to right, #ff7f50, #ff4f00);
   font-size: 18px;
 }
 
-.signup:hover {
+.session-btn:enabled:hover, .capture-button {
   color: red;
   box-shadow: 0 2px 4px green;
   /* background: linear-gradient(to right, #ff7f50, #ff4f00); */
 }
 
-.signup-header {
-  position: absolute;
-  left: 40%;
-  font-size: 56px;
+.session-header{
+  font-size: 36px;
+  margin-bottom: 10px;
 }
 
 .input-SU {
