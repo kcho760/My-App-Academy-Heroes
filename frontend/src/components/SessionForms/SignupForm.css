@@ -1,0 +1,60 @@
+.errors {
+  color: red;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.signup-form {
+  margin-left: 46%;
+  margin-top: 100px;
+  position: relative;
+}
+
+
+/* label {
+  display: block;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+}
+
+input {
+  display: block;
+  border-radius: 8px;
+  font-size: 20px;
+  margin-top: 10px;
+} */
+
+.signup {
+  display: relative;
+  color: white;
+  background-color: goldenrod;
+  margin-top: 30px;
+  margin-left: 34px;
+  border-radius: 8px;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff7f50, #ff4f00);
+  font-size: 18px;
+}
+
+.signup:hover {
+  color: red;
+  box-shadow: 0 2px 4px green;
+  /* background: linear-gradient(to right, #ff7f50, #ff4f00); */
+}
+
+.signup-header {
+  position: absolute;
+  left: 40%;
+  font-size: 56px;
+}
+
+.input-SU {
+  display: block;
+  border-radius: 8px;
+  margin-top: 10px;
+  height: 25px;
+}
