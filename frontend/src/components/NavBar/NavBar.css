@@ -69,3 +69,43 @@
   border-radius: 8px;
   font-weight: bold;
 }
+
+/* .profile-button {
+  text-decoration: none;
+  position: absolute;
+  right: 100px;
+} */
+
+.links-nav {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  text-decoration: none;
+
+}
+
+.logout-button {
+  font-size: 25px;
+  color: white;
+  background-color: transparent;
+  border-radius: 5px;
+  font-style: italic;
+  font-family: Futura;
+}
+
+.logout-button:hover {
+  color: red;
+  background-color: black;
+  border: solid goldenrod;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* .profile-link {
+  font-size: 25px;
+  text-decoration: none;
+  position: absolute;
+  left: -1100px;
+  top: 5px;
+} */
+
