@@ -34,7 +34,7 @@ passport.use(new LocalStrategy({
     const token = await jwt.sign(
       userInfo, // payload
       secretOrKey, // sign with secret key
-      { expiresIn: 3600 } // tell the key to expire in one hour
+      { expiresIn: 10800 } // tell the key to expire in 3 hour, 3600 = 1 hour
     );
     return {
       user: userInfo,
