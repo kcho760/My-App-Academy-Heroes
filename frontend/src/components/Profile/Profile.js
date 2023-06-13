@@ -16,7 +16,7 @@ const Profile = () => {
             <p>username: {user.username} </p>
             <p>email: {user.email} </p>
             <p>gold: {user.gold} </p>
-            <p>cards: {user.cards}</p>
+            <p>cards: {user.ownedCards.length}</p>
           </div>
         <div className='gach'>
         Your money here
