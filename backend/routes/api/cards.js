@@ -9,16 +9,20 @@ const cardsDataPath = path.join(__dirname, '..', '..', 'data', 'cards.json');
 const cardsData = fs.readFileSync(cardsDataPath, 'utf8');
 const predefinedCards = JSON.parse(cardsData);
 
-// Index route - Get all cards
+// Index route - Get all user's cards
 router.get('/user/:userid', async (req, res) => {
   try {
-    const cards = await Card.find();
+    const userId = req.params.userid; // Extract the userid from the request parameters
+    // Retrieve cards for the specified user
+    const cards = await Card.find({ owner: userId });
+
     res.json(cards);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Server Error' });
   }
 });
+
 
 // Create route - Create a new card and assign it to a user
 router.post('/', async (req, res) => {

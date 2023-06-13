@@ -109,12 +109,14 @@ router.get("/current", restoreUser, (req, res) => {
     res.cookie("CSRF-TOKEN", csrfToken);
   }
   if (!req.user) return res.json(null);
-  res.json({
+  return res.json({
     _id: req.user._id,
     username: req.user.username,
     email: req.user.email,
     imageUrl: req.user.imageUrl,
     health: req.user.health,
+    gold: req.user.gold,
+    playerCards: req.user.playerCards,
   });
 });
 
@@ -126,11 +128,13 @@ router.patch("/:id", async (req, res, next) => {
     return next(err);
   }
   res.json({
-    _id: user._id,
-    username: user.username,
-    email: user.email,
-    imageUrl: user.imageUrl,
-    health: user.health,
+    _id: req.user._id,
+    username: req.user.username,
+    email: req.user.email,
+    imageUrl: req.user.imageUrl,
+    health: req.user.health,
+    gold: req.user.gold,
+    playerCards: req.user.playerCards,
   });
 });
 

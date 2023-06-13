@@ -28,7 +28,7 @@ function App() {
           <AuthRoute exact path="/" component={MainPage} />
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
-          <AuthRoute exact path="/shop" component={Shop} /> {/* Add this line */}
+          <ProtectedRoute exact path="/shop" component={Shop} /> {/* Add this line */}
           <Route exact path="/questions">
             <Questions />
           </Route>

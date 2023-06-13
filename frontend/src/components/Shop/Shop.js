@@ -37,18 +37,16 @@ const Shop = () => {
     }
   };
   
-  useEffect(() => { //retrieve player gold and cards
+  useEffect(() => {
     const fetchPlayerGoldAndCards = async () => {
       try {
         // Dispatch getCurrentUser action to get the user's data
-        await getCurrentUser();
-
-        // Retrieve the user's gold from the user object in the session store
-        const playerGold = sessionStorage.getItem('gold');
-        setGold(playerGold);
-
+        const user = await getCurrentUser();
+        console.log(user)
+        // Set the user's gold
+        setGold(user.gold);
         // Retrieve the user's cards
-        const response = await fetch('/cards/user/:userid'); // Replace :userid with the actual user ID
+        const response = await fetch(`/cards/user/${user._id}`);
         if (response.ok) {
           const cards = await response.json();
           setPlayerCards(cards);
@@ -59,11 +57,9 @@ const Shop = () => {
         console.error('Error fetching player gold and cards:', error);
       }
     };
-
+  
     fetchPlayerGoldAndCards();
-  }, [pullCard]);
-  
-  
+  }, []);
   
   return (
     <div>

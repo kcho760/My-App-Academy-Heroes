@@ -35,7 +35,13 @@ const userSchema = new Schema(
       type: Number,
       default: 100,
       required: true
-    }
+    },
+    playerCards: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Card"
+      }
+    ],
   },
   { timestamps: true }
 );
