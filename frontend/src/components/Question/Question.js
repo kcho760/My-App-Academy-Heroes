@@ -49,6 +49,7 @@ const Question = ({ question, idx, setIdx, max }) => {
         {shuffledAnswers.map((answer) => {
           return (
             <button
+            key={answer}
               className="answer-item"
               value={answer}
               disabled={selected}
