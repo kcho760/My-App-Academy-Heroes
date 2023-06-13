@@ -1,17 +1,17 @@
-const fs = require('fs');
-const mongoose = require('mongoose');
-const Card = mongoose.model('Card');
-const User = mongoose.model('User');
-const router = require('express').Router();
-const path = require('path');
+const fs = require("fs");
+const mongoose = require("mongoose");
+const Card = mongoose.model("Card");
+const User = mongoose.model("User");
+const router = require("express").Router();
+const path = require("path");
 
-const cardsDataPath = path.join(__dirname, '..', '..', 'data', 'cards.json');
+const cardsDataPath = path.join(__dirname, "..", "..", "data", "cards.json");
 // Read card data from cards.json
-const cardsData = fs.readFileSync(cardsDataPath, 'utf8');
+const cardsData = fs.readFileSync(cardsDataPath, "utf8");
 const predefinedCards = JSON.parse(cardsData);
 
 // Index route - Get all user's cards
-router.get('/user/:userid', async (req, res) => {
+router.get("/user/:userid", async (req, res) => {
   try {
     const userId = req.params.userid; // Extract the userid from the request parameters
     // Retrieve cards for the specified user
@@ -20,21 +20,23 @@ router.get('/user/:userid', async (req, res) => {
     res.json(cards);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Server Error' });
+    res.status(500).json({ error: "Server Error" });
   }
 });
 
-
 // Create route - Create a new card and assign it to a user
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const rarityPullRates = {
-      common: 60,    // 60% chance
-      uncommon: 30,  // 30% chance
-      rare: 10      // 10% chance
+      common: 60, // 60% chance
+      uncommon: 30, // 30% chance
+      rare: 10, // 10% chance
     };
 
-    const totalPullRate = Object.values(rarityPullRates).reduce((sum, pullRate) => sum + pullRate, 0);
+    const totalPullRate = Object.values(rarityPullRates).reduce(
+      (sum, pullRate) => sum + pullRate,
+      0
+    );
 
     const randomPull = Math.random() * totalPullRate;
 
@@ -49,10 +51,14 @@ router.post('/', async (req, res) => {
       }
     }
 
-    const filteredCards = predefinedCards.filter(card => card.rarity === selectedRarity);
+    const filteredCards = predefinedCards.filter(
+      (card) => card.rarity === selectedRarity
+    );
 
     if (filteredCards.length === 0) {
-      return res.status(404).json({ error: 'No cards available for the selected rarity' });
+      return res
+        .status(404)
+        .json({ error: "No cards available for the selected rarity" });
     }
 
     const randomIndex = Math.floor(Math.random() * filteredCards.length);
@@ -63,34 +69,43 @@ router.post('/', async (req, res) => {
     });
     const user = await User.findById(req.body.user._id);
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ error: "User not found" });
     }
-  
+
     const savedCard = await newCard.save();
     user.gold -= 10;
     await user.save();
-  
+
     res.json(savedCard);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Server Error' });
+    res.status(500).json({ error: "Server Error" });
   }
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const cards = await Card.find({ owner: null });
 
+    res.json(cards);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server Error" });
+  }
+});
 // Delete route - Delete a card by ID
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const cardId = req.params.id;
     const card = await Card.findByIdAndDelete(cardId);
     if (!card) {
-      return res.status(404).json({ error: 'Card not found' });
+      return res.status(404).json({ error: "Card not found" });
     }
 
-    res.json({ message: 'Card deleted' });
+    res.json({ message: "Card deleted" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Server Error' });
+    res.status(500).json({ error: "Server Error" });
   }
 });
 
