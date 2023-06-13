@@ -6,8 +6,6 @@ import { useHistory } from "react-router-dom";
 const PlayerStat = () => {
   const player = useSelector((state) => state.session.user);
   const history = useHistory()
-  
-  if (!player) {history.push('/')};
 
   const avatar = player.imageUrl ? player.imageUrl : defaultAvatar;
   return (

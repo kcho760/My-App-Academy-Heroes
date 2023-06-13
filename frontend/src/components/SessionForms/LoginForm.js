@@ -20,18 +20,16 @@ function LoginForm() {
     const setState = field === "email" ? setEmail : setPassword;
     return (e) => setState(e.currentTarget.value);
   };
+  const demoLogin = (e) => {
+    e.preventDefault();
+    dispatch(login({ email: "demo@gmail.com", password: "password" }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password }));
   };
 
-  // const demoLogin = (e) => {
-  //   e.preventDefault();
-  //   setEmail("demo@gmail.com");
-  //   setPassword("password");
-  //   handleSubmit(e);
-  // };
 
   return (
     <div className="session-page">
@@ -70,13 +68,11 @@ function LoginForm() {
           value="Log In"
           disabled={!email || !password}
         />
-        <input
-          className="session-btn"
-          type="submit"
-          value="Demo Login"
-          onClick={() => { setEmail("demo@gmail.com"); setPassword("password"); }}
-        />
       </form>
+        <button
+          className="session-btn"
+          onClick={demoLogin}
+        >Demo Login</button>
     </div>
   );
 }
