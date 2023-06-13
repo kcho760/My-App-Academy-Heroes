@@ -17,11 +17,15 @@ input {
 } */
 
 .session-page{
-  margin-top: 20px;
+  /* margin-top: 20px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* background-color: tan; */
+  background: linear-gradient(to right, #ff4f00, goldenrod);
+
+  height: 100vh;
 }
 
 .session-form {

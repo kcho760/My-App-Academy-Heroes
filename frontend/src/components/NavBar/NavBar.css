@@ -1,7 +1,8 @@
 .navHeader {
   position: sticky;
   top: 0;
-  background-color: red;
+  /* background-color: red; */
+  background: linear-gradient(to right, #ff7f50, goldenrod, red);
   border: solid black;
   display: flex;
   height: 100px;
