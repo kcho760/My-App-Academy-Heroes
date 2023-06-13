@@ -5,6 +5,7 @@ import "./GamePage.css";
 import PlayerStat from "../PlayerStat/PlayerStat";
 import Question from "../Question/Question";
 import LoadingPage from "../Utils/Loading/LoadingPage";
+import { Redirect } from "react-router-dom/";
 
 const GamePage = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const GamePage = () => {
     dispatch(fetchQuestions());
   }, []);
 
+  if(!user) return <Redirect to="/login" />
   if (questions.length === 0) return <LoadingPage />;
 
   const totalQuestions = questions.length;
