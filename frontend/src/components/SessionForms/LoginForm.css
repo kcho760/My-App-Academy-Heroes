@@ -1,54 +1,40 @@
-.session-form {
+.login-form {
   position: relative;
+  margin-left: 47%;
+  margin-top: 300px;
 }
 
-h2 {
-  position: relative;
-  left: 40%;
-  top: 10px;
+.login-header {
+  position: absolute;
+  left: 42%;
+  top: 310px;
   font-size: 56px;
 }
 
-.email-label {
-  position: relative;
-  font-size: 30px;
-  top: 100px;
-  left: 70px
-}
-
-.email-Login {
-  position: relative;
-  font-size: 30px;
-  top: 100px;
-  left: 103px;
+.input-Login {
+  display: block;
   border-radius: 8px;
-}
-
-.password-label {
-  position: relative;
-  font-size: 30px;
-  top: 150px;
-  left: 50px;
-}
-
-.password-Login {
-  position: relative;
-  font-size: 30px;
-  top: 150px;
-  left: 60px;
-  border-radius: 8px;
+  margin-top: 10px;
+  height: 25px;
 }
 
 .login {
   position: relative;
-  font-size: 30px;
-  top: 230px;
-  right: 200px;
+  color: white;
+  background-color: goldenrod;
+  margin-left: 38px;
   border-radius: 8px;
+  margin-top: 30px;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff7f50, #ff4f00);
+  font-size: 18px;
 }
 
 .login:hover {
-  color: white;
-  background-color: goldenrod;
+  color: red;
+  box-shadow: 0 2px 4px green;
 }
 
+label {
+  font-weight: bold;
+}

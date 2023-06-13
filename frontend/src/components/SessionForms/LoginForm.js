@@ -27,27 +27,28 @@ function LoginForm () {
   }
 
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Log In Form</h2>
-      <div className="errors">{errors?.email}</div>
+    <>
+      <h2 className='login-header'>Log In Form</h2>
+    <form className="login-form" onSubmit={handleSubmit}>
       <label>
         <span className='email-label'>Email</span>
         <input type="text"
-        className='email-Login'
+        className='input-Login'
           value={email}
           onChange={update('email')}
           placeholder="Email"
         />
+      <div className="errors">{errors?.email}</div>
       </label>
-      <div className="errors">{errors?.password}</div>
       <label>
         <span className='password-label'>Password</span>
         <input type="password"
-          className='password-Login'
+          className='input-Login'
           value={password}
           onChange={update('password')}
           placeholder="Password"
         />
+      <div className="errors">{errors?.password}</div>
       </label>
       <input
         className='login'
@@ -56,6 +57,7 @@ function LoginForm () {
         disabled={!email || !password}
       />
     </form>
+  </>
   );
 }
 

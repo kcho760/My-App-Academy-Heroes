@@ -64,54 +64,54 @@ function SignupForm() {
       ) : (
         <WebcamCapture onCapture={setImage} />
       )}
-      <form className="session-form" onSubmit={handleSubmit}>
-        <h2>Sign Up Form</h2>
+      <h2 className="signup-header">Sign Up Form</h2>
+        <form className="signup-form" onSubmit={handleSubmit}>
 
-        <div className="errors">{errors?.email}</div>
         <label>
           <span className="email-label-su">Email</span>
           <input
             type="text"
-            className="email-SU"
+            className="input-SU"
             value={email}
             onChange={update("email")}
             placeholder="Email"
           />
+        <div className="errors">{errors?.email}</div>
         </label>
-        <div className="errors">{errors?.username}</div>
         <label>
           <span className="username-label">Username</span>
           <input
-            className="username-SU"
+            className="input-SU"
             type="text"
             value={username}
             onChange={update("username")}
             placeholder="Username"
           />
+        <div className="errors">{errors?.username}</div>
         </label>
-        <div className="errors">{errors?.password}</div>
         <label>
           <span className="password-label-su">Password</span>
           <input
             type="password"
-            className="password-SU"
+            className="input-SU"
             value={password}
             onChange={update("password")}
             placeholder="Password"
           />
+        <div className="errors">{errors?.password}</div>
         </label>
         <div className="errors">
-          {password !== password2 && "Confirm Password field must match"}
         </div>
         <label>
           <span className="confirmPW">Confirm Password</span>
           <input
             type="password"
-            className="confirmPW-SU"
+            className="input-SU"
             value={password2}
             onChange={update("password2")}
             placeholder="Confirm Password"
-          />
+            />
+            {password !== password2 && "Confirm Password field must match"}
         </label>
         <input
           className="signup"
