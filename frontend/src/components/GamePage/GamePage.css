@@ -1,21 +1,41 @@
 .game-page-container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 45% 54%;
-    column-gap: 1%;
-    height: calc(100vh - 100px);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% 59%;
+  column-gap: 1%;
+  height: calc(100vh - 100px);
+  box-sizing: border-box;
 }
 .game-page-content {
-    box-sizing: border-box;
-    height: 100%;
+  box-sizing: border-box;
+  height: 100%;
 }
 
-.game-page-content.left{
-    display: grid;
-    grid-template-rows: 20% 35% 45%;
-    box-sizing: border-box;
+.game-page-content.left {
+  display: grid;
+  grid-template-rows: 34% 64%;
+  row-gap: 2%;
+  box-sizing: border-box;
+}
+
+.game-page-content.right {
+  display: grid;
+  grid-template-rows: 54% 44%;
+  row-gap: 2%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.game-content.player-board {
+  display: grid;
+  grid-template-columns: 24% 75%;
+  column-gap: 1%;
 }
 
 .game-content {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.game-questions {
+  height: 100%;
 }
