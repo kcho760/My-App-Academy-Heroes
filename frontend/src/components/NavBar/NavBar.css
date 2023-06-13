@@ -1,9 +1,11 @@
 .navHeader {
-  position: relative;
+  position: sticky;
+  top: 0;
   background-color: red;
   border: solid black;
   display: flex;
   height: 100px;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -11,7 +13,7 @@
   height: 50px;
   margin-top: 10px;
   margin-left: 20px;
-  background-color: white;
+  background: transparent;
 }
 
 .logo:hover {

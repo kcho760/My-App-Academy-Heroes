@@ -1,5 +1,5 @@
 import "./MainPage.css";
-import CardLogo from '../Images/CardLogo.png'
+import CardLogo from '../../assets/images/CardLogo.png'
 
 function MainPage() {
     return (

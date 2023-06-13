@@ -24,8 +24,8 @@ const WebcamCapture = ({ onCapture }) => {
         screenshotFormat="image/jpeg"
         videoConstraints={videoConstraints}
       />
-      <div className="capture-button">
-        <button  onClick={capture}>
+      <div >
+        <button className="capture-button" onClick={capture}>
           Capture photo
         </button>
       </div>
