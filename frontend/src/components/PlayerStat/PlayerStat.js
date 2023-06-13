@@ -13,7 +13,7 @@ const PlayerStat = () => {
       </div>
       <div className="player-stat-content right">
         <h2>{player.username}</h2>
-        <p className="player-info">Coins: {player.coin ? player.coin : "Need adjustment"}</p>
+        <p className="player-info">Gold: {player.gold}</p>
         <div className="health-bar-container player-info">
           <span>HP: {player.health}</span>
           <div className="health-bar-wrapper">
@@ -24,8 +24,8 @@ const PlayerStat = () => {
                   width: `calc(${
                     player.health / 100 > 1 ? 1 : player.health / 100
                   } * 100%)`,
-                }}
-              ></div>
+                  background: player.health < 50 ? "red" : ""
+                }}></div>
             </div>
           </div>
         </div>

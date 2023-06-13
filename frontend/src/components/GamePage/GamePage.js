@@ -41,7 +41,9 @@ const GamePage = () => {
         </div>
       </div>
       <div className="game-page-content right">
-        <div className="game-content enemy-board">BOARD COMPONENT GOES HERE</div>
+        <div className="game-content enemy-board">
+          <Enemy enemy={enemy1} />
+        </div>
         <div className="game-content player-board">
           <div className="game-player">Player character</div><div className="game-player-cards">Player selected cards</div>
 

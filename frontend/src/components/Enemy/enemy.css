@@ -1,6 +1,8 @@
 .enemy-image {
     background-color: transparent;
-    width: 180px;
+    max-width: 140px;
+    max-height: 140px;
+    object-fit: cover;
   }
   
   #enemy-image-2 {
@@ -13,4 +15,12 @@
     position: relative;
     display: flex;
     justify-content: center;
+  }
+
+  .enemy-health-bar-container-enemy-info {
+    width: 60%;
+    height: 20px;
+    position: relative;
+    margin-top: 40px;
+    margin-left: 60px;
   }

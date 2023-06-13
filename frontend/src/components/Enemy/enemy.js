@@ -5,13 +5,27 @@ const Enemy = ({ enemy }) => {
     console.log(enemy.imageUrl)
   return (
     <div className='enemy-container'>
-      <h2 className='enemy-name'>{enemy.name}</h2>
       <div className='enemy-images'>
         <img className='enemy-image' src={enemy.imageUrl} alt="Enemy" />
         <img className='enemy-image' id='enemy-image-2' src={enemy.imageUrl} alt="Enemy" />
         <img className='enemy-image' src={enemy.imageUrl} alt="Enemy" />
+        <div className="enemy-health-bar-container-enemy-info">
+      <h2 className='enemy-name'>{enemy.name}</h2>
+          <span>HP: {enemy.health}</span>
+          <div className="health-bar-wrapper">
+            <div className="health-bar outter">
+              <div
+                className="health-bar inner"
+                style={{
+                  width: `calc(${
+                    enemy.health / 100 > 1 ? 1 : enemy.health / 100
+                  } * 100%)`,
+                }}
+              ></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <p className='enemy-health'>Health: {enemy.health}</p>
     </div>
   );
 };
