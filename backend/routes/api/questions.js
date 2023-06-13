@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
     const tag = strings[randomIndex];
     const apiKey = quizApiKey;
     const url = "https://quizapi.io/api/v1/questions";
-    const params = new URLSearchParams({
+    const params = new URLSearchParams({ 
       apiKey: apiKey,
       limit: 10,
       tags: tag,
