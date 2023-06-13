@@ -1,0 +1,16 @@
+.enemy-image {
+    background-color: transparent;
+    width: 180px;
+  }
+  
+  #enemy-image-2 {
+    top: 30px;
+    position: relative;
+  }
+  
+  .enemy-health {
+    top: 30px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
