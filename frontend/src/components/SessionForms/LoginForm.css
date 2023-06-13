@@ -1,0 +1,11 @@
+.input-Login {
+  display: block;
+  border-radius: 8px;
+  margin-top: 10px;
+  height: 25px;
+}
+
+
+.session-page label {
+  font-weight: bold;
+}

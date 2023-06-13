@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import { login, clearSessionErrors } from '../../store/session';
+import { login, clearSessionErrors } from "../../store/session";
+import "./LoginForm.css";
 
-function LoginForm () {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const errors = useSelector(state => state.errors.session);
+function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const errors = useSelector((state) => state.errors.session);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,42 +17,63 @@ function LoginForm () {
   }, [dispatch]);
 
   const update = (field) => {
-    const setState = field === 'email' ? setEmail : setPassword;
-    return e => setState(e.currentTarget.value);
-  }
+    const setState = field === "email" ? setEmail : setPassword;
+    return (e) => setState(e.currentTarget.value);
+  };
+  const demoLogin = (e) => {
+    e.preventDefault();
+    dispatch(login({ email: "demo@gmail.com", password: "password" }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login({ email, password })); 
-  }
+    dispatch(login({ email, password }));
+  };
+
 
   return (
-    <form className="session-form" onSubmit={handleSubmit}>
-      <h2>Log In Form</h2>
-      <div className="errors">{errors?.email}</div>
-      <label>
-        <span>Email</span>
-        <input type="text"
-          value={email}
-          onChange={update('email')}
-          placeholder="Email"
+    <div className="session-page">
+      <h2 className="session-header">Log In Form</h2>
+      <form className="session-form" onSubmit={handleSubmit}>
+        <div className="input-field">
+          <label>
+            <span className="email-label">Email</span>
+            <input
+              type="text"
+              className="input-Login"
+              value={email}
+              onChange={update("email")}
+              placeholder="Email"
+            />
+          </label>
+          <div className="errors">{errors?.email}</div>
+        </div>
+
+        <div className="input-field">
+          <label>
+            <span className="password-label">Password</span>
+            <input
+              type="password"
+              className="input-Login"
+              value={password}
+              onChange={update("password")}
+              placeholder="Password"
+            />
+          </label>
+          <div className="errors">{errors?.password}</div>
+        </div>
+        <input
+          className="session-btn"
+          type="submit"
+          value="Log In"
+          disabled={!email || !password}
         />
-      </label>
-      <div className="errors">{errors?.password}</div>
-      <label>
-        <span>Password</span>
-        <input type="password"
-          value={password}
-          onChange={update('password')}
-          placeholder="Password"
-        />
-      </label>
-      <input
-        type="submit"
-        value="Log In"
-        disabled={!email || !password}
-      />
-    </form>
+      </form>
+        <button
+          className="session-btn"
+          onClick={demoLogin}
+        >Demo Login</button>
+    </div>
   );
 }
 

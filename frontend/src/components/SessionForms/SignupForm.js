@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { signup, clearSessionErrors } from "../../store/session";
 import WebcamCapture from "../Webcam";
-// import "./SignupForm.css";
+import "./SignupForm.css";
 
 function SignupForm() {
   const [email, setEmail] = useState("");
@@ -55,67 +55,91 @@ function SignupForm() {
   };
 
   return (
-    <>
+    <div className="session-page">
       {image ? (
-        <div>
-          <img src={image} alt="Captured selfie" />
-          <button onClick={() => setImage(null)}>Retake</button>
+        <div className="retake">
+          <div>
+            <img src={image} alt="Captured selfie" />
+          </div>
+          <button className="capture-button" onClick={() => setImage(null)}>
+            Retake
+          </button>
         </div>
       ) : (
         <WebcamCapture onCapture={setImage} />
       )}
-      <form className="session-form" onSubmit={handleSubmit}>
-        <h2>Sign Up Form</h2>
+      <div className="session-form">
+        <h2 className="session-header">Sign Up Form</h2>
+        <form className="session-form" onSubmit={handleSubmit}>
+          <div className="input-field">
+            <label>
+              <span className="email-label-su">Email</span>
+              <input
+                type="text"
+                className="input-SU"
+                value={email}
+                onChange={update("email")}
+                placeholder="Email"
+              />
+            </label>
+            <div className="errors">{errors?.email}</div>
+          </div>
 
-        <div className="errors">{errors?.email}</div>
-        <label>
-          <span>Email</span>
-          <input
-            type="text"
-            value={email}
-            onChange={update("email")}
-            placeholder="Email"
-          />
-        </label>
-        <div className="errors">{errors?.username}</div>
-        <label>
-          <span>Username</span>
-          <input
-            type="text"
-            value={username}
-            onChange={update("username")}
-            placeholder="Username"
-          />
-        </label>
-        <div className="errors">{errors?.password}</div>
-        <label>
-          <span>Password</span>
-          <input
-            type="password"
-            value={password}
-            onChange={update("password")}
-            placeholder="Password"
-          />
-        </label>
-        <div className="errors">
-          {password !== password2 && "Confirm Password field must match"}
-        </div>
-        <label>
-          <span>Confirm Password</span>
-          <input
-            type="password"
-            value={password2}
-            onChange={update("password2")}
-            placeholder="Confirm Password"
-          />
-        </label>
-        <input
-          type="submit"
-          value="Sign Up"
-          disabled={!email || !username || !password || password !== password2}
-        />
-      </form>
-    </>
+          <div className="input-field">
+            <label>
+              <span className="username-label">Username</span>
+              <input
+                className="input-SU"
+                type="text"
+                value={username}
+                onChange={update("username")}
+                placeholder="Username"
+              />
+            </label>
+            <div className="errors">{errors?.username}</div>
+          </div>
+
+          <div className="input-field">
+            <label>
+              <span className="password-label-su">Password</span>
+              <input
+                type="password"
+                className="input-SU"
+                value={password}
+                onChange={update("password")}
+                placeholder="Password"
+              />
+            </label>
+            <div className="errors">{errors?.password}</div>
+          </div>
+
+          <div className="input-field">
+            <label>
+              <span className="confirmPW">Confirm Password</span>
+              <input
+                type="password"
+                className="input-SU"
+                value={password2}
+                onChange={update("password2")}
+                placeholder="Confirm Password"
+              />
+            </label>
+            {password !== password2 && (
+              <div className="errors">Confirm Password field must match</div>
+            )}
+          </div>
+          <button
+            className="session-btn"
+            type="submit"
+            disabled={
+              !email || !username || !password || password !== password2
+            }
+          >
+            Sign Up
+          </button>
+        </form>
+      </div>
+    </div>
   );
 }
 

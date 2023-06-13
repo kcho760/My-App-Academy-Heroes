@@ -10,6 +10,10 @@ const { isProduction } = require("../../config/keys");
 const validateRegisterInput = require("../../validations/register");
 const validateLoginInput = require("../../validations/login");
 const AWS = require("aws-sdk");
+const FormData = require("form-data");
+const fetch = (...args) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const fs = require("fs");
 
 // AWS S3 configuration
 const s3 = new AWS.S3({
@@ -59,31 +63,58 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
       try {
         newUser.hashedPassword = hashedPassword;
         const user = await newUser.save();
-        return res.json(await loginUser(user)); // <-- THIS IS THE CHANGED LINE
       } catch (err) {
         next(err);
       }
     });
   });
-  const buffer = Buffer.from(req.body.image.split(",")[1], "base64");
 
-  // Define S3 upload parameters
-  const params = {
-    Bucket: process.env.AWS_S3_BUCKET_NAME,
-    Key: `${newUser._id}.jpg`, // Use the user's id as the image file name
-    Body: buffer,
-    ContentType: "image/jpeg",
-    // ACL: "public-read", // If you want the image to be publicly readable
-  };
-
-  // Upload image to S3
-  s3.upload(params, function (err, data) {
+  const base64Image = req.body.image.replace(/^data:image\/jpeg;base64,/, "");
+  fs.writeFile("/tmp/output.jpg", base64Image, "base64", async function (err) {
     if (err) {
-      throw err;
+      console.log(err);
+    } else {
+      let form = new FormData();
+      form.append("image", fs.createReadStream("/tmp/output.jpg"));
+      form.append("type", "anime");
+
+      const response = await fetch(
+        "https://www.ailabapi.com/api/portrait/effects/portrait-animation",
+        {
+          method: "POST",
+          headers: {
+            "ailabapi-api-key": process.env.AILAB_API,
+          },
+          body: form,
+        }
+      );
+
+      const jsonResponse = await response.json();
+      const imageUrl = jsonResponse.data.image_url;
+
+      // Fetch image from the URL given by the API
+      const apiImageResponse = await fetch(imageUrl);
+      const apiImageBuffer = await apiImageResponse.buffer();
+
+      // Now upload this buffer to AWS S3.
+      const params = {
+        Bucket: process.env.AWS_S3_BUCKET_NAME,
+        Key: `${newUser._id}.jpg`,
+        Body: apiImageBuffer,
+        ContentType: "image/jpeg",
+      };
+
+      s3.upload(params, async function (err, data) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(`File uploaded successfully. ${data.Location}`);
+          newUser.imageUrl = data.Location;
+          await newUser.save();
+          return res.json(await loginUser(newUser));
+        }
+      });
     }
-    console.log(`File uploaded successfully. ${data.Location}`);
-    newUser.imageUrl = data.Location; // assuming your user model has a profileImage field
-    newUser.save(); // Save the user again with the updated profileImage field
   });
 });
 

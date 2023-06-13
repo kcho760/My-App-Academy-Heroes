@@ -1,24 +1,38 @@
 .navHeader {
-  position: flex;
-  background-color: red;
+  position: sticky;
+  top: 0;
+  /* background-color: red; */
+  background: linear-gradient(to right, #ff7f50, goldenrod, red);
   border: solid black;
+  display: flex;
+  height: 100px;
+  box-sizing: border-box;
 }
 
 .logo {
-  width: 250px;
-  height: 250px;
-  background-color: white;
+  width: 100px;
+  height: 50px;
+  margin-top: 10px;
+  margin-left: 20px;
+  background: transparent;
 }
+
+.logo:hover {
+  transform: scale(1.3);
+  transition: transform 0.3s;
+}
+
 .loginButton {
   color: white;
   background-color:transparent;
   text-decoration: none;
   font-size: 25px;
   border-radius: 5px;
-  position: relative;
-  /* right: 130px; */
-  margin-left: 85.4%;
-  margin-right: 10px;
+  position: absolute;
+  right: 120px;
+  top: 60px;
+  /* margin-left: 1120px;
+  margin-right: 10px; */
   padding: 5px;
   font-style: italic;
   /* margin-top: 4px; */
@@ -30,8 +44,9 @@
   text-decoration: none;
   font-size: 25px;
   border-radius: 5px;
-  position: relative;
-  /* right: 0; */
+  position: absolute;
+  top: 60px;
+  right: 10px;
   padding: 5px;
   font-style: italic;
   /* margin-top: 4px; */
