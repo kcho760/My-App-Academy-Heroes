@@ -6,6 +6,9 @@ import PlayerStat from "../PlayerStat/PlayerStat";
 import Question from "../Question/Question";
 import LoadingPage from "../Utils/Loading/LoadingPage";
 import { Redirect } from "react-router-dom/";
+import Enemy from "../Enemy/enemy.js";
+import enemy1 from "../Enemy/enemy1.js";
+import enemy2 from "../Enemy/enemy2.js";
 
 const GamePage = () => {
   const dispatch = useDispatch();
@@ -38,7 +41,9 @@ const GamePage = () => {
         </div>
       </div>
       <div className="game-page-content right">
-        <div className="game-content enemy-board">BOARD COMPONENT GOES HERE</div>
+        <div className="game-content enemy-board">
+          <Enemy enemy={enemy1} />
+        </div>
         <div className="game-content player-board">
           <div className="game-player">Player character</div><div className="game-player-cards">Player selected cards</div>
 

@@ -42,13 +42,14 @@
   }
 
   .health-bar-container{
-    display: grid;
-    grid-template-columns: 11% 88%;
+    display: flex;
+    flex-direction: column;
     column-gap: 1%;
+    font-size: 20px;
   }
 
   .health-bar-wrapper{
-    height: 100%;
+    height: 30px;
     box-sizing: border-box;
   }
 

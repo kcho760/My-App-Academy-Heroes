@@ -24,6 +24,7 @@
   row-gap: 2%;
   position: relative;
   box-sizing: border-box;
+  min-width: 500px;
 }
 
 .game-content.player-board {
@@ -38,4 +39,9 @@
 
 .game-questions {
   height: 100%;
+}
+
+.game-content.enemy-board {
+  display: flex;
+  justify-content: center;
 }
