@@ -7,7 +7,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
     display: grid;
-    grid-template-columns: 20% 79%;
+    grid-template-columns: 30% 69%;
     column-gap: 1%;
   }
   
@@ -16,10 +16,17 @@
     box-sizing: border-box;
     position: relative;
   }
+
+  .player-info{
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+
   .player-stat-content h2 {
+    width: 100%;
     font-weight: bold;
-    font-size: 22px;
-    margin-bottom: 2px;
+    font-size: 50px;
+    margin-bottom: 10px;
   }
   
   .player-stat-content .player-stat-avatar {
@@ -32,5 +39,54 @@
     height: 100%;
     object-fit: cover;
     background-color: rgba(206, 49, 49, 0.401);
+  }
+
+  .health-bar-container{
+    display: grid;
+    grid-template-columns: 11% 88%;
+    column-gap: 1%;
+  }
+
+  .health-bar-wrapper{
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  
+  .health-bar.outter,
+  .health-bar.inner {
+    content: "";
+    border-radius: 10px;
+    line-height: 4px;
+    box-sizing: border-box;
+  }
+  
+  .health-bar.outter {
+    position: relative;
+    height: 70%;
+    box-shadow: 0 0 5px rgb(138, 93, 9);
+    background-color: rgba(204, 204, 204, 0.5);
+    overflow: hidden;
+  }
+
+  .health-bar.inner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    background: linear-gradient(to right, #8aff8a 0%, #59ff59 10%, #00ff00 40%, #00ff00 60%,#59ff59 90%, #8aff8a 100%);
+    box-shadow: 0 0 2px limegreen;
+    z-index: 1;
+    animation: shift 2s linear infinite;
+    background-size: 200% 100%;
+  }
+  
+  @keyframes shift {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }
   }
   

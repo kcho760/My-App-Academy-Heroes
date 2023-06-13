@@ -28,9 +28,6 @@ const GamePage = () => {
         <div className="game-content game-user-info">
           <PlayerStat />
         </div>
-        <div className="game-content game-user-deck">
-          SELECTED CARD GOES HERE
-        </div>
         <div className="game-content game-questions">
           <Question
             question={questions[idx]}
@@ -41,7 +38,11 @@ const GamePage = () => {
         </div>
       </div>
       <div className="game-page-content right">
-        <div className="game-board">BOARD COMPONENT GOES HERE</div>
+        <div className="game-content enemy-board">BOARD COMPONENT GOES HERE</div>
+        <div className="game-content player-board">
+          <div className="game-player">Player character</div><div className="game-player-cards">Player selected cards</div>
+
+        </div>
       </div>
     </div>
   );
