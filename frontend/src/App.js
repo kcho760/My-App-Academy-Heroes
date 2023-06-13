@@ -9,7 +9,7 @@ import MainPage from "./components/MainPage/MainPage";
 import LoginForm from "./components/SessionForms/LoginForm";
 import SignupForm from "./components/SessionForms/SignupForm";
 
-import { getCurrentUser } from "./store/session";
+import Shop from "./components/Shop/Shop";
 import GamePage from "./components/GamePage/GamePage";
 
 function App() {
@@ -27,8 +27,10 @@ function App() {
           <AuthRoute exact path="/" component={MainPage} />
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
+          <ProtectedRoute exact path="/shop" component={Shop} /> {/* Add this line */}
           <ProtectedRoute exact path="/game" component={GamePage} />
         </Switch>
+
       </>
     )
   );

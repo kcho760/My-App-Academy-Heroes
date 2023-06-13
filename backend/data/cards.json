@@ -1,0 +1,24 @@
+[
+    {
+      "name": "Card 1",
+      "rarity": "common",
+      "abilityType": "ability1",
+      "abilityValue": 10,
+      "imageUrl": "https://example.com/card1.png"
+    },
+    {
+      "name": "Card 2",
+      "rarity": "uncommon",
+      "abilityType": "ability2",
+      "abilityValue": 20,
+      "imageUrl": "https://example.com/card2.png"
+    },
+    {
+      "name": "Card 3",
+      "rarity": "rare",
+      "abilityType": "ability3",
+      "abilityValue": 30,
+      "imageUrl": "https://example.com/card3.png"
+    }
+  ]
+  

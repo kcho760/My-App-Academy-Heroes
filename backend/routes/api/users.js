@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const passport = require("passport");
+const Card = mongoose.model("Card");
 const { loginUser, restoreUser } = require("../../config/passport");
 const { isProduction } = require("../../config/keys");
 const validateRegisterInput = require("../../validations/register");
@@ -131,7 +132,7 @@ router.post("/login", validateLoginInput, async (req, res, next) => {
   })(req, res, next);
 });
 
-router.get("/current", restoreUser, (req, res) => {
+router.get("/current", restoreUser, async (req, res) => {
   if (!isProduction) {
     // In development, allow React server to gain access to the CSRF token
     // whenever the current user information is first loaded into the
@@ -140,14 +141,25 @@ router.get("/current", restoreUser, (req, res) => {
     res.cookie("CSRF-TOKEN", csrfToken);
   }
   if (!req.user) return res.json(null);
-  res.json({
-    _id: req.user._id,
-    username: req.user.username,
-    email: req.user.email,
-    imageUrl: req.user.imageUrl,
-    health: req.user.health,
-  });
+  
+  try {
+    const cards = await Card.find({ owner: req.user._id }).exec();
+    return res.json({
+      _id: req.user._id,
+      username: req.user.username,
+      email: req.user.email,
+      imageUrl: req.user.imageUrl,
+      health: req.user.health,
+      gold: req.user.gold,
+      ownedCards: cards,
+    });
+  } catch (err) {
+    // Handle any errors that occur during the query execution
+    console.error(err);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
 });
+
 
 router.patch("/:id", async (req, res, next) => {
   const user = await User.findById(req.params.id);
@@ -156,12 +168,15 @@ router.patch("/:id", async (req, res, next) => {
     err.statusCode = 404;
     return next(err);
   }
+  const cards = await Card.find({ owner: req.user._id }).exec();
   res.json({
-    _id: user._id,
-    username: user.username,
-    email: user.email,
-    imageUrl: user.imageUrl,
-    health: user.health,
+    _id: req.user._id,
+    username: req.user.username,
+    email: req.user.email,
+    imageUrl: req.user.imageUrl,
+    health: req.user.health,
+    gold: req.user.gold,
+    ownedCards: cards,
   });
 });
 

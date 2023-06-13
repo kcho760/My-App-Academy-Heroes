@@ -55,25 +55,26 @@ export const logout = () => dispatch => {
   const initialState = {
     user: undefined
   };
-  
+
+  export const getCurrentUser = () => async dispatch => {
+    const res = await jwtFetch('/api/users/current');
+    const user = await res.json();
+    dispatch(receiveCurrentUser(user));
+    return user;
+  };
+
   const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
       case RECEIVE_CURRENT_USER:
         return { user: action.currentUser };
-      case RECEIVE_USER_LOGOUT:
-        return initialState;
-      default:
-        return state;
-    }
-  };
-  
-  export const getCurrentUser = () => async dispatch => {
-    const res = await jwtFetch('/api/users/current');
-    const user = await res.json();
-    return dispatch(receiveCurrentUser(user));
-  };
-
-  const nullErrors = null;
+        case RECEIVE_USER_LOGOUT:
+          return initialState;
+          default:
+            return state;
+          }
+        };
+        
+const nullErrors = null;
 
 export const sessionErrorsReducer = (state = nullErrors, action) => {
   switch(action.type) {
