@@ -1,0 +1,46 @@
+.profile-container {
+  display: grid;
+  grid-template-columns: 40% 59%;
+  column-gap: 1%;
+  height: calc(100vh - 100px);
+}
+
+.profile-div {
+  border: solid slategray;
+  flex: 1;
+  box-sizing: border-box;
+  font-size: 20px;
+  
+}
+
+.profile-pic {
+  box-sizing: border-box;
+  border: solid slategray;
+  width: 100px;
+  height: 100px;
+  margin-left: 30px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.profile-details {
+  position: relative;
+  font-size: 20px;
+  padding: 30px;
+  box-sizing: border-box;
+  /* margin-left: 50px; */
+  /* border: solid slategray; */
+}
+
+.gach {
+  border: outset slategray;
+  width: 100px;
+  height: 100px;
+  margin-left: 40%;
+  margin-top: 40%;
+  position: relative;
+}
+
+.card-collection {
+  font-size: 20px;
+}
