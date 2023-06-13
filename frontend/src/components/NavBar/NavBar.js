@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/session';
 import "./NavBar.css";
@@ -11,6 +11,7 @@ function NavBar () {
   const logoutUser = e => {
       e.preventDefault();
       dispatch(logout());
+      return <Redirect to="/" />
   }
 
   const getLinks = () => {

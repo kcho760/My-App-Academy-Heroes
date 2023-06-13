@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Switch, Route } from "react-router-dom";
-
 import { AuthRoute, ProtectedRoute } from "./components/Routes/Routes";
 import NavBar from "./components/NavBar/NavBar";
-
 import MainPage from "./components/MainPage/MainPage";
 import LoginForm from "./components/SessionForms/LoginForm";
 import SignupForm from "./components/SessionForms/SignupForm";
+import GamePage from "./components/GamePage/GamePage";
+import Profile from "./components/Profile/Profile";
 
 import { getCurrentUser } from "./store/session";
-import GamePage from "./components/GamePage/GamePage";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,6 +27,7 @@ function App() {
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
           <ProtectedRoute exact path="/game" component={GamePage} />
+          <ProtectedRoute exact Path="/profile" component={Profile} />
         </Switch>
       </>
     )
