@@ -25,9 +25,19 @@ const userSchema = new Schema(
       default: 100,
       required: true,
     },
+    cards: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Card"
+      }
+    ],
+    gold: {
+      type: Number,
+      default: 100,
+      required: true
+    }
   },
-
-    {timestamps: true}
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("User", userSchema);
