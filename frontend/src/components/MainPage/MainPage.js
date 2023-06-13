@@ -5,7 +5,7 @@ function MainPage() {
     return (
       <>
       
-        <div className="MainSplashDiv">A Twitter Clone
+        <div className="MainSplashDiv">
           <div>
               <div className="gameIntro">
                 <div className="introText">

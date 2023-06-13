@@ -26,12 +26,12 @@ function LoginForm() {
     dispatch(login({ email, password }));
   };
 
-  const demoLogin = (e) => {
-    e.preventDefault();
-    setEmail("demo@gmail.com");
-    setPassword("password");
-    handleSubmit(e);
-  };
+  // const demoLogin = (e) => {
+  //   e.preventDefault();
+  //   setEmail("demo@gmail.com");
+  //   setPassword("password");
+  //   handleSubmit(e);
+  // };
 
   return (
     <div className="session-page">
@@ -74,7 +74,7 @@ function LoginForm() {
           className="session-btn"
           type="submit"
           value="Demo Login"
-          onClick={demoLogin}
+          onClick={() => { setEmail("demo@gmail.com"); setPassword("password"); }}
         />
       </form>
     </div>
