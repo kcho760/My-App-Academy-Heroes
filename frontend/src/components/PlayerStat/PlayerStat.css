@@ -78,7 +78,7 @@
     background-image: linear-gradient(to right, #8aff8a 0%, #59ff59 10%, #00ff00 40%, #00ff00 60%,#59ff59 90%, #8aff8a 100%);
     /* background-image: linear-gradient(to right, #ff6e6e 0%, #ff4444 10%, #ff0000 40%, #ff0000 60%, #ff4444 90%, #ff6e6e 100%); */
     box-shadow: 0 0 2px limegreen;
-    z-index: 1;
+    /* z-index: 1; */
     animation: shift 2s linear infinite;
     background-size: 200% 100%;
   }
