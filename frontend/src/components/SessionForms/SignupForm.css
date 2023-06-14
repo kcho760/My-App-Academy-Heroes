@@ -19,18 +19,18 @@ input {
 .session-page{
   /* margin-top: 20px; */
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
   /* background-color: tan; */
   background: linear-gradient(to right, #ff4f00, goldenrod);
 
-  height: 100vh;
+  height: calc(100vh - 100px);
 }
 
 .session-form {
-  width: 80%;
-  margin-top: 10px;
+  /* width: 50%;
+  margin-top: 10px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -73,4 +73,12 @@ input {
   border-radius: 8px;
   margin-top: 10px;
   height: 25px;
+}
+
+.session-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  flex-direction: column;
 }

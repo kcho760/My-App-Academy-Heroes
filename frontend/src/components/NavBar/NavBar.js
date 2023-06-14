@@ -4,6 +4,7 @@ import { logout } from '../../store/session';
 import "./NavBar.css";
 import MernLogo from '../../assets/images/MernLogo.png';
 import GamePage from '../GamePage/GamePage';
+import InstructionModal from '../Instructions';
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
@@ -42,6 +43,7 @@ function NavBar () {
       <a href='/'>
           <img src={MernLogo} className='logo' alt="Logo" />
       </a>
+      {<InstructionModal/>}
       { getLinks() }
     </div>
     </>

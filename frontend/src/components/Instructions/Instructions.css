@@ -1,0 +1,50 @@
+.displayInstructions {
+  font-size: 25px;
+  font-family: Futura;;
+  border: outset ivory;
+  color: slateblue;
+  background-color: aliceblue;
+  border-radius: 8px;
+  position: fixed;
+  left: 45%;
+  top: 5.5%;
+  height: 50px;
+  display: block;
+}
+
+.displayInstructions:hover {
+  transform: scale(1.3);
+  transition: transform 0.1s;
+}
+
+.modal-header {
+  color: azure;
+  font-size: 40px;
+}
+
+.modal-instruction {
+  border: inset slategrey;
+  background-color: aliceblue;
+  width: 550px;
+  height: 550px;
+  position: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal {
+  border-radius: 10px;
+  /* background-color: rgb(159, 157, 45); */
+  background: linear-gradient(to right, black, goldenrod, rgb(185, 146, 146), goldenrod, black);
+  width: 650px;
+  height: 650px;
+  position: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  box-sizing: border-box;
+  /* z-index: 4; */
+  position: relative;
+}
