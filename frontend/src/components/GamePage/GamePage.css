@@ -1,10 +1,12 @@
 .game-page-container {
   width: 100%;
-  display: grid;
-  grid-template-columns: 40% 59%;
+  /* display: grid; */
+  /* grid-template-columns: 40% 59%; */
+  display: flex;
   column-gap: 1%;
   height: calc(100vh - 100px);
   box-sizing: border-box;
+  min-width: 950px;
 }
 .game-page-content {
   box-sizing: border-box;
@@ -12,13 +14,16 @@
 }
 
 .game-page-content.left {
+  width: 40%;
   display: grid;
-  grid-template-rows: 34% 64%;
+  grid-template-rows: 34% 5% 57%;
   row-gap: 2%;
   box-sizing: border-box;
+  min-width: 455px;
 }
 
 .game-page-content.right {
+  width: 59%;
   display: grid;
   grid-template-rows: 54% 44%;
   row-gap: 2%;
@@ -44,4 +49,22 @@
 .game-content.enemy-board {
   display: flex;
   justify-content: center;
+}
+.answer-result {
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+  border-radius: 5px;
+  color: white;
+  padding: 3px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.answer-result.correct {
+  background-color: rgba(0, 128, 0, 0.7);
+}
+
+.answer-result.incorrect {
+  background-color: rgba(255, 0, 0, 0.7);
 }

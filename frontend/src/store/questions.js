@@ -1,3 +1,5 @@
+import { shuffleArray } from "../components/Utils/Helpers/HelperFunctions";
+
 const RECEIVE_QUESTIONS = "questions/RECEIVE_QUESTIONS";
 
 const receiveQuestions = (questions) => ({
@@ -9,12 +11,14 @@ export const fetchQuestions = () => async (dispatch) => {
   try {
     const res = await fetch("/api/questions");
     const questions = await res.json();
-    const formattedQuestions = questions.reduce((acc, question) => {
-      acc[question.id] = question;
-      return acc;
-    }, {});
+    // const formattedQuestions = questions.reduce((acc, question) => {
+    //   acc[question.id] = question;
+    //   return acc;
+    // }, {});
+    // dispatch(receiveQuestions(formattedQuestions));
+    const shuffledQuestions = shuffleArray(questions)
+    dispatch(receiveQuestions(shuffledQuestions));
 
-    dispatch(receiveQuestions(formattedQuestions));
   } catch (err) {
     const res = await err.json();
     if (res.statusCode === 400) {

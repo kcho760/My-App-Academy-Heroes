@@ -9,21 +9,78 @@ import { Redirect } from "react-router-dom/";
 import Enemy from "../Enemy/enemy.js";
 import enemy1 from "../Enemy/enemy1.js";
 import enemy2 from "../Enemy/enemy2.js";
+import { shuffleArray } from "../Utils/Helpers/HelperFunctions";
 
 const GamePage = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const questions = useSelector((state) => Object.values(state.questions));
   const [idx, setIdx] = useState(0);
+  const [totalAnswered, setTotalAnswered] = useState(0);
+  const [totalCorrects, setTotalCorrects] = useState(0);
+  const [selected, setSelected] = useState(false);
+  const [gameOver, setGameover] = useState(false);
+  const [message, setMessage] = useState(<></>);
+  const [round, setRound] = useState(1); // for use when kill enemy
 
   useEffect(() => {
     dispatch(fetchQuestions());
   }, []);
 
-  if(!user) return <Redirect to="/login" />
+  if (!user) return <Redirect to="/login" />;
   if (questions.length === 0) return <LoadingPage />;
 
-  const totalQuestions = questions.length;
+  const max = questions.length;
+  const question = questions[idx];
+  const correctAnswer = question.answers[question.correct_answer];
+  const handleSelect = (e) => {
+    e.preventDefault();
+    setSelected(true);
+    const newTotal = totalAnswered + 1;
+    setTotalAnswered(newTotal);
+    if (e.target.value === correctAnswer) {
+      // stuff that happens when user answers correctly
+      const newCorrects = totalCorrects + 1;
+      setTotalCorrects(newCorrects);
+      user.gold += 1;
+      setMessage(
+        <div className="answer-result correct">Nice. That was correct !</div>
+      );
+      // deduct enemy hp and check if enemy hp will be 0 or lower
+      // count round
+    } else {
+      // stuff that happends when user answers wrong
+      setMessage(
+        <div className="answer-result incorrect">
+          Oops... That was incorrect...
+        </div>
+      );
+      if (user.health - 5 <= 0) {
+        user.health = 0;
+        setGameover(true);
+        user.health = 100;
+        // can reset player hp to 100 instead
+      } else {
+        user.health -= 5;
+      }
+    }
+    // need to dispatch an update to player becuase of gold and hp update
+    //all changes above are temporary and only in frontend store state, reset upon refresh currently
+
+    // giving 2s buffer before switching to next question
+    setTimeout(() => {
+      if (idx + 1 < max) {
+        setIdx((prevIdx) => prevIdx + 1);
+      } else {
+        dispatch(fetchQuestions()).finally(() => {
+          setIdx(0);
+        });
+      }
+    }, 2000);
+  };
+
+  console.log("Questions pulled")
+  console.log(questions.length)
 
   return (
     <div className="game-page-container">
@@ -31,13 +88,27 @@ const GamePage = () => {
         <div className="game-content game-user-info">
           <PlayerStat />
         </div>
+          <div className="answered-stats">
+            <div className="total-answered">
+              Total questions anwered: {totalAnswered}
+            </div>
+            <div className="total-correct-answered">
+              Total correct answered: {totalCorrects}
+            </div>
+          </div>
         <div className="game-content game-questions">
-          <Question
-            question={questions[idx]}
-            idx={idx}
-            setIdx={setIdx}
-            max={totalQuestions}
-          />
+          {gameOver ? (
+            <div className="">GAME OVER...</div>
+          ) : (
+            <Question
+              question={question}
+              selected={selected}
+              setSelected={setSelected}
+              message={message}
+              setMessage={setMessage}
+              handleSelect={handleSelect}
+            />
+          )}
         </div>
       </div>
       <div className="game-page-content right">
@@ -45,8 +116,8 @@ const GamePage = () => {
           <Enemy enemy={enemy1} />
         </div>
         <div className="game-content player-board">
-          <div className="game-player">Player character</div><div className="game-player-cards">Player selected cards</div>
-
+          <div className="game-player">Player character</div>
+          <div className="game-player-cards">Player selected cards</div>
         </div>
       </div>
     </div>
