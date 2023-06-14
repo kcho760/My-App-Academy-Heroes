@@ -4,6 +4,10 @@ import { getCurrentUser } from "../../store/session";
 import jwtFetch from "../../store/jwt";
 import Card from "../Card/Card";
 import "./Profile.css";
+import RareGacha from "../../assets/videoes/gacha-rare.mp4";
+import Modal from "react-modal";
+
+Modal.setAppElement("#root"); // replace '#root' with the id of your app's root element
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -12,9 +16,11 @@ const Profile = () => {
   const playerCards = useSelector((state) => state.session.user.ownedCards);
   const [pulling, setPulling] = useState(false);
   const [allCards, setAllCards] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const pullCard = async () => {
     if (gold >= 10) {
+      setIsModalOpen(true);
       try {
         setPulling(true);
         const response = await jwtFetch("/api/cards", {
@@ -26,7 +32,9 @@ const Profile = () => {
         });
 
         if (response.ok) {
-          // const updatedCard = await response.json();
+          setTimeout(() => {
+            setIsModalOpen(false);
+          }, 8000);
         } else {
           console.error("Failed to assign card:", response.status);
         }
@@ -109,6 +117,21 @@ const Profile = () => {
           </ul>
         )}
       </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        style={
+          {
+            /* Custom modal styles here */
+          }
+        }
+      >
+        <video controls autoPlay style={{ width: "100%", height: "auto" }}>
+          <source src={RareGacha} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </Modal>
     </div>
   );
 };

@@ -28,9 +28,9 @@ router.get("/user/:userid", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const rarityPullRates = {
-      common: 60, // 60% chance
-      uncommon: 30, // 30% chance
-      rare: 10, // 10% chance
+      N: 60, // 60% chance
+      R: 30, // 30% chance
+      SR: 10, // 10% chance
     };
 
     const totalPullRate = Object.values(rarityPullRates).reduce(
