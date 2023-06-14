@@ -38,14 +38,13 @@
   /* background-color: rgb(159, 157, 45); */
   background: linear-gradient(to right, goldenrod, rgb(185, 146, 146), goldenrod);
   width: 750px;
-  height: 550px;
+  height: 750px;
   position: flex;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 50px;
   box-sizing: border-box;
-  /* z-index: 4; */
   position: relative;
   color: navy;
   font-size: 20px;
@@ -85,4 +84,12 @@
 
 .li-space {
   margin-bottom: 10%;
+}
+
+.tab {
+  border: solid white;
+  background-color: black;
+  border-radius: 20px;
+  color: blueviolet; 
+  margin-top: 10%;
 }
