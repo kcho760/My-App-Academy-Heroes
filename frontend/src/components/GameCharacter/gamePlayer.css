@@ -24,7 +24,10 @@
     bottom: 5%;
     animation: playerHover 1.5s infinite alternate;
 }
-  
+.p-sprite {
+    transform: scaleX(-1) rotate(20deg);
+}
+
 @keyframes playerHover {
     0% {
       transform: translateY(0);
@@ -37,4 +40,3 @@
     }
   }
 
-  

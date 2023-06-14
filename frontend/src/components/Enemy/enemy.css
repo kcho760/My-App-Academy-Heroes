@@ -16,6 +16,14 @@
   object-fit: cover;
   animation: enemyHover 1.5s infinite alternate;
 }
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 #enemy-image-1 {
   animation-delay: 0s;

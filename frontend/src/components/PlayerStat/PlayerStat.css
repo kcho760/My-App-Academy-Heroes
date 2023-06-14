@@ -99,12 +99,15 @@
   @keyframes flash {
     0% {
       color: inherit;
+      text-shadow: 0 0 4px rgba(255, 0, 0, 0.6);
     }
     50% {
       color: red;
+      text-shadow: 0 0 4px orange
     }
     100% {
       color: inherit;
+      text-shadow: 0 0 4px rgba(255, 0, 0, 0.6);
     }
   }
   
