@@ -38,7 +38,6 @@ function Card({ card }) {
       <div className="card-footer">
         <p>{card.abilityType}</p>
         <p>{card.abilityValue}</p>
-        <button>Use</button>
       </div>
     </div>
   );

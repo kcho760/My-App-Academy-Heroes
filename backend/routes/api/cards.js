@@ -82,7 +82,21 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: "Server Error" });
   }
 });
+router.patch("/:id", async (req, res) => {
+  try {
+    const cardId = req.params.id;
+    const update = req.body;
+    const card = await Card.findByIdAndUpdate(cardId, update, { new: true });
+    if (!card) {
+      return res.status(404).json({ error: "Card not found" });
+    }
 
+    res.json(card);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server Error" });
+  }
+});
 router.get("/", async (req, res) => {
   try {
     const cards = await Card.find({ owner: null });

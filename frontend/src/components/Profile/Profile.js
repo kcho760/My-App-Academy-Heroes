@@ -87,20 +87,7 @@ const Profile = () => {
           <p>cards: {playerCards.length}</p>
           <button onClick={pullCard}>Pull a Card (Cost: 10 Gold)</button>
         </div>
-        <div className="gach">
-          Your deck
-          {playerCards.length === 0 ? (
-            <p>No cards yet. Start pulling!</p>
-          ) : (
-            <ul>
-              {playerCards.map((card, index) => (
-                <li key={index}>
-                  <Card card={card} />
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
+        <div className="gach">Your deck</div>
       </div>
 
       <div className="card-collection">
@@ -109,11 +96,22 @@ const Profile = () => {
           <p>No cards in collection.</p>
         ) : (
           <ul>
-            {allCards.map((card, index) => (
-              <li key={index}>
-                <Card card={card} />
-              </li>
-            ))}
+            {allCards.map((card, index) => {
+              const isOwned = playerCards.some(
+                (ownedCard) => ownedCard.name === card.name
+              );
+              const amountOwned = isOwned
+                ? playerCards.filter(
+                    (ownedCard) => ownedCard.name === card.name
+                  ).length
+                : 0;
+              return (
+                <li key={index}>
+                  <Card card={card} />
+                  <p>Amount owned: {amountOwned}</p>
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>
