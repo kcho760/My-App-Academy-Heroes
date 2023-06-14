@@ -1,24 +1,33 @@
 import React from "react";
 import "./Card.css";
+import { useSelector } from "react-redux";
 
 function Card({ card }) {
+  const ownedCards = useSelector((state) => state.session.user.ownedCards);
+
+  const isOwned = ownedCards.some((ownedCard) => ownedCard.name === card.name);
+  const amountOwned = isOwned
+    ? ownedCards.filter((ownedCard) => ownedCard.name === card.name).length
+    : 0;
+
   const borderColors = {
-    common: "green",
-    uncommon: "purple",
-    rare: "orange",
+    N: "green",
+    R: "purple",
+    SR: "orange",
   };
 
   const borderColor = borderColors[card.rarity] || "black";
 
   return (
     <div
-      className={`card-body ${card.rarity}`}
+      className={`card ${isOwned ? `card-body ${card.rarity}` : ""}`}
       style={{
         border: `1px solid ${borderColor}`,
         padding: "10px",
         margin: "10px",
         borderRadius: "5px",
         maxWidth: "200px",
+        minHeight: "250px",
       }}
     >
       <div className="card-header">

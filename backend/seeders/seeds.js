@@ -36,23 +36,81 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
 const cards = [
   {
     name: "Carvey The Forbidden One",
-    rarity: "common",
+    rarity: "SR",
+    abilityType: "ability3",
+    abilityValue: 30,
+    imageUrl:
+      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
+  },
+  {
+    name: "Blue Eyes White Carvey",
+    rarity: "SR",
     abilityType: "ability1",
     abilityValue: 10,
     imageUrl:
       "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
   },
   {
-    name: "Carvey The Forbidden One",
-    rarity: "uncommon",
+    name: "Carvey The Tormentor",
+    rarity: "SR",
     abilityType: "ability2",
     abilityValue: 20,
     imageUrl:
       "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
   },
   {
-    name: "Carvey The Forbidden One",
-    rarity: "rare",
+    name: "Carvey The Sky Dragon",
+    rarity: "SR",
+    abilityType: "ability2",
+    abilityValue: 20,
+    imageUrl:
+      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
+  },
+  {
+    name: "The Wing Dragon of Carvey",
+    rarity: "SR",
+    abilityType: "ability2",
+    abilityValue: 20,
+    imageUrl:
+      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
+  },
+  {
+    name: "The Dark Carvey",
+    rarity: "R",
+    abilityType: "ability2",
+    abilityValue: 20,
+    imageUrl:
+      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
+  },
+  {
+    name: "Black Luster Carvey",
+    rarity: "R",
+    abilityType: "ability3",
+    abilityValue: 30,
+    imageUrl:
+      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
+  },
+  {
+    name: "Cyber Carvey",
+    rarity: "N",
+    abilityType: "ability3",
+    abilityValue: 30,
+    imageUrl:
+      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
+  },
+
+  {
+    name: "Summoned Carvey",
+    rarity: "N",
+    abilityType: "ability3",
+    abilityValue: 30,
+    imageUrl:
+      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
+  },
+
+  {
+    name: "Red Eye Black Carvey",
+    rarity: "N",
     abilityType: "ability3",
     abilityValue: 30,
     imageUrl:
