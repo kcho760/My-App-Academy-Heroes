@@ -64,3 +64,10 @@
   flex: 1 0 200px;
   max-width: 200px;
 }
+
+.gachButton {
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: Futura;
+  background: linear-gradient(black, red,yellow);
+}
