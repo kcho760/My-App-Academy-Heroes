@@ -24,8 +24,9 @@ const PlayerStat = () => {
                   width: `calc(${
                     player.health / 100 > 1 ? 1 : player.health / 100
                   } * 100%)`,
-                  background: player.health < 50 ? "red" : ""
+                  backgroundImage: player.health < 50 ? "linear-gradient(to right, #ff6e6e 0%, #ff4444 10%, #ff0000 40%, #ff0000 60%, #ff4444 90%, #ff6e6e 100%)" : ""
                 }}></div>
+
             </div>
           </div>
         </div>
