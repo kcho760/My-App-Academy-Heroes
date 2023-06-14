@@ -68,7 +68,7 @@ function SignupForm() {
       ) : (
         <WebcamCapture onCapture={setImage} />
       )}
-      <div className="session-form">
+      <div className="session-form-container">
         <h2 className="session-header">Sign Up Form</h2>
         <form className="session-form" onSubmit={handleSubmit}>
           <div className="input-field">

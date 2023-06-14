@@ -33,46 +33,48 @@ function LoginForm() {
 
   return (
     <div className="session-page">
-      <h2 className="session-header">Log In Form</h2>
-      <form className="session-form" onSubmit={handleSubmit}>
-        <div className="input-field">
-          <label>
-            <span className="email-label">Email</span>
-            <input
-              type="text"
-              className="input-Login"
-              value={email}
-              onChange={update("email")}
-              placeholder="Email"
-            />
-          </label>
-          <div className="errors">{errors?.email}</div>
-        </div>
+        <div className="session-form-container">
+        <h2 className="session-header">Log In Form</h2>
+        <form className="session-form" onSubmit={handleSubmit}>
+          <div className="input-field">
+            <label>
+              <span className="email-label">Email</span>
+              <input
+                type="text"
+                className="input-Login"
+                value={email}
+                onChange={update("email")}
+                placeholder="Email"
+              />
+            </label>
+            <div className="errors">{errors?.email}</div>
+          </div>
 
-        <div className="input-field">
-          <label>
-            <span className="password-label">Password</span>
-            <input
-              type="password"
-              className="input-Login"
-              value={password}
-              onChange={update("password")}
-              placeholder="Password"
-            />
-          </label>
-          <div className="errors">{errors?.password}</div>
-        </div>
-        <input
-          className="session-btn"
-          type="submit"
-          value="Log In"
-          disabled={!email || !password}
-        />
-      </form>
-        <button
-          className="session-btn"
-          onClick={demoLogin}
-        >Demo Login</button>
+          <div className="input-field">
+            <label>
+              <span className="password-label">Password</span>
+              <input
+                type="password"
+                className="input-Login"
+                value={password}
+                onChange={update("password")}
+                placeholder="Password"
+              />
+            </label>
+            <div className="errors">{errors?.password}</div>
+          </div>
+          <input
+            className="session-btn"
+            type="submit"
+            value="Log In"
+            disabled={!email || !password}
+          />
+        </form>
+          <button
+            className="session-btn"
+            onClick={demoLogin}
+          >Demo Login</button>
+      </div>
     </div>
   );
 }
