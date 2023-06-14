@@ -25,6 +25,8 @@ const GamePage = () => {
   const [enemy, setEnemy] = useState(enemy1);
   const [round, setRound] = useState(1); // for use when kill enemy
   const [playerAttack, setPlayerAttack] = useState(50); // for use when kill enemy
+  const [showExplosion, setShowExplosion] = useState(false);
+
   useEffect(() => {
     dispatch(fetchQuestions());
   }, []);
@@ -53,6 +55,10 @@ const GamePage = () => {
       setMessage(
         <div className="answer-result correct">Nice. That was correct !</div>
       );
+      setShowExplosion(true);
+        setTimeout(() => {
+          setShowExplosion(false);
+        }, 1300);
       // deduct enemy hp and check if enemy hp will be 0 or lower
       // count round
     } else {
@@ -152,7 +158,7 @@ const GamePage = () => {
       </div>
       <div className="game-page-content right">
         <div className="game-content enemy-board">
-          <Enemy enemy={enemy} />
+          <Enemy enemy={enemy} showExplosion={showExplosion} />
         </div>
         <div className="game-content player-board">
           <div className="game-player">Player character</div>

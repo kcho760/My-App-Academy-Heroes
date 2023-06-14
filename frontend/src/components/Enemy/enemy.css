@@ -55,3 +55,17 @@
   margin-top: 30px;
   margin-left: 90px;
 }
+
+.enemy {
+  position: relative;
+  max-height: 140px;
+  max-width: 140px;
+}
+
+.explosion {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
