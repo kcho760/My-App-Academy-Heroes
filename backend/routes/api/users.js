@@ -168,14 +168,17 @@ router.patch("/:id", async (req, res, next) => {
     err.statusCode = 404;
     return next(err);
   }
-  const cards = await Card.find({ owner: req.user._id }).exec();
+  user.health = req.body.health;
+  user.gold = req.body.gold;
+  user.save();
+  const cards = await Card.find({ owner: req.body._id }).exec();
   res.json({
-    _id: req.user._id,
-    username: req.user.username,
-    email: req.user.email,
-    imageUrl: req.user.imageUrl,
-    health: req.user.health,
-    gold: req.user.gold,
+    _id: user._id,
+    username: user.username,
+    email: user.email,
+    imageUrl: user.imageUrl,
+    health: user.health,
+    gold: user.gold,
     ownedCards: cards,
   });
 });

@@ -1,26 +1,57 @@
-.enemy-image {
-    background-color: transparent;
-    max-width: 140px;
-    max-height: 140px;
-    object-fit: cover;
-  }
-  
-  #enemy-image-2 {
-    top: 30px;
-    position: relative;
-  }
-  
-  .enemy-health {
-    top: 30px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-  }
+.enemy-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 
-  .enemy-health-bar-container-enemy-info {
-    width: 60%;
-    height: 20px;
-    position: relative;
-    margin-top: 40px;
-    margin-left: 60px;
+.enemy-images {
+  display: flex;
+  align-items: center;
+}
+
+.enemy-image {
+  background-color: transparent;
+  max-width: 140px;
+  max-height: 140px;
+  object-fit: cover;
+  animation: enemyHover 1.5s infinite alternate;
+}
+
+#enemy-image-1 {
+  animation-delay: 0s;
+}
+
+#enemy-image-2 {
+  animation-delay: 0.4s;
+}
+
+#enemy-image-3 {
+  animation-delay: 0.2s;
+}
+
+@keyframes enemyHover {
+  0% {
+    transform: translateY(0);
   }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.enemy-health {
+  top: 30px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.enemy-health-bar-container-enemy-info {
+  width: 60%;
+  height: 20px;
+  position: relative;
+  margin-top: 30px;
+  margin-left: 90px;
+}

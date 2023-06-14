@@ -1,7 +1,9 @@
 import enemy1Image from './assets/enemy1.png';
 const enemy1 = {
   name: 'Enemy 1',
+  defaultHealth: 100,
   health: 100,
+  gold: 10,
   attack: 10,
   imageUrl: enemy1Image,
 };

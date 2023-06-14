@@ -10,6 +10,7 @@ import Enemy from "../Enemy/enemy.js";
 import enemy1 from "../Enemy/enemy1.js";
 import enemy2 from "../Enemy/enemy2.js";
 import { shuffleArray } from "../Utils/Helpers/HelperFunctions";
+import { updateUser } from "../../store/session";
 
 const GamePage = () => {
   const dispatch = useDispatch();
@@ -21,18 +22,23 @@ const GamePage = () => {
   const [selected, setSelected] = useState(false);
   const [gameOver, setGameover] = useState(false);
   const [message, setMessage] = useState(<></>);
+  const [enemy, setEnemy] = useState(enemy1);
   const [round, setRound] = useState(1); // for use when kill enemy
-
+  const [playerAttack, setPlayerAttack] = useState(50); // for use when kill enemy
   useEffect(() => {
     dispatch(fetchQuestions());
   }, []);
-
+  
+  useEffect(() => {
+    dispatch(updateUser(user));
+  }, [user.gold, user.health]);
   if (!user) return <Redirect to="/login" />;
   if (questions.length === 0) return <LoadingPage />;
 
   const max = questions.length;
   const question = questions[idx];
   const correctAnswer = question.answers[question.correct_answer];
+  console.log(correctAnswer)
   const handleSelect = (e) => {
     e.preventDefault();
     setSelected(true);
@@ -40,6 +46,7 @@ const GamePage = () => {
     setTotalAnswered(newTotal);
     if (e.target.value === correctAnswer) {
       // stuff that happens when user answers correctly
+      handleEnemyLogic();
       const newCorrects = totalCorrects + 1;
       setTotalCorrects(newCorrects);
       user.gold += 1;
@@ -55,15 +62,17 @@ const GamePage = () => {
           Oops... That was incorrect...
         </div>
       );
-      if (user.health - 5 <= 0) {
+      if (user.health - enemy.attack <= 0) {
         user.health = 0;
         setGameover(true);
         user.health = 100;
         // can reset player hp to 100 instead
       } else {
-        user.health -= 5;
+        user.health -= enemy.attack;
       }
     }
+
+
     // need to dispatch an update to player becuase of gold and hp update
     //all changes above are temporary and only in frontend store state, reset upon refresh currently
 
@@ -79,8 +88,35 @@ const GamePage = () => {
     }, 2000);
   };
 
-  console.log("Questions pulled")
-  console.log(questions.length)
+
+  const handleEnemyLogic = () => {
+  
+    if (enemy.health - playerAttack <= 0) {
+      // Handle enemy defeated logic, such as updating round, gaining rewards, etc.
+      // For example:
+      user.gold += enemy.gold;
+      const newRound = round + 1
+      setRound(newRound);
+      if (newRound % 3 === 0) {
+          setEnemy(enemy2);
+          // enemy.health = enemy2.defaultHealth; 
+      }
+      else {
+        setEnemy(enemy1);
+        // enemy.health = enemy1.defaultHealth;
+      }
+
+      setEnemy((prevEnemy) => ({
+        ...prevEnemy,
+        health: prevEnemy.defaultHealth,
+      }));
+    }else{
+      setEnemy((prevEnemy) => ({
+        ...prevEnemy,
+        health: prevEnemy.health - playerAttack,
+      }));
+    }
+  };
 
   return (
     <div className="game-page-container">
@@ -94,6 +130,9 @@ const GamePage = () => {
             </div>
             <div className="total-correct-answered">
               Total correct answered: {totalCorrects}
+            </div>
+            <div>
+              <div className="round">Round: {round}</div>
             </div>
           </div>
         <div className="game-content game-questions">
@@ -113,7 +152,7 @@ const GamePage = () => {
       </div>
       <div className="game-page-content right">
         <div className="game-content enemy-board">
-          <Enemy enemy={enemy1} />
+          <Enemy enemy={enemy} />
         </div>
         <div className="game-content player-board">
           <div className="game-player">Player character</div>

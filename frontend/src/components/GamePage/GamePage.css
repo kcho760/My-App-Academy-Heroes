@@ -49,6 +49,7 @@
 .game-content.enemy-board {
   display: flex;
   justify-content: center;
+  max-height: 60%;
 }
 .answer-result {
   font-size: 20px;

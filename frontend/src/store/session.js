@@ -63,6 +63,16 @@ export const logout = () => dispatch => {
     return user;
   };
 
+  export const updateUser = user => async dispatch => {
+    const res = await jwtFetch(`/api/users/${user._id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(user)
+    });
+    const updatedUser = await res.json();
+    dispatch(receiveCurrentUser(updatedUser));
+    return updatedUser;
+  };
+
   const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
       case RECEIVE_CURRENT_USER:
@@ -73,6 +83,7 @@ export const logout = () => dispatch => {
             return state;
           }
         };
+
         
 const nullErrors = null;
 
