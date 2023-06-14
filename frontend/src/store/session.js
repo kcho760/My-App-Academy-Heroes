@@ -7,7 +7,7 @@ export const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
 
 // Dispatch receiveCurrentUser when a user logs in.
 const receiveCurrentUser = currentUser => {
-  if (!currentUser.imageUrl) {
+  if (currentUser && !currentUser.imageUrl) {
     currentUser.imageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTQyGzuBvXCxmuLpt9qJYgWhIc_EnotcLWbQ&usqp=CAU"
   } 
     return {

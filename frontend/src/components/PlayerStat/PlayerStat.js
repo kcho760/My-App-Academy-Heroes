@@ -1,15 +1,13 @@
 import { useSelector } from "react-redux";
-import defaultAvatar from "../../assets/images/defaultAvatar.png";
 import "./PlayerStat.css";
 
 const PlayerStat = () => {
   const player = useSelector((state) => state.session.user);
 
-  const avatar = player.imageUrl ? player.imageUrl : defaultAvatar;
   return (
     <div className="player-stat-badge">
       <div className="player-stat-content left player-img">
-        <img className="player-stat-avatar" src={avatar} alt="player avatar" />
+        <img className="player-stat-avatar" src={player.imageUrl} alt="player avatar" />
       </div>
       <div className="player-stat-content right">
         <h2>{player.username}</h2>
