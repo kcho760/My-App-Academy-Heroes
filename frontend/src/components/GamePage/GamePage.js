@@ -9,6 +9,7 @@ import { Redirect } from "react-router-dom/";
 import Enemy from "../Enemy/enemy.js";
 import enemy1 from "../Enemy/enemy1.js";
 import enemy2 from "../Enemy/enemy2.js";
+import GamePlayer from "../GameCharacter/gamePlayer";
 import { shuffleArray } from "../Utils/Helpers/HelperFunctions";
 import { updateUser } from "../../store/session";
 
@@ -26,7 +27,7 @@ const GamePage = () => {
   const [round, setRound] = useState(1); // for use when kill enemy
   const [playerAttack, setPlayerAttack] = useState(50); // for use when kill enemy
   const [showExplosion, setShowExplosion] = useState(false);
-
+  const [attackAnimation, setAttackAnimation] = useState(false); // for use when kill enemy
   useEffect(() => {
     dispatch(fetchQuestions());
   }, []);
@@ -41,6 +42,7 @@ const GamePage = () => {
   const question = questions[idx];
   const correctAnswer = question.answers[question.correct_answer];
   console.log(correctAnswer)
+
   const handleSelect = (e) => {
     e.preventDefault();
     setSelected(true);
@@ -48,6 +50,16 @@ const GamePage = () => {
     setTotalAnswered(newTotal);
     if (e.target.value === correctAnswer) {
       // stuff that happens when user answers correctly
+      setAttackAnimation(true);
+      setTimeout(() => {
+        setShowExplosion(true);
+      }, 1000);
+        
+      setTimeout(() => {
+          setAttackAnimation(false);
+          setShowExplosion(false);
+        }, 2000);
+
       handleEnemyLogic();
       const newCorrects = totalCorrects + 1;
       setTotalCorrects(newCorrects);
@@ -55,14 +67,16 @@ const GamePage = () => {
       setMessage(
         <div className="answer-result correct">Nice. That was correct !</div>
       );
-      setShowExplosion(true);
-        setTimeout(() => {
-          setShowExplosion(false);
-        }, 1300);
       // deduct enemy hp and check if enemy hp will be 0 or lower
       // count round
     } else {
       // stuff that happends when user answers wrong
+      const healthText = document.querySelector(".health-text")
+      healthText.classList.add("flash-red");
+      setTimeout(() => {
+        healthText.classList.remove("flash-red");
+      }, 1500);
+
       setMessage(
         <div className="answer-result incorrect">
           Oops... That was incorrect...
@@ -161,8 +175,7 @@ const GamePage = () => {
           <Enemy enemy={enemy} showExplosion={showExplosion} />
         </div>
         <div className="game-content player-board">
-          <div className="game-player">Player character</div>
-          <div className="game-player-cards">Player selected cards</div>
+          <GamePlayer user={user} attackAnimation={attackAnimation}/>
         </div>
       </div>
     </div>

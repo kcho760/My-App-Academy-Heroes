@@ -33,6 +33,27 @@
   background-image: url(../../assets/images/background4.png);
   background-size: cover;
   background-repeat: no-repeat;
+  color: gold;
+  animation: switchbg 15s ease infinite;
+}
+
+@keyframes switchbg {
+  0% {
+    background-image: url(../../assets/images/background1.png);
+  }
+  25% {
+    background-image: url(../../assets/images/background2.png);
+  }
+  50% {
+    background-image: url(../../assets/images/background3.png);
+  }
+  75% {
+    background-image: url(../../assets/images/background4.png);
+  }
+  100% {
+    background-image: url(../../assets/images/background1.png);
+  }
+  
 }
 
 .game-content.player-board {
@@ -65,6 +86,17 @@
   text-align: center;
 }
 
+.answered-stats {
+  display: flex;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.answered-stats > div:not(:last-child) {
+  margin-right: 10%; /* Adjust the margin value as needed */
+}
+
+
 .answer-result.correct {
   background-color: rgba(0, 128, 0, 0.7);
 }
@@ -72,3 +104,4 @@
 .answer-result.incorrect {
   background-color: rgba(255, 0, 0, 0.7);
 }
+

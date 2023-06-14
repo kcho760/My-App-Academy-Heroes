@@ -4,6 +4,8 @@ import "./PlayerStat.css";
 const PlayerStat = () => {
   const player = useSelector((state) => state.session.user);
 
+
+  
   return (
     <div className="player-stat-badge">
       <div className="player-stat-content left player-img">
@@ -13,7 +15,7 @@ const PlayerStat = () => {
         <h2>{player.username}</h2>
         <p className="player-info">Gold: {player.gold}</p>
         <div className="health-bar-container player-info">
-          <span>HP: {player.health}</span>
+          <span className="health-text">HP: {player.health}</span>
           <div className="health-bar-wrapper">
             <div className="health-bar outter">
               <div
