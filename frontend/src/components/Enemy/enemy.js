@@ -31,6 +31,7 @@ const Enemy = ({ enemy, showExplosion }) => {
                   width: `calc(${
                     enemy.health / enemy.defaultHealth > 1 ? 1 : enemy.health / enemy.defaultHealth
                   } * 100%)`,
+                  backgroundImage: enemy.health <= 50 ? "linear-gradient(to right, #ff6e6e 0%, #ff4444 10%, #ff0000 40%, #ff0000 60%, #ff4444 90%, #ff6e6e 100%)" : ""
                 }}
               ></div>
             </div>

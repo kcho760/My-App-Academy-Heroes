@@ -30,6 +30,9 @@
   position: relative;
   box-sizing: border-box;
   min-width: 500px;
+  background-image: url(../../assets/images/background4.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .game-content.player-board {
