@@ -5,9 +5,9 @@
   color: slateblue;
   background-color: aliceblue;
   border-radius: 8px;
-  position: fixed;
+  position: absolute;
   left: 45%;
-  top: 5.5%;
+  top: 46%;
   height: 50px;
   display: block;
 }
@@ -17,12 +17,12 @@
   transition: transform 0.1s;
 }
 
-.modal-header {
+/* .modal-header {
   color: azure;
   font-size: 40px;
-}
+} */
 
-.modal-instruction {
+/* .modal-instruction {
   border: inset slategrey;
   background-color: aliceblue;
   width: 550px;
@@ -31,14 +31,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 
-.modal {
+.modal-container {
   border-radius: 10px;
   /* background-color: rgb(159, 157, 45); */
-  background: linear-gradient(to right, black, goldenrod, rgb(185, 146, 146), goldenrod, black);
-  width: 650px;
-  height: 650px;
+  background: linear-gradient(to right, goldenrod, rgb(185, 146, 146), goldenrod);
+  width: 750px;
+  height: 550px;
   position: flex;
   display: flex;
   flex-direction: column;
@@ -47,4 +47,42 @@
   box-sizing: border-box;
   /* z-index: 4; */
   position: relative;
+  color: navy;
+  font-size: 20px;
+}
+
+.generalHeader {
+  position: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.tabDescription {
+  position: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.modal-tabs button.tab {
+  color: goldenrod;
+  background-color: firebrick;
+  border: solid black;
+  border-radius: 8px;
+  font-size: 20px;
+  font-family: Futura;  
+  /* display: fixed; */
+}
+
+.modal-tabs button.tab:hover {
+  transform: scale(1.3);
+  transition: transform 0.3s;
+
+}
+
+.li-space {
+  margin-bottom: 10%;
 }
