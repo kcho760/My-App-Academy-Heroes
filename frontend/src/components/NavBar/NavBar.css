@@ -82,15 +82,16 @@
   border: outset ivory;
   color: slateblue;
   background-color: aliceblue;
-  border-radius: 8px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   display: fixed;
   align-items: center;
   text-align: center;
 }
 
 .links-nav a:hover {
-  transform: scale(1.3);
-  transition: transform 0.2s;
+  transform: scale(1.2);
+  transition: transform 0.1s;
 }
 
 .logout-button {
