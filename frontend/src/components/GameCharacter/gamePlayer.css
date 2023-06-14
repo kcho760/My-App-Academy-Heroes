@@ -1,0 +1,40 @@
+.player-character {
+    display: flex;
+  }
+
+.player-image {
+    height: 250px;
+}
+  
+.player-picture {
+    width: 160px;
+    height: 194px;
+    object-fit: cover;
+    margin-left: 20px;
+    display: flex;
+    position: absolute;
+    bottom: 15px;
+}
+  
+.player-sprite {
+    height: 150px;
+    display: flex;
+    position: absolute;
+    left: 25%;
+    bottom: 5%;
+    animation: playerHover 1.5s infinite alternate;
+}
+  
+@keyframes playerHover {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  

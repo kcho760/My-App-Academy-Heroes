@@ -91,4 +91,24 @@
       background-position: -100% 0;
     }
   }
+
+  .flash-red {
+    animation: flash 0.3s infinite;
+  }
+  
+  @keyframes flash {
+    0% {
+      color: inherit;
+    }
+    50% {
+      color: red;
+    }
+    100% {
+      color: inherit;
+    }
+  }
+  
+  .flash-red {
+    animation: flash 1s linear;
+  }
   
