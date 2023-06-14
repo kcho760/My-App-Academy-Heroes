@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { createGroup } from "../../store/group";
 import './Instructions.css';
 import '../NavBar/NavBar.css'
 

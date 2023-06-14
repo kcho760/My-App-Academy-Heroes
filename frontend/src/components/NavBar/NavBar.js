@@ -5,6 +5,7 @@ import "./NavBar.css";
 import MernLogo from '../../assets/images/MernLogo.png';
 import GamePage from '../GamePage/GamePage';
 import InstructionModal from '../Instructions';
+import TeamPageModal from '../TeamPage';
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
@@ -44,6 +45,7 @@ function NavBar () {
           <img src={MernLogo} className='logo' alt="Logo" />
       </a>
       {<InstructionModal/>}
+      {<TeamPageModal/>}
       { getLinks() }
     </div>
     </>

@@ -69,5 +69,25 @@
   border-radius: 20px;
   font-size: 20px;
   font-family: Futura;
-  background: linear-gradient(black, red,yellow);
+  color: rgb(184, 248, 87);
+  background: linear-gradient(to left, green, purple,orange, red, orange, purple, green);
+  animation: gachAnimation 10s linear infinite;
+  background-size: 200% 100%;
+  position: absolute;
+  left: 30%;
 }
+
+.gachButton:hover {
+  transition: transform 0.1s;
+  transform: scale(1.1);
+}
+
+@keyframes gachAnimation {
+  0%{
+    background-position: 100% 0;
+  }
+  100%{
+    background-position: -100% 0;
+  }
+}
+

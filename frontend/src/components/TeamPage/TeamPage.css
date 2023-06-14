@@ -1,0 +1,83 @@
+.displayTeamName {
+  font-size: 25px;
+  font-family: Futura;;
+  border: outset ivory;
+  color: slateblue;
+  background-color: aliceblue;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  position: absolute;
+  left: 80%;
+  top: 46%;
+  height: 50px;
+  display: block;
+}
+
+.displayTeamName:hover {
+  transform: scale(1.2);
+  transition: transform 0.1s;
+}
+
+.team-modal-container {
+  border-radius: 10px;
+  background: linear-gradient(to right, black, lightcoral, white, lightcoral, black);
+  width: 750px;
+  height: 750px;
+  position: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+  box-sizing: border-box;
+  position: relative;
+  color: navy;
+  font-size: 20px;
+}
+
+.team-tabs button.tab {
+  color: white;
+  background-color: orangered;
+  border: solid black;
+  border-radius: 18px;
+  font-size: 20px;
+  font-family: Futura;
+  border-color: lightcoral;  
+  /* display: fixed; */
+}
+
+.team-tabs button.tab:hover {
+  transform: scale(1.1);
+  color: turquoise;
+  transition: transform 0.3s;
+
+}
+
+.li-space {
+  margin-bottom: 10%;
+}
+
+.team-tab {
+  border: solid turquoise;
+  background-color: black;
+  border-radius: 20px;
+  color: white;
+  font-size: 20px; 
+  margin-top: 10%;
+  height: 300px;
+  width: 700px;
+}
+
+/* .photo-tab {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photo-tab:hover .overlay {
+  opacity: 1;
+} */
