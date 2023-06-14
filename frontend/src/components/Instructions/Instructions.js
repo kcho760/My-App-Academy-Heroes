@@ -34,7 +34,7 @@ function Instructions() {
         </div>
       <div className="tab-contents">
         {activeTab === "generalTab" && (
-          <div className>
+          <div className="tab">
             <h1 className= "generalHeader">**"Profile" and "Game" tabs only visible when logged in**</h1>
               <ul className="tabDescription">
                 <li className="li-space">Collect cohortmates for different effects that will help you progress in the game.</li>
@@ -44,23 +44,33 @@ function Instructions() {
           </div>
         )}
         {activeTab === "gameTab" && (
-          <div>
-              <p className="tabDescription">On the "game" tab; you'd see waves of enemies on the right side of the screen. You deal damage by answering questions 
-                on the bottom left of the screen. For each correct question; you obtain a bit of gold. If you defeat a wave; you 
-                receive more gold. After completing a weeks-worth of enemies; you will encounter a TA who will test your knowledge. 
-                They're just the practice waves before but with some curveballs/caveats that you won't know until the day of but if 
-                you ran through the earlier waves at least 10x in half the recommended time; you're good unless your database breaks. 
-                If you make it past the TA; you obtain even more gold to spend on your gambling addiction in the shop.
-              </p>
+          <div className="tab">
+              <ul className="tabDescription">On the "game" tab; you'd see waves of enemies on the right side of the screen. 
+              
+              <li className="li-space">You deal damage by answering questions on the bottom left of the screen. </li>
+              
+              <li className="li-space">For each correct question; you obtain a bit of gold. If you defeat a wave; you receive more gold. </li>
+              
+              <li className="li-space">After completing a weeks-worth of enemies; you will encounter a TA who will test your knowledge. They're just like the practice waves before but with 
+              some curveballs/caveats that you won't know until the day of but if you ran through the earlier waves at least 10x in half the recommended time; you're good unless your database breaks. </li>
+                
+              <li className="li-space">If you make it past the TA; you obtain even more gold to spend on your gambling addiction in the shop. </li>
+              </ul>
           </div>
         )}
         {activeTab === "other" && (
-          <div>
-              <p className="tabDescription">
-                If for any reason your health bar reaches 0; your TA will be disappointed. They're understanding enough and instead 
-                of deleting you from the cohort; they'll just give you 4 strikes (your cards in hand for the battle will be deleted). 
-                If for some reason you hit 0 health 10 times; you're pushing their patience and your account may be deleted.
-              </p>
+          <div className="tab">
+              <ul className="tabDescription">
+              <li className="li-space">If for any reason your health bar reaches 0; your TA will be disappointed. </li>
+                
+              <li className="li-space">They're understanding enough and instead of deleting you from the cohort; </li>
+                
+              <li className="li-space">they'll just give you 4 strikes (your cards in hand for the battle will be deleted). </li>
+                
+              <li className="li-space">If for some reason you hit 0 health 10 times; you're pushing their patience and </li>
+                
+              <li className="li-space"> your account may be deleted. </li>
+              </ul>
           </div>
         )}
       </div>

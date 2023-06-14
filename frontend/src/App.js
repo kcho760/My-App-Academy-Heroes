@@ -21,7 +21,7 @@ function App() {
 
   return (
     loaded && (
-      <>
+      <div className="app">
         <NavBar />
         <Switch>
           <AuthRoute exact path="/" component={MainPage} />
@@ -32,7 +32,7 @@ function App() {
           <ProtectedRoute exact Path="/profile" component={Profile} />
         </Switch>
 
-      </>
+      </div>
     )
   );
 }

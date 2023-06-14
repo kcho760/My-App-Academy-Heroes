@@ -79,13 +79,13 @@ const Profile = () => {
     <div className="profile-container">
       <div className="profile-div">
         Profile
-        <div className="profile-pic">Your face header</div>
+        <div className="profile-pic"> <img className = 'defaultPic' src = {currentUser.imageUrl}/> </div>
         <div className="profile-details">
           <p>username: {currentUser.username} </p>
           <p>email: {currentUser.email} </p>
           <p>gold: {gold} </p>
           <p>cards: {playerCards.length}</p>
-          <button onClick={pullCard}>Pull a Card (Cost: 10 Gold)</button>
+          <button onClick={pullCard} className="gachButton">Pull a Card (Cost: 10 Gold)</button>
         </div>
         <div className="gach">Your deck</div>
       </div>

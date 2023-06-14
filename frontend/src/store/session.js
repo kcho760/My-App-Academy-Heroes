@@ -6,10 +6,15 @@ const CLEAR_SESSION_ERRORS = "session/CLEAR_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
 
 // Dispatch receiveCurrentUser when a user logs in.
-const receiveCurrentUser = currentUser => ({
-  type: RECEIVE_CURRENT_USER,
-  currentUser
-});
+const receiveCurrentUser = currentUser => {
+  if (!currentUser.imageUrl) {
+    currentUser.imageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTQyGzuBvXCxmuLpt9qJYgWhIc_EnotcLWbQ&usqp=CAU"
+  } 
+    return {
+    type: RECEIVE_CURRENT_USER,
+    currentUser
+  }
+};
   
 // Dispatch receiveErrors to show authentication errors on the frontend.
 const receiveErrors = errors => ({
