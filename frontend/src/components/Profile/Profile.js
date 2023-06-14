@@ -17,6 +17,7 @@ const Profile = () => {
   const [pulling, setPulling] = useState(false);
   const [allCards, setAllCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [toggleButton, setToggleButton] = useState(false);
 
   const pullCard = async () => {
     if (gold >= 10) {
@@ -47,7 +48,26 @@ const Profile = () => {
       alert("You don't have enough gold to pull a card.");
     }
   };
+  const handleToggleCardSelection = async (cardId, isSelected) => {
+    try {
+      const response = await jwtFetch(`/api/cards/${cardId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ selected: !isSelected }), // toggle selected state
+      });
 
+      if (response.ok) {
+        setToggleButton((prev) => !prev);
+        fetchallCards();
+      } else {
+        console.error("Failed to toggle card selection:", response.status);
+      }
+    } catch (error) {
+      console.error("Error toggling card selection:", error);
+    }
+  };
   const fetchallCards = async () => {
     try {
       const response = await jwtFetch("/api/cards", {
@@ -70,7 +90,7 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(getCurrentUser());
-  }, [pulling, dispatch]);
+  }, [pulling, toggleButton, dispatch]);
   useEffect(() => {
     fetchallCards();
   }, []);
@@ -87,7 +107,23 @@ const Profile = () => {
           <p>cards: {playerCards.length}</p>
           <button onClick={pullCard}>Pull a Card (Cost: 10 Gold)</button>
         </div>
-        <div className="gach">Your deck</div>
+        <div className="gach">
+          Your deck
+          {playerCards
+            .filter((card) => card.selected)
+            .map((card, index) => (
+              <div key={index}>
+                <Card card={card} />
+                <button
+                  onClick={() =>
+                    handleToggleCardSelection(card._id, card.selected)
+                  }
+                >
+                  Deselect
+                </button>
+              </div>
+            ))}
+        </div>
       </div>
 
       <div className="card-collection">
@@ -97,6 +133,13 @@ const Profile = () => {
         ) : (
           <ul>
             {allCards.map((card, index) => {
+              const matchingPlayerCards = playerCards.filter(
+                (ownedCard) => ownedCard.name === card.name
+              );
+              let firstCard;
+              if (matchingPlayerCards.length > 0) {
+                firstCard = matchingPlayerCards[0];
+              }
               const isOwned = playerCards.some(
                 (ownedCard) => ownedCard.name === card.name
               );
@@ -109,6 +152,20 @@ const Profile = () => {
                 <li key={index}>
                   <Card card={card} />
                   <p>Amount owned: {amountOwned}</p>
+                  {isOwned &&
+                    playerCards.filter((card) => card.selected === true)
+                      .length < 4 && (
+                      <button
+                        onClick={() =>
+                          handleToggleCardSelection(
+                            firstCard._id,
+                            firstCard.selected
+                          )
+                        }
+                      >
+                        {firstCard.selected ? "Deselect" : "Select"}
+                      </button>
+                    )}
                 </li>
               );
             })}
