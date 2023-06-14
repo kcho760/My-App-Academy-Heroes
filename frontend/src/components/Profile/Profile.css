@@ -69,5 +69,6 @@
   border-radius: 20px;
   font-size: 20px;
   font-family: Futura;
-  background: linear-gradient(black, red,yellow);
+  color: gold;
+  background: linear-gradient(green, purple,orange, red);
 }
