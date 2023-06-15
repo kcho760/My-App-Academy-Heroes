@@ -17,7 +17,7 @@ import GameOver from "./GameOver";
 import Card from "../Card/Card";
 import CardSelection from "../CardSelection/CardSelection";
 const GamePage = () => {
-  const defaultPlayerAttack = 100;
+  const defaultPlayerAttack = 25;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const questions = useSelector((state) => Object.values(state.questions));
