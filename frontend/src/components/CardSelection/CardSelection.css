@@ -8,15 +8,32 @@
 .card-option {
   position: relative;
   border: 1px solid black;
+  border-radius: 15px;
   padding: 10px;
   cursor: pointer;
   width: 24%;
   height: 50%;
-  transition: background-color 0.3s ease;
+  /* transition: background-color 0.3s ease; */
+  font-family: Futura;
+  /* transition: transform 0.2;
+  animation: cardAnimation 2x linear infinite;
+  background-size: 200%, 100%; */
+  background: linear-gradient(33deg,rgba(255, 255, 255, 0.467) 0%, rgba(73, 150, 73, 0.706) 50%, rgba(128, 0, 128, 0.569) 60%, rgba(255, 166, 0, 0.567) 90%);
+  text-shadow:0 0 25px white;
 }
 
+/* @keyframes cardAnimation {
+  0%{
+    background-position: 0 100%;
+  }
+  100%{
+    background-position: 0 -100%;
+  }
+} */
+
 .card-option:hover {
-  background-color: lightgray;
+  background-color: red;
+  color: black
 }
 .card-option:active {
   background-color: darkgray;
@@ -31,8 +48,15 @@
   right: 50%;
   padding: 10px;
   pointer-events: none; /* Add this line */
+  /* background: linear-gradient(33deg,rgba(255, 255, 255, 0.467) 0%, rgba(73, 150, 73, 0.706) 50%, rgba(128, 0, 128, 0.569) 60%, rgba(255, 166, 0, 0.567) 90%); */
+  border-radius: 15px;
+
 }
 
 .card-option:hover .card-detail {
   display: block;
+}
+
+.card-option:hover .card-body {
+  background-color: rgb(220, 220, 220);
 }
