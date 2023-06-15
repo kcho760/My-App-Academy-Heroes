@@ -119,8 +119,8 @@
   align-items: center;
   text-align: center;
   left: 215px;
-  /* animation: profileAnimation 2s ease-out infinite;
-  background-size: 200% 100%; */
+  animation: profileAnimation 2s ease-out infinite;
+  background-size: 100% 200%;
 }
 
 .profile-link::before {
@@ -143,14 +143,14 @@
   box-shadow: 0 0 50px rgb(143, 194, 239);
 }
 
-/* @keyframes profileAnimation {
+@keyframes profileAnimation {
   0%{
     background-position: 0 100%;
   }
   100%{
     background-position: 0 -100%;
   }
-} */
+}
 
 .game-link {
   text-decoration: none;
