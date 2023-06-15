@@ -34,11 +34,11 @@ const Enemy = ({ enemy, showExplosion }) => {
               {showExplosion && <img className='explosion' id='explosion' src={explosion} alt="Enemy" />}
             </div>
             <div className='enemy'>
-              {!hideImages && <img className='enemy-image' id='enemy-image-1' src={enemy.imageUrl} alt="Enemy" />}
+              {!hideImages && <img className='enemy-image' id='enemy-image-2' src={enemy.imageUrl} alt="Enemy" />}
               {showExplosion && <img className='explosion' id='explosion' src={explosion} alt="Enemy" />}
             </div>
             <div className='enemy'>
-              {!hideImages && <img className='enemy-image' id='enemy-image-1' src={enemy.imageUrl} alt="Enemy" />}
+              {!hideImages && <img className='enemy-image' id='enemy-image-3' src={enemy.imageUrl} alt="Enemy" />}
               {showExplosion && <img className='explosion' id='explosion' src={explosion} alt="Enemy" />}
             </div>
             <div className='enemy'>
