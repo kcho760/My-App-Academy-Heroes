@@ -9,12 +9,13 @@ import { Redirect } from "react-router-dom";
 import Enemy from "../Enemy/enemy.js";
 import enemy1 from "../Enemy/enemy1.js";
 import enemy2 from "../Enemy/enemy2.js";
+import kinTheConqueror from "../Enemy/kinTheConqueror.js";
+import Kyletronic from "../Enemy/kyletronic";
 import GamePlayer from "../GameCharacter/gamePlayer";
 import { updateUser } from "../../store/session";
 import GameOver from "./GameOver";
 import Card from "../Card/Card";
 import CardSelection from "../CardSelection/CardSelection";
-
 const GamePage = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -27,7 +28,7 @@ const GamePage = () => {
   const [message, setMessage] = useState(<></>);
   const [enemy, setEnemy] = useState(enemy1);
   const [round, setRound] = useState(1);
-  const [playerAttack, setPlayerAttack] = useState(10);
+  const [playerAttack, setPlayerAttack] = useState(100);
   const [showExplosion, setShowExplosion] = useState(false);
   const [showPlayerExplosion, setShowPlayerExplosion] = useState(false);
   const [attackAnimation, setAttackAnimation] = useState(false);
@@ -148,7 +149,7 @@ const GamePage = () => {
       const newRound = round + 1;
       setRound(newRound);
 
-      if (newRound % 3 === 0) {
+      if (newRound + 5 % 5 === 3 || newRound + 5 % 5 === 4) {
         setAttackAnimation(true);
         setTimeout(() => {
           setEnemy((prevEnemy) => ({
@@ -168,7 +169,29 @@ const GamePage = () => {
             }, 500);
           }, 700);
         }, 1000);
-      } else {
+      }else if (newRound % 5 === 0) {
+        setAttackAnimation(true);
+        setTimeout(() => {
+          setEnemy((prevEnemy) => ({
+            ...prevEnemy,
+            health: 0, // Show enemy health as 0 during the delay
+          }));
+          setTimeout(() => {
+            setShouldAnimateOut(true);
+            setTimeout(() => {
+              setEnemy(kinTheConqueror);
+              setEnemy((prevEnemy) => ({
+                ...prevEnemy,
+                health: prevEnemy.defaultHealth,
+              }));
+              setShouldAnimateOut(false);
+              setAttackAnimation(false);
+            }, 500);
+          }, 700);
+        }, 1000);
+      }
+      
+      else {
         setAttackAnimation(true);
         setTimeout(() => {
           setEnemy((prevEnemy) => ({
