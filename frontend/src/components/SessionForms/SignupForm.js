@@ -12,6 +12,7 @@ function SignupForm() {
   const errors = useSelector((state) => state.errors.session);
   const dispatch = useDispatch();
   const [image, setImage] = useState(null);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     return () => {
@@ -42,7 +43,7 @@ function SignupForm() {
     return (e) => setState(e.currentTarget.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
       email,
@@ -51,7 +52,12 @@ function SignupForm() {
       image,
     };
 
-    dispatch(signup(user));
+    setLoading(true);
+    try {
+      await dispatch(signup(user));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -129,13 +135,17 @@ function SignupForm() {
             )}
           </div>
           <button
-            className="session-btn"
+            className={`session-btn ${isLoading ? "processing-signup" : ""}`}
             type="submit"
             disabled={
-              !email || !username || !password || password !== password2
+              !email ||
+              !username ||
+              !password ||
+              password !== password2 ||
+              isLoading
             }
           >
-            Sign Up
+            {isLoading ? "Processing..." : "Sign Up"}
           </button>
         </form>
       </div>

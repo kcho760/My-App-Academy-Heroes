@@ -1,5 +1,3 @@
-
-
 /* label {
   display: block;
   margin-bottom: 20px;
@@ -16,7 +14,7 @@ input {
   margin-top: 10px;
 } */
 
-.session-page{
+.session-page {
   /* margin-top: 20px; */
   display: flex;
   /* flex-direction: column; */
@@ -37,14 +35,16 @@ input {
   align-items: center;
 }
 
-.retake, .input-field {
+.retake,
+.input-field {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.session-btn, .capture-button {
+.session-btn,
+.capture-button {
   /* border: none; */
   background: none;
   display: relative;
@@ -53,17 +53,22 @@ input {
   margin-top: 30px;
   border-radius: 8px;
   font-weight: bold;
-  background: linear-gradient(to right, #ff7f50, #ff4f00);
+  background-image: linear-gradient(to right, #ff7f50, #ff4f00);
   font-size: 18px;
 }
 
-.session-btn:enabled:hover, .capture-button {
+.session-btn:enabled:hover,
+.capture-button {
   color: red;
   box-shadow: 0 2px 4px green;
   /* background: linear-gradient(to right, #ff7f50, #ff4f00); */
 }
 
-.session-header{
+.session-btn:disabled {
+  color: gray;
+}
+
+.session-header {
   font-size: 36px;
   margin-bottom: 10px;
 }
@@ -82,3 +87,19 @@ input {
   width: 50%;
   flex-direction: column;
 }
+
+.processing-signup {
+  padding: 2px 5px;
+  background-image: linear-gradient(
+    to right,
+    #f9d76e,
+    #ffbd38,
+    #ffa200,
+    #ffbd38,
+    #f9d76e
+  );
+  background-size: 200% 100%;
+  animation: shift 2s linear infinite;
+}
+
+

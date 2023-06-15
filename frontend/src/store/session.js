@@ -8,7 +8,7 @@ export const RECEIVE_USER_LOGOUT = "session/RECEIVE_USER_LOGOUT";
 // Dispatch receiveCurrentUser when a user logs in.
 const receiveCurrentUser = currentUser => {
   if (currentUser && !currentUser.imageUrl) {
-    currentUser.imageUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTQyGzuBvXCxmuLpt9qJYgWhIc_EnotcLWbQ&usqp=CAU"
+    currentUser.imageUrl = "https://myappacademyheroes.s3.amazonaws.com/default1.png"
   } 
     return {
     type: RECEIVE_CURRENT_USER,
@@ -43,11 +43,13 @@ const startSession = (userInfo, route) => async dispatch => {
     });
     const { user, token } = await res.json();
     localStorage.setItem('jwtToken', token);
-    return dispatch(receiveCurrentUser(user));
+    dispatch(receiveCurrentUser(user));
+    return res
   } catch(err) {
     const res = await err.json();
     if (res.statusCode === 400) {
-      return dispatch(receiveErrors(res.errors));
+      dispatch(receiveErrors(res.errors));
+      return res
     }
   }
 };

@@ -10,7 +10,8 @@
   overflow: hidden;
   align-items: center;
   margin: 5%;
-  padding: 0.3%;
+  padding: 2%;
+  border-radius: 3px;
   justify-content: center;
   box-sizing: border-box;
   position: relative;
@@ -39,6 +40,7 @@
 }
 
 .player-picture {
+  border-radius: 3px;
   z-index: 1;
   width: 100%;
   padding: 1%;
@@ -49,6 +51,7 @@
   /* margin-left: 20px; */
   display: flex;
   /* border: 5px ridge; */
+  background-color: rgba(219, 219, 219, 0.7);
 }
 
 .player-sprite {
