@@ -74,6 +74,8 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
   if (!req.body.image) {
     // Use a predefined image if req.body.image is not provided
     imageUrl = "../../assets/default.png";
+    return res.json(await loginUser(newUser));
+
   } else {
     const base64Image = req.body.image.replace(/^data:image\/jpeg;base64,/, "");
     fs.writeFile("/tmp/output.jpg", base64Image, "base64", async function (err) {
