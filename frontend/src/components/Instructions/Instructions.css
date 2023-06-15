@@ -14,11 +14,11 @@
   border-top-right-radius: 5px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 25px;
-  position: absolute;
-  left: 57.5%;
+  position: relative;
+  left: 57%;
   top: 46%;
-  height: 50px;
-  width: 200px;
+  height: 54%;
+  width: 11%;
   display: block;
   text-shadow:0 0 20px rgba(137, 43, 226, 0.76);
 }
@@ -47,17 +47,17 @@
   border-radius: 10px;
   /* background-color: rgb(159, 157, 45); */
   background: linear-gradient(to right, goldenrod, rgb(185, 146, 146), goldenrod);
-  width: 750px;
-  height: 750px;
-  position: flex;
-  display: flex;
+  width: 700px;
+  height: 800px;
+  position: relative;
+  display: relative;
   flex-direction: column;
   align-items: center;
   padding: 50px;
   box-sizing: border-box;
-  position: relative;
-  color: navy;
+  /* color: navy; */
   font-size: 20px;
+  overflow: hidden;
 }
 
 .generalHeader {
@@ -82,7 +82,9 @@
   border: solid black;
   border-radius: 8px;
   font-size: 20px;
-  font-family: Futura;  
+  font-family: Futura;
+  display: fixed;  
+  
   /* display: fixed; */
 }
 
@@ -102,6 +104,13 @@
   border-radius: 20px;
   color: blueviolet; 
   margin-top: 10%;
-  height: 90%;
+  height: 10%;
+  position: relative;
+  display: fixed;
+  flex-direction: column;
+  align-items: center; 
+
+overflow: auto;
+
   /* display: absolute; */
 }
