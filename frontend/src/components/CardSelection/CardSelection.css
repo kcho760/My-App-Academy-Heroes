@@ -33,7 +33,7 @@
 
 .card-option:hover {
   background-color: red;
-  color: navy
+  color: black
 }
 .card-option:active {
   background-color: darkgray;
@@ -48,11 +48,15 @@
   right: 50%;
   padding: 10px;
   pointer-events: none; /* Add this line */
-  background: linear-gradient(33deg,rgba(255, 255, 255, 0.467) 0%, rgba(73, 150, 73, 0.706) 50%, rgba(128, 0, 128, 0.569) 60%, rgba(255, 166, 0, 0.567) 90%);
+  /* background: linear-gradient(33deg,rgba(255, 255, 255, 0.467) 0%, rgba(73, 150, 73, 0.706) 50%, rgba(128, 0, 128, 0.569) 60%, rgba(255, 166, 0, 0.567) 90%); */
   border-radius: 15px;
 
 }
 
 .card-option:hover .card-detail {
   display: block;
+}
+
+.card-option:hover .card-body {
+  background-color: rgb(220, 220, 220);
 }

@@ -139,18 +139,18 @@
   }
 }
 
-.profile-div {
+/* .profile-div {
   background: linear-gradient(33deg,rgba(255, 255, 255, 0.467) 0%, rgba(73, 150, 73, 0.706) 50%, rgba(128, 0, 128, 0.569) 60%, rgba(255, 166, 0, 0.567) 90%);
 }
 
 .card-collection {
   background: linear-gradient(33deg,rgba(255, 255, 255, 0.467) 0%, rgba(73, 150, 73, 0.706) 20%, rgba(128, 0, 128, 0.569) 45%, rgba(255, 166, 0, 0.567) 90%);
-}
+} */
 
-.profile-container {
+/* .profile-container {
   transition: transform 2s;
-  animation: profileAnimation 5s linear infinite;
+  animation: profileAnimation 5s ease-in infinite;
   background-size: 100% 200%;
   background-image: linear-gradient(
       to bottom, rgb(143, 194, 239) 0%, rgb(124, 134, 226) 15%, rgba(47, 9, 185, 0.521) 30%, rgb(51, 0, 128) 45%, rgb(15, 76, 206) 60%, rgb(124, 180, 226) 75%, rgb(143, 228, 239) 90%);
-}
+} */
