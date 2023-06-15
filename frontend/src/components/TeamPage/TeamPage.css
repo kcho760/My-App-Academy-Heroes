@@ -1,27 +1,52 @@
 .displayTeamName {
   font-size: 25px;
-  font-family: Futura;;
-  border: outset ivory;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transform: skewX(-10deg);
+  font-family: Futura;
+  border: outset rgb(115, 115, 207);
   color: slateblue;
-  background-color: aliceblue;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  background-image: linear-gradient(
+    to bottom, rgb(143, 194, 239), rgb(124, 226, 226), purple
+  );
+  box-shadow: 0 0 20px rgb(143, 194, 239);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 25px;
   position: absolute;
-  left: 80%;
+  left: 70%;
   top: 46%;
   height: 50px;
+  width: 200px;
   display: block;
+  text-shadow:0 0 20px blueviolet;
+}
+
+.displayTeamName::before {
+  content: "";
+  display: block;
+  width: calc(100% - 18px);
+  height: calc(100% - 18px);
+  position: absolute;
+  border: outset aquamarine;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 20px;
 }
 
 .displayTeamName:hover {
   transform: scale(1.2);
-  transition: transform 0.1s;
+  transition: transform 0.2s;
+  text-shadow:0 0 10px blueviolet;
+  box-shadow: 0 0 50px rgb(143, 194, 239);
 }
 
 .team-modal-container {
   border-radius: 10px;
   background: linear-gradient(to right, black, lightcoral, white, lightcoral, black);
-  width: 750px;
+  width: 1250px;
   height: 750px;
   position: flex;
   display: flex;
@@ -41,14 +66,15 @@
   border-radius: 18px;
   font-size: 20px;
   font-family: Futura;
-  border-color: lightcoral;  
+  border-color: lightcoral;
+  width: 250px;  
   /* display: fixed; */
 }
 
 .team-tabs button.tab:hover {
   transform: scale(1.1);
   color: turquoise;
-  transition: transform 0.3s;
+  transition: transform 0.2s;
 
 }
 
@@ -62,22 +88,29 @@
   border-radius: 20px;
   color: white;
   font-size: 20px; 
-  margin-top: 10%;
+  margin-top: 15%;
   height: 300px;
   width: 700px;
+  position: relative;
 }
 
-/* .photo-tab {
-  position: absolute;
+.teamDescription {
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
-  background-color: black;
+  height: 60%;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.6s ease;
+  background-color: black;
 }
 
-.photo-tab:hover .overlay {
+.team-tab:hover .teamDescription {
+  opacity: 2;
+}
+
+.photo {
+  position: relative;
+  top: 100px;
   opacity: 1;
-} */
+}
