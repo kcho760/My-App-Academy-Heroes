@@ -25,6 +25,10 @@ button:enabled:hover {
   cursor: pointer;
 }
 
+button:enabled:hover {
+  cursor: pointer;
+}
+
 /* .app {
   position: relative;
 } */
