@@ -17,6 +17,10 @@
     position: relative;
   }
 
+  .player-attack {
+    font-size: 20px;
+  }
+
   .player-info{
     font-size: 25px;
     margin-bottom: 5px;

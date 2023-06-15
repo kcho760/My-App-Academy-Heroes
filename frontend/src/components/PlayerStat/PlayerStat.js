@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import "./PlayerStat.css";
 
-const PlayerStat = () => {
+const PlayerStat = ({playerAttack}) => {
   const player = useSelector((state) => state.session.user);
 
 
@@ -14,6 +14,7 @@ const PlayerStat = () => {
       <div className="player-stat-content right">
         <h2>{player.username}</h2>
         <p className="player-info">Gold: {player.gold}</p>
+        <p className="player-attack">Attack: {playerAttack}</p>
         <div className="health-bar-container player-info">
           <span className="health-text">HP: {player.health}</span>
           <div className="health-bar-wrapper">

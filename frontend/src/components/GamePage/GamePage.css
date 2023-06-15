@@ -21,6 +21,9 @@
   grid-template-rows: 34% 5% 57%;
   row-gap: 2%;
   box-sizing: border-box;
+  /* background-image: url(../../assets/images/gameleftbackground.png); */
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
   min-width: 455px;
 }
 
