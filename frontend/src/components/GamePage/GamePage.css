@@ -5,6 +5,8 @@
   display: flex;
   column-gap: 1%;
   height: calc(100vh - 100px);
+  max-height: calc(100vh - 100px);
+
   box-sizing: border-box;
   min-width: 950px;
 }
@@ -73,7 +75,9 @@
 .game-content.enemy-board {
   display: flex;
   justify-content: center;
-  max-height: 60%;
+  height: 100%;
+  overflow: hidden;
+
 }
 .answer-result {
   font-size: 20px;
