@@ -1,72 +1,100 @@
 [
   {
+    "name": "David The Forbidden One",
+    "rarity": "SR",
+    "abilityType": "Instant Kill",
+    "abilityValue": 1,
+    "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
+  },
+  {
     "name": "Blue Eyes White Carvey",
     "rarity": "SR",
-    "abilityType": "ability1",
-    "abilityValue": 10,
+    "abilityType": "Attack Up",
+    "abilityValue": 40,
     "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
   },
   {
     "name": "Carvey The Tormentor",
     "rarity": "SR",
-    "abilityType": "ability2",
-    "abilityValue": 20,
+    "abilityType": "Attack Multiplier",
+    "abilityValue": 6,
     "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
   },
   {
     "name": "Carvey The Sky Dragon",
     "rarity": "SR",
-    "abilityType": "ability2",
-    "abilityValue": 20,
+    "abilityType": "Attack Up",
+    "abilityValue": 50,
     "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
   },
   {
     "name": "The Wing Dragon of Carvey",
     "rarity": "SR",
-    "abilityType": "ability2",
-    "abilityValue": 20,
+    "abilityType": "Heal",
+    "abilityValue": 50,
     "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
   },
   {
     "name": "The Dark Carvey",
     "rarity": "R",
-    "abilityType": "ability2",
-    "abilityValue": 20,
-    "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
-  },
-  {
-    "name": "Cyber Carvey",
-    "rarity": "N",
-    "abilityType": "ability3",
-    "abilityValue": 30,
-    "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
-  },
-  {
-    "name": "Carvey The Forbidden One",
-    "rarity": "SR",
-    "abilityType": "ability3",
-    "abilityValue": 30,
-    "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
-  },
-  {
-    "name": "Summoned Carvey",
-    "rarity": "N",
-    "abilityType": "ability3",
+    "abilityType": "Attack Up",
     "abilityValue": 30,
     "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
   },
   {
     "name": "Black Luster Carvey",
     "rarity": "R",
-    "abilityType": "ability3",
+    "abilityType": "Attack Multiplier",
+    "abilityValue": 4,
+    "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
+  },
+  {
+    "name": "Mystic Guardian Carvey",
+    "rarity": "R",
+    "abilityType": "Heal",
     "abilityValue": 30,
+    "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
+  },
+  {
+    "name": "Carvey the Fierce Knight",
+    "rarity": "R",
+    "abilityType": "Attack Up",
+    "abilityValue": 25,
+    "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
+  },
+  {
+    "name": "Cyber Carvey",
+    "rarity": "N",
+    "abilityType": "Attack Multiplier",
+    "abilityValue": 2,
+    "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
+  },
+  {
+    "name": "Summoned Skull Carvey",
+    "rarity": "N",
+    "abilityType": "Attack Up",
+    "abilityValue": 15,
     "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
   },
   {
     "name": "Red Eye Black Carvey",
     "rarity": "N",
-    "abilityType": "ability3",
-    "abilityValue": 30,
+    "abilityType": "Attack Up",
+    "abilityValue": 15,
+    "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
+  },
+  {
+    "name": "Kuribo Carvey",
+    "rarity": "N",
+    "abilityType": "Heal",
+    "abilityValue": 20,
+    "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
+  },
+  {
+    "name": "Foot Solider Carvey",
+    "rarity": "N",
+    "abilityType": "Heal",
+    "abilityValue": 20,
     "imageUrl": "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg"
   }
 ]

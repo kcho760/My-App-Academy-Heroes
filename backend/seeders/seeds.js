@@ -5,6 +5,11 @@ const Card = require("../models/Card");
 const Enemy = require("../models/Enemy.js");
 const bcrypt = require("bcryptjs");
 const { faker } = require("@faker-js/faker");
+const path = require("path");
+const cardsDataPath = path.join(__dirname, "..", "data", "cards.json");
+// Read card data from cards.json
+const cardsData = fs.readFileSync(cardsDataPath, "utf8");
+const predefinedCards = JSON.parse(cardsData);
 
 const NUM_SEED_USERS = 10;
 
@@ -33,90 +38,7 @@ for (let i = 1; i < NUM_SEED_USERS; i++) {
   );
 }
 
-const cards = [
-  {
-    name: "Carvey The Forbidden One",
-    rarity: "SR",
-    abilityType: "ability3",
-    abilityValue: 30,
-    imageUrl:
-      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
-  },
-  {
-    name: "Blue Eyes White Carvey",
-    rarity: "SR",
-    abilityType: "ability1",
-    abilityValue: 10,
-    imageUrl:
-      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
-  },
-  {
-    name: "Carvey The Tormentor",
-    rarity: "SR",
-    abilityType: "ability2",
-    abilityValue: 20,
-    imageUrl:
-      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
-  },
-  {
-    name: "Carvey The Sky Dragon",
-    rarity: "SR",
-    abilityType: "ability2",
-    abilityValue: 20,
-    imageUrl:
-      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
-  },
-  {
-    name: "The Wing Dragon of Carvey",
-    rarity: "SR",
-    abilityType: "ability2",
-    abilityValue: 20,
-    imageUrl:
-      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
-  },
-  {
-    name: "The Dark Carvey",
-    rarity: "R",
-    abilityType: "ability2",
-    abilityValue: 20,
-    imageUrl:
-      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
-  },
-  {
-    name: "Black Luster Carvey",
-    rarity: "R",
-    abilityType: "ability3",
-    abilityValue: 30,
-    imageUrl:
-      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
-  },
-  {
-    name: "Cyber Carvey",
-    rarity: "N",
-    abilityType: "ability3",
-    abilityValue: 30,
-    imageUrl:
-      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
-  },
-
-  {
-    name: "Summoned Carvey",
-    rarity: "N",
-    abilityType: "ability3",
-    abilityValue: 30,
-    imageUrl:
-      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
-  },
-
-  {
-    name: "Red Eye Black Carvey",
-    rarity: "N",
-    abilityType: "ability3",
-    abilityValue: 30,
-    imageUrl:
-      "https://myappacademyheroes.s3.amazonaws.com/64889a7e1c99fc7930bd7a55.jpg",
-  },
-];
+const cards = predefinedCards;
 
 //seed enemies
 const enemies = [];
