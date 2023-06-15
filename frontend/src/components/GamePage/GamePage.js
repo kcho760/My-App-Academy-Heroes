@@ -249,7 +249,7 @@ const GamePage = () => {
               showPlayerExplosion={showPlayerExplosion}
             />
           </div>
-          <div>
+          <div className="Card-Choice-Container">
             <CardSelection
               cards={filteredCards}
               selectedCard={selectedCard}

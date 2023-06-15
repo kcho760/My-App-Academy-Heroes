@@ -76,7 +76,6 @@
   justify-content: center;
   height: 100%;
   overflow: hidden;
-
 }
 .answer-result {
   font-size: 20px;
@@ -120,4 +119,9 @@
   color: white;
   font-size: 18px;
   text-shadow: none;
+}
+
+.Card-Choice-Container {
+display: flex;
+padding: 5%;
 }
