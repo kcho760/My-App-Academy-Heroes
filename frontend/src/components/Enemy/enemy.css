@@ -81,17 +81,24 @@
 }
 
 .enemy-health-bar-container-enemy-info {
-  width: 60%;
+  width: 90%;
   height: 20px;
   position: relative;
   margin-top: 30px;
-  margin-left: 90px;
 }
 
 .enemy {
   position: relative;
   max-height: 140px;
   max-width: 140px;
+}
+
+#boss {
+  max-height: 250px;
+  max-width: 250px;
+  position: relative;
+  top: -75px;  
+  left: -80px;
 }
 
 .explosion {

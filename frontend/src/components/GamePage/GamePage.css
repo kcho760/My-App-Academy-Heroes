@@ -25,6 +25,7 @@
   /* background-size: cover; */
   /* background-repeat: no-repeat; */
   min-width: 455px;
+  height: 100%;
 }
 
 .game-page-content.right {
@@ -62,7 +63,7 @@
 
 .game-content.player-board {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 49% 50%;
   column-gap: 1%;
 }
 
@@ -94,7 +95,6 @@
 .answered-stats {
   display: flex;
   font-size: 20px;
-  margin-bottom: 5px;
 }
 
 .answered-stats > div:not(:last-child) {
@@ -127,4 +127,5 @@
 .Card-Choice-Container {
 display: flex;
 padding: 5%;
+box-sizing: border-box;
 }

@@ -1,3 +1,4 @@
+const fs = require("fs");
 const mongoose = require("mongoose");
 const { mongoURI: db } = require("../config/keys.js");
 const User = require("../models/User");
@@ -22,6 +23,7 @@ users.push(
     email: "demo@gmail.com",
     hashedPassword: bcrypt.hashSync("password", 10),
     gold: 100,
+    imageUrl: "https://myappacademyheroes.s3.amazonaws.com/default1.png"
   })
 );
 

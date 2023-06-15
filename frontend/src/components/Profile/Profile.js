@@ -4,7 +4,9 @@ import { getCurrentUser } from "../../store/session";
 import jwtFetch from "../../store/jwt";
 import Card from "../Card/Card";
 import "./Profile.css";
-import RareGacha from "../../assets/videoes/gacha-rare.mp4";
+import SuperRareGacha from "../../assets/videoes/gacha-SR.mp4";
+import RareGacha from "../../assets/videoes/gacha-R.mp4";
+import NormalGacha from "../../assets/videoes/gacha-N.mp4";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root"); // replace '#root' with the id of your app's root element
@@ -99,13 +101,18 @@ const Profile = () => {
     <div className="profile-container">
       <div className="profile-div">
         Profile
-        <div className="profile-pic"> <img className = 'defaultPic' src = {currentUser.imageUrl}/> </div>
+        <div className="profile-pic">
+          {" "}
+          <img className="defaultPic" src={currentUser.imageUrl} />{" "}
+        </div>
         <div className="profile-details">
           <p>username: {currentUser.username} </p>
           <p>email: {currentUser.email} </p>
           <p>gold: {gold} </p>
           <p>cards: {playerCards.length}</p>
-          <button onClick={pullCard} className="gachButton">Pull a Card (Cost: 10 Gold)</button>
+          <button onClick={pullCard} className="gachButton">
+            Pull a Card (Cost: 10 Gold)
+          </button>
         </div>
         <div className="gach">
           Your deck
@@ -178,13 +185,17 @@ const Profile = () => {
       <Modal
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
-        style={
-          {
-            /* Custom modal styles here */
-          }
-        }
+        style={{
+          content: {
+            maxWidth: "50%", // limit the maximum width of the video
+            maxHeight: "50%", // limit the maximum height of the video
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          },
+        }}
       >
-        <video controls autoPlay style={{ width: "100%", height: "auto" }}>
+        <video autoPlay style={{ width: "100%", height: "auto" }}>
           <source src={RareGacha} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
