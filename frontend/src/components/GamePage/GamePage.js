@@ -185,7 +185,8 @@ const GamePage = () => {
           setTimeout(() => {
             setShouldAnimateOut(true);
             setTimeout(() => {
-              setEnemy(kinTheConqueror);
+              const randomEnemy = Math.random() < 0.5 ? kinTheConqueror : Kyletronic;
+              setEnemy(randomEnemy);
               setEnemy((prevEnemy) => ({
                 ...prevEnemy,
                 health: prevEnemy.defaultHealth,

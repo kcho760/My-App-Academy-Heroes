@@ -13,7 +13,7 @@ const GamePlayer = ({ user, attackAnimation, showPlayerExplosion }) => {
         <img className="player-picture" src={user.imageUrl} alt="User" />
       </div>
       <div className="player-sprite"> 
-      {attackAnimation ? <img className="p-sprite" src={attack} alt="Attack" /> : <img className="p-sprite" src={idle} alt="Sprite" />}:
+      {attackAnimation ? <img className="p-sprite" src={attack} alt="Attack" /> : <img className="p-sprite" src={idle} alt="Sprite" />}
       {showPlayerExplosion && <img className='playerExplosion' id='playerExplosion' src={explosion} alt="Enemy" />}
 
       </div>

@@ -94,9 +94,11 @@
 }
 
 #boss {
-  max-height: 200px;
-  max-width: 200px;
-  position: relative;  
+  max-height: 250px;
+  max-width: 250px;
+  position: relative;
+  top: -75px;  
+  left: -80px;
 }
 
 .explosion {
