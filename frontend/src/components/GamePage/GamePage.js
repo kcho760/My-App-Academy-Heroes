@@ -12,6 +12,8 @@ import enemy2 from "../Enemy/enemy2.js";
 import GamePlayer from "../GameCharacter/gamePlayer";
 import { updateUser } from "../../store/session";
 import GameOver from "./GameOver";
+import Card from "../Card/Card";
+import CardSelection from "../CardSelection/CardSelection";
 
 const GamePage = () => {
   const dispatch = useDispatch();
@@ -31,6 +33,9 @@ const GamePage = () => {
   const [attackAnimation, setAttackAnimation] = useState(false);
   const [isDefeated, setIsDefeated] = useState(false);
   const [shouldAnimateOut, setShouldAnimateOut] = useState(false);
+  const playerCards = useSelector((state) => state.session.user.ownedCards);
+  const [selectedCard, setSelectedCard] = useState(null);
+  const filteredCards = playerCards.filter((card) => card.selected).slice(0, 4);
 
   useEffect(() => {
     dispatch(fetchQuestions());
@@ -142,7 +147,7 @@ const GamePage = () => {
       user.gold += enemy.gold;
       const newRound = round + 1;
       setRound(newRound);
-  
+
       if (newRound % 3 === 0) {
         setAttackAnimation(true);
         setTimeout(() => {
@@ -180,7 +185,6 @@ const GamePage = () => {
           }, 700);
         }, 1000);
       }
-      
     } else {
       setEnemy((prevEnemy) => ({
         ...prevEnemy,
@@ -238,11 +242,25 @@ const GamePage = () => {
           />
         </div>
         <div className="game-content player-board">
-          <GamePlayer
-            user={user}
-            attackAnimation={attackAnimation}
-            showPlayerExplosion={showPlayerExplosion}
-          />
+          <div>
+            <GamePlayer
+              user={user}
+              attackAnimation={attackAnimation}
+              showPlayerExplosion={showPlayerExplosion}
+            />
+          </div>
+          <div>
+            <CardSelection
+              cards={filteredCards}
+              selectedCard={selectedCard}
+              setSelectedCard={setSelectedCard}
+            />
+            {selectedCard !== null && (
+              <div className="card-detail">
+                <Card card={filteredCards[selectedCard]} />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
