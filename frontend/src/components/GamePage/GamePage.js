@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchQuestions } from "../../store/questions";
 import "./GamePage.css";
 import PlayerStat from "../PlayerStat/PlayerStat";
 import Question from "../Question/Question";
 import LoadingPage from "../Utils/Loading/LoadingPage";
-import { Redirect } from "react-router-dom/";
+import { Redirect } from "react-router-dom";
 import Enemy from "../Enemy/enemy.js";
 import enemy1 from "../Enemy/enemy1.js";
 import enemy2 from "../Enemy/enemy2.js";
@@ -24,10 +24,14 @@ const GamePage = () => {
   const [gameOver, setGameover] = useState(false);
   const [message, setMessage] = useState(<></>);
   const [enemy, setEnemy] = useState(enemy1);
-  const [round, setRound] = useState(1); // for use when kill enemy
-  const [playerAttack, setPlayerAttack] = useState(50); // for use when kill enemy
+  const [round, setRound] = useState(1);
+  const [playerAttack, setPlayerAttack] = useState(50);
   const [showExplosion, setShowExplosion] = useState(false);
-  const [attackAnimation, setAttackAnimation] = useState(false); // for use when kill enemy
+  const [showPlayerExplosion, setShowPlayerExplosion] = useState(false);
+  const [attackAnimation, setAttackAnimation] = useState(false);
+  const [isDefeated, setIsDefeated] = useState(false);
+  const [shouldAnimateOut, setShouldAnimateOut] = useState(false);
+
   useEffect(() => {
     dispatch(fetchQuestions());
   }, []);
@@ -85,10 +89,14 @@ const GamePage = () => {
           <div>Nice. That was correct !</div>
         </div>
       );
-      // deduct enemy hp and check if enemy hp will be 0 or lower
-      // count round
     } else {
-      // stuff that happends when user answers wrong
+      // Wrong answer logic
+      setShowPlayerExplosion(true);
+
+      setTimeout(() => {
+        setShowPlayerExplosion(false);
+      }, 1000);
+
       const healthText = document.querySelector(".health-text");
       healthText.classList.add("flash-red");
       setTimeout(() => {
@@ -107,7 +115,6 @@ const GamePage = () => {
       if (user.health - enemy.attack <= 0) {
         setGameover(true);
         user.health = 100;
-        // can reset player hp to 100 instead
       } else {
         user.health -= enemy.attack;
       }
@@ -135,18 +142,45 @@ const GamePage = () => {
       user.gold += enemy.gold;
       const newRound = round + 1;
       setRound(newRound);
+  
       if (newRound % 3 === 0) {
-        setEnemy(enemy2);
-        // enemy.health = enemy2.defaultHealth;
+        setAttackAnimation(true);
+        setTimeout(() => {
+          setEnemy((prevEnemy) => ({
+            ...prevEnemy,
+            health: 0, // Show enemy health as 0 during the delay
+          }));
+          setTimeout(() => {
+            setShouldAnimateOut(true);
+            setTimeout(() => {
+              setEnemy(enemy2);
+              setEnemy((prevEnemy) => ({
+                ...prevEnemy,
+                health: prevEnemy.defaultHealth,
+              }));
+              setShouldAnimateOut(false);
+              setAttackAnimation(false);
+            }, 500);
+          }, 700);
+        }, 1000);
       } else {
-        setEnemy(enemy1);
-        // enemy.health = enemy1.defaultHealth;
+        setAttackAnimation(true);
+        setTimeout(() => {
+          setEnemy((prevEnemy) => ({
+            ...prevEnemy,
+            health: 0, // Show enemy health as 0 during the delay
+          }));
+          setTimeout(() => {
+            setEnemy(enemy1);
+            setEnemy((prevEnemy) => ({
+              ...prevEnemy,
+              health: prevEnemy.defaultHealth,
+            }));
+            setAttackAnimation(false);
+          }, 700);
+        }, 1000);
       }
-
-      setEnemy((prevEnemy) => ({
-        ...prevEnemy,
-        health: prevEnemy.defaultHealth,
-      }));
+      
     } else {
       setEnemy((prevEnemy) => ({
         ...prevEnemy,
@@ -167,7 +201,7 @@ const GamePage = () => {
         </div>
         <div className="answered-stats">
           <div className="total-answered">
-            Total questions anwered: {totalAnswered}
+            Total questions answered: {totalAnswered}
           </div>
           <div className="total-correct-answered">
             Total correct answered: {totalCorrects}
@@ -192,11 +226,23 @@ const GamePage = () => {
         </div>
       </div>
       <div className="game-page-content right">
-        <div className="game-content enemy-board">
-          <Enemy enemy={enemy} showExplosion={showExplosion} />
+        <div
+          className={`game-content enemy-board ${
+            shouldAnimateOut ? "animate-out" : ""
+          }`}
+        >
+          <Enemy
+            enemy={enemy}
+            showExplosion={showExplosion}
+            isDefeated={isDefeated}
+          />
         </div>
         <div className="game-content player-board">
-          <GamePlayer user={user} attackAnimation={attackAnimation} />
+          <GamePlayer
+            user={user}
+            attackAnimation={attackAnimation}
+            showPlayerExplosion={showPlayerExplosion}
+          />
         </div>
       </div>
     </div>

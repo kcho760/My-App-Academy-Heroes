@@ -4,10 +4,32 @@
   flex-direction: column;
 }
 
+/* .game-content.enemy-board.animate-out {
+  transform: translateX(200%);
+  transition: transform 1s ease;
+}
+
+
+@keyframes animateOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+} */
+
+
 .enemy-images {
   display: flex;
   align-items: center;
 }
+
+.enemy-container.defeated {
+  transform: translateX(200%);
+  transition: transform 2s;
+}
+
 
 .enemy-image {
   background-color: transparent;

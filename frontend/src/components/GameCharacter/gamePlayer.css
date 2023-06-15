@@ -28,6 +28,14 @@
     transform: scaleX(-1) rotate(20deg);
 }
 
+.playerExplosion {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: -10px;
+  left: -10px;
+}
+
 @keyframes playerHover {
     0% {
       transform: translateY(0);
