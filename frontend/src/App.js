@@ -10,7 +10,7 @@ import GamePage from "./components/GamePage/GamePage";
 import Profile from "./components/Profile/Profile";
 
 import { getCurrentUser } from "./store/session";
-import Shop from "./components/Shop/Shop";
+import GameOver from "./components/GamePage/GameOver";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -27,11 +27,11 @@ function App() {
           <AuthRoute exact path="/" component={MainPage} />
           <AuthRoute exact path="/login" component={LoginForm} />
           <AuthRoute exact path="/signup" component={SignupForm} />
-          <ProtectedRoute exact path="/shop" component={Shop} /> {/* Add this line */}
           <ProtectedRoute exact path="/game" component={GamePage} />
-          <ProtectedRoute exact Path="/profile" component={Profile} />
+          <ProtectedRoute exact path="/profile" component={Profile} />
+          {/* for testing purpose, delete after!!! */}
+          <ProtectedRoute exact path="/gameover" component={GameOver} />
         </Switch>
-
       </div>
     )
   );

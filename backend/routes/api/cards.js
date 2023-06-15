@@ -108,15 +108,11 @@ router.get("/", async (req, res) => {
   }
 });
 // Delete route - Delete a card by ID
-router.delete("/:id", async (req, res) => {
+router.delete("/", async (req, res) => {
   try {
-    const cardId = req.params.id;
-    const card = await Card.findByIdAndDelete(cardId);
-    if (!card) {
-      return res.status(404).json({ error: "Card not found" });
-    }
-
-    res.json({ message: "Card deleted" });
+    const { userId, cardsToDelete } = req.body;
+    const result = await Card.deleteMany({ _id: { $in: cardsToDelete } });
+    res.json({ message: "Cards deleted" });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Server Error" });
