@@ -193,6 +193,25 @@ const GamePage = () => {
     }
   };
 
+  
+  const useCard = (card) => {
+    switch (card.abilityType) {
+      case "Attack Up":
+        setPlayerAttack((prev) => prev + card.abilityValue);
+        break;
+      case "Attack Multiplier":
+        setPlayerAttack((prev) => prev * card.abilityValue);
+        break;
+      case "Heal":
+        user.health += card.abilityValue;
+        break;
+      case "Instant Kill":
+
+      default:
+        break;
+    }
+  };
+
   const restart = () => {
     // restart logic, reseting states, etc...
   };
