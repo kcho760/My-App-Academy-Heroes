@@ -28,7 +28,7 @@ const GamePage = () => {
   const [message, setMessage] = useState(<></>);
   const [enemy, setEnemy] = useState(enemy1);
   const [round, setRound] = useState(1);
-  const [playerAttack, setPlayerAttack] = useState(50);
+  const [playerAttack, setPlayerAttack] = useState(100);
   const [showExplosion, setShowExplosion] = useState(false);
   const [showPlayerExplosion, setShowPlayerExplosion] = useState(false);
   const [attackAnimation, setAttackAnimation] = useState(false);

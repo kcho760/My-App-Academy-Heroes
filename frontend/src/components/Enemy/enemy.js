@@ -5,7 +5,7 @@ import explosion from "./assets/explosion.gif"
 const Enemy = ({ enemy, showExplosion }) => {
   const [isDefeated, setIsDefeated] = useState(false);
   const [shouldAnimateOut, setShouldAnimateOut] = useState(false);
-  const [shouldHideImages, setShouldHideImages] = useState(false);
+  const [hideImages, sethideImages] = useState(false);
 
   useEffect(() => {
     if (enemy.health <= 0) {
@@ -21,11 +21,8 @@ const Enemy = ({ enemy, showExplosion }) => {
   }, [enemy.health]);
 
   useEffect(() => {
-    if (enemy.name === "kinTheConqueror") {
-      setShouldHideImages(true);
-    } else {
-      setShouldHideImages(false);
-    }
+    sethideImages(enemy.name === 'Kin the Conqueror');
+    console.log(hideImages)
   }, [enemy.name]);
 
   return (
@@ -33,19 +30,19 @@ const Enemy = ({ enemy, showExplosion }) => {
       <div className='enemy-images'>
           <>
             <div className='enemy'>
-              {shouldHideImages && <img className='enemy-image' id='enemy-image-1' src={enemy.imageUrl} alt="Enemy" />}
+              {!hideImages && <img className='enemy-image' id='enemy-image-1' src={enemy.imageUrl} alt="Enemy" />}
               {showExplosion && <img className='explosion' id='explosion' src={explosion} alt="Enemy" />}
             </div>
             <div className='enemy'>
-              {shouldHideImages && <img className='enemy-image' id='enemy-image-1' src={enemy.imageUrl} alt="Enemy" />}
+              {!hideImages && <img className='enemy-image' id='enemy-image-1' src={enemy.imageUrl} alt="Enemy" />}
               {showExplosion && <img className='explosion' id='explosion' src={explosion} alt="Enemy" />}
             </div>
             <div className='enemy'>
-              {shouldHideImages && <img className='enemy-image' id='enemy-image-1' src={enemy.imageUrl} alt="Enemy" />}
+              {!hideImages && <img className='enemy-image' id='enemy-image-1' src={enemy.imageUrl} alt="Enemy" />}
               {showExplosion && <img className='explosion' id='explosion' src={explosion} alt="Enemy" />}
             </div>
             <div className='enemy'>
-              {!shouldHideImages && <img className='enemy-image' id='boss' src={enemy.imageUrl} alt="Enemy" />}
+              {hideImages && <img className='enemy-image' id='boss' src={enemy.imageUrl} alt="Enemy" />}
               {showExplosion && <img className='explosion' id='explosion' src={explosion} alt="Enemy" />}
             </div>
           </>
@@ -68,7 +65,7 @@ const Enemy = ({ enemy, showExplosion }) => {
         </div>
       </div>
     </div>
-  );
+  );  
 };
 
 export default Enemy;
