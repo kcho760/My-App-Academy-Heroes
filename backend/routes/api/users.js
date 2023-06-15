@@ -85,7 +85,7 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
       } else {
         let form = new FormData();
         form.append("image", fs.createReadStream("/tmp/output.jpg"));
-        form.append("type", "anime");
+        form.append("type", "3d_game");
 
         const response = await fetch(
           "https://www.ailabapi.com/api/portrait/effects/portrait-animation",
