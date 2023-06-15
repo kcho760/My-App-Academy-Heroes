@@ -5,10 +5,10 @@
 }
 
 #root {
-    font-family: Futura;
+  font-family: Futura;
 }
 
-.separator{
+.separator {
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -18,6 +18,11 @@
   margin-top: 10px;
   margin-bottom: 10px;
   position: relative;
+}
+
+a:hover,
+button:enabled:hover {
+  cursor: pointer;
 }
 
 /* .app {

@@ -98,10 +98,25 @@
 
 
 .answer-result.correct {
+  display: flex;
+  flex-direction: column;
   background-color: rgba(0, 128, 0, 0.7);
 }
 
 .answer-result.incorrect {
+  display: flex;
+  flex-direction: column;
   background-color: rgba(255, 0, 0, 0.7);
 }
 
+.result {
+  color: black;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 1);
+}
+
+
+.selected-answer{
+  color: white;
+  font-size: 18px;
+  text-shadow: none;
+}
