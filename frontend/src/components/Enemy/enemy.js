@@ -21,7 +21,7 @@ const Enemy = ({ enemy, showExplosion }) => {
   }, [enemy.health]);
 
   useEffect(() => {
-    sethideImages(enemy.name === 'Kin the Conqueror');
+    sethideImages(enemy.name === 'Kin the Conqueror' || enemy.name === 'Kyletronic');
     console.log(hideImages)
   }, [enemy.name]);
 
