@@ -1,38 +1,47 @@
 .displayInstructions {
   font-size: 25px;
-  font-family: Futura;;
-  border: outset ivory;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transform: skewX(-10deg);
+  font-family: Futura;
+  border: outset rgb(115, 115, 207);
   color: slateblue;
-  background-color: aliceblue;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  background-image: linear-gradient(
+    to bottom, rgb(143, 194, 239), rgb(124, 226, 226), purple
+  );
+  box-shadow: 0 0 20px rgb(143, 194, 239);
+  border-top-left-radius: 25px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 25px;
   position: absolute;
-  left: 45%;
+  left: 57.5%;
   top: 46%;
   height: 50px;
+  width: 200px;
   display: block;
+  text-shadow:0 0 20px blueviolet;
+}
+
+.displayInstructions::before {
+  content: "";
+  display: block;
+  width: calc(100% - 18px);
+  height: calc(100% - 18px);
+  position: absolute;
+  border: outset aquamarine;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 20px;
 }
 
 .displayInstructions:hover {
   transform: scale(1.2);
-  transition: transform 0.1s;
+  transition: transform 0.2s;
+  text-shadow:0 0 10px blueviolet;
+  box-shadow: 0 0 50px rgb(143, 194, 239);
 }
-
-/* .modal-header {
-  color: azure;
-  font-size: 40px;
-} */
-
-/* .modal-instruction {
-  border: inset slategrey;
-  background-color: aliceblue;
-  width: 550px;
-  height: 550px;
-  position: flex;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
 
 .modal-container {
   border-radius: 10px;
@@ -93,4 +102,6 @@
   border-radius: 20px;
   color: blueviolet; 
   margin-top: 10%;
+  height: 90%;
+  /* display: absolute; */
 }

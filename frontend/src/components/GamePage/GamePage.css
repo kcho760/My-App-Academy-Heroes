@@ -5,6 +5,8 @@
   display: flex;
   column-gap: 1%;
   height: calc(100vh - 100px);
+  max-height: calc(100vh - 100px);
+
   box-sizing: border-box;
   min-width: 950px;
 }
@@ -19,6 +21,9 @@
   grid-template-rows: 34% 5% 57%;
   row-gap: 2%;
   box-sizing: border-box;
+  /* background-image: url(../../assets/images/gameleftbackground.png); */
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
   min-width: 455px;
 }
 
@@ -53,12 +58,11 @@
   100% {
     background-image: url(../../assets/images/background1.png);
   }
-  
 }
 
 .game-content.player-board {
   display: grid;
-  grid-template-columns: 24% 75%;
+  grid-template-columns: 50% 50%;
   column-gap: 1%;
 }
 
@@ -73,7 +77,8 @@
 .game-content.enemy-board {
   display: flex;
   justify-content: center;
-  max-height: 60%;
+  height: 100%;
+  overflow: hidden;
 }
 .answer-result {
   font-size: 20px;
@@ -96,7 +101,6 @@
   margin-right: 10%; /* Adjust the margin value as needed */
 }
 
-
 .answer-result.correct {
   display: flex;
   flex-direction: column;
@@ -114,9 +118,13 @@
   text-shadow: 0 0 5px rgba(255, 255, 255, 1);
 }
 
-
-.selected-answer{
+.selected-answer {
   color: white;
   font-size: 18px;
   text-shadow: none;
+}
+
+.Card-Choice-Container {
+display: flex;
+padding: 5%;
 }
