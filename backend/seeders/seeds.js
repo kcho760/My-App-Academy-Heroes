@@ -1,10 +1,10 @@
+const fs = require("fs");
 const mongoose = require("mongoose");
 const { mongoURI: db } = require("../config/keys.js");
 const User = require("../models/User");
 const Card = require("../models/Card");
 const Enemy = require("../models/Enemy.js");
 const bcrypt = require("bcryptjs");
-const fs = require("fs");
 const { faker } = require("@faker-js/faker");
 const path = require("path");
 const cardsDataPath = path.join(__dirname, "..", "data", "cards.json");
