@@ -27,6 +27,7 @@ const GamePage = () => {
   const [round, setRound] = useState(1); // for use when kill enemy
   const [playerAttack, setPlayerAttack] = useState(50); // for use when kill enemy
   const [showExplosion, setShowExplosion] = useState(false);
+  const [showPlayerExplosion, setShowPlayerExplosion] = useState(false);
   const [attackAnimation, setAttackAnimation] = useState(false); // for use when kill enemy
   useEffect(() => {
     dispatch(fetchQuestions());
@@ -71,6 +72,14 @@ const GamePage = () => {
       // count round
     } else {
       // stuff that happends when user answers wrong
+
+      setShowPlayerExplosion(true);
+
+      setTimeout(() => {
+        setShowPlayerExplosion(false);
+
+      }, 1000);
+
       const healthText = document.querySelector(".health-text")
       healthText.classList.add("flash-red");
       setTimeout(() => {
@@ -175,7 +184,7 @@ const GamePage = () => {
           <Enemy enemy={enemy} showExplosion={showExplosion} />
         </div>
         <div className="game-content player-board">
-          <GamePlayer user={user} attackAnimation={attackAnimation}/>
+          <GamePlayer user={user} attackAnimation={attackAnimation} showPlayerExplosion={showPlayerExplosion}/>
         </div>
       </div>
     </div>
