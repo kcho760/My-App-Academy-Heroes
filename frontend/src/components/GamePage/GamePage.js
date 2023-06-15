@@ -27,7 +27,7 @@ const GamePage = () => {
   const [message, setMessage] = useState(<></>);
   const [enemy, setEnemy] = useState(enemy1);
   const [round, setRound] = useState(1);
-  const [playerAttack, setPlayerAttack] = useState(50);
+  const [playerAttack, setPlayerAttack] = useState(10);
   const [showExplosion, setShowExplosion] = useState(false);
   const [showPlayerExplosion, setShowPlayerExplosion] = useState(false);
   const [attackAnimation, setAttackAnimation] = useState(false);
@@ -201,7 +201,7 @@ const GamePage = () => {
     <div className="game-page-container">
       <div className="game-page-content left">
         <div className="game-content game-user-info">
-          <PlayerStat />
+          <PlayerStat playerAttack={playerAttack} />
         </div>
         <div className="answered-stats">
           <div className="total-answered">
