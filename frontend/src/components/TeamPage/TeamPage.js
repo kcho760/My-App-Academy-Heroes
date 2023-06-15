@@ -14,22 +14,22 @@ function TeamPage() {
     <div className="team-modal-container">
       <div className="team-tabs">
         
-        <button className={`tab ${activeTab === "KevinTab" && "active"}`}
+        <button className={`tab ${activeTab === "KevinTab" && "activeTab"}`}
           onClick={() => handleTabClick("KevinTab")}>
             GroupLead
         </button>
 
-        <button className={`tab ${activeTab === "JiaminTab" && "active"}`}
+        <button className={`tab ${activeTab === "JiaminTab" && "activeTab"}`}
           onClick={() => handleTabClick("JiaminTab")}>
             FlexLead
         </button>
 
-        <button className={`tab ${activeTab === "HongTab" && "active"}`}
+        <button className={`tab ${activeTab === "HongTab" && "activeTab"}`}
           onClick={() => handleTabClick("HongTab")}>
             BackendLead/CheerLead
         </button>
 
-        <button className={`tab ${activeTab === "HenryTab" && "active"}`}
+        <button className={`tab ${activeTab === "HenryTab" && "activeTab"}`}
           onClick={() => handleTabClick("HenryTab")}>
             FrontendLead/ChairLead
         </button>

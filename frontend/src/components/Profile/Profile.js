@@ -118,6 +118,7 @@ const Profile = () => {
                   onClick={() =>
                     handleToggleCardSelection(card._id, card.selected)
                   }
+                  className="deselectButton"
                 >
                   Deselect
                 </button>
@@ -149,13 +150,14 @@ const Profile = () => {
                   ).length
                 : 0;
               return (
-                <li key={index}>
+                <li key={index} className="cardContainer">
                   <Card card={card} />
                   <p>Amount owned: {amountOwned}</p>
                   {isOwned &&
                     playerCards.filter((card) => card.selected === true)
                       .length < 4 && (
                       <button
+                        className="selectButton"
                         onClick={() =>
                           handleToggleCardSelection(
                             firstCard._id,

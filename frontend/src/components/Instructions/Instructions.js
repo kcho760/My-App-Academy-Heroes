@@ -37,8 +37,8 @@ function Instructions() {
             <h1 className= "generalHeader">**"Profile" and "Game" tabs only visible when logged in**</h1>
               <ul className="tabDescription">
                 <li className="li-space">Collect cohortmates for different effects that will help you progress in the game.</li>
-                Not all cohortmates are created equal though. Higher rarity have stronger effects but are less likely to be otained. To obtain them; pray to the RNG 
-                gods when using "Pull a Card" on your "profile" tab which would give a new card for 100 gold.
+                Not all cohortmates are created equal though. Higher rarity have stronger effects but are less likely to be obtained. To obtain them; pray to the RNG 
+                gods when using "Pull a Card" on your "profile" tab which would give a new card for 10 gold.
               </ul>
           </div>
         )}

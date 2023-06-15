@@ -6,6 +6,7 @@ import MernLogo from '../../assets/images/MernLogo.png';
 import GamePage from '../GamePage/GamePage';
 import InstructionModal from '../Instructions';
 import TeamPageModal from '../TeamPage';
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 function NavBar () {
   const loggedIn = useSelector(state => !!state.session.user);
@@ -17,12 +18,17 @@ function NavBar () {
       return <Redirect to="/" />
   }
 
+  const {pathname} = useLocation() 
+
+  // console.log(pathname)
+
   const getLinks = () => {
+    
     if (loggedIn) {
       return (
         <div className="links-nav">
-          <Link to={'/profile'} className="profile-link">Profile</Link>
-          <Link to={'/game'} className="game-link">Game</Link>
+          <Link to={'/profile'} className={`profile-link ${pathname==="/profile" ? "active-link" : ""}`}>Profile</Link>
+          <Link to={'/game'} className={`game-link ${pathname==="/game" ? "active-link" : ""}`}>Game</Link>
           {/* <Link to={'/tweets/new'}>Write a Tweet</Link> */}
           <button onClick={logoutUser} className="logout-button">Logout</button>
         </div>
