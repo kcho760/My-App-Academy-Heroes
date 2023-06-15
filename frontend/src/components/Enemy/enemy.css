@@ -1,7 +1,9 @@
 .enemy-container {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
+  height: 100%;
+  padding-top: 40px;
 }
 
 /* .game-content.enemy-board.animate-out {
