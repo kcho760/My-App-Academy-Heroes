@@ -28,7 +28,7 @@ const GamePage = () => {
   const [message, setMessage] = useState(<></>);
   const [enemy, setEnemy] = useState(enemy1);
   const [round, setRound] = useState(1);
-  const [playerAttack, setPlayerAttack] = useState(100);
+  const [playerAttack, setPlayerAttack] = useState(20);
   const [showExplosion, setShowExplosion] = useState(false);
   const [showPlayerExplosion, setShowPlayerExplosion] = useState(false);
   const [attackAnimation, setAttackAnimation] = useState(false);
@@ -149,7 +149,7 @@ const GamePage = () => {
       const newRound = round + 1;
       setRound(newRound);
 
-      if (newRound + 5 % 5 === 3 || newRound + 5 % 5 === 4) {
+      if ((newRound + 5) % 5 === 3 || (newRound + 5) % 5 === 4) {
         setAttackAnimation(true);
         setTimeout(() => {
           setEnemy((prevEnemy) => ({
@@ -169,7 +169,7 @@ const GamePage = () => {
             }, 500);
           }, 700);
         }, 1000);
-      }else if (newRound % 5 === 0) {
+      } else if (newRound % 5 === 0) {
         setAttackAnimation(true);
         setTimeout(() => {
           setEnemy((prevEnemy) => ({
@@ -179,7 +179,8 @@ const GamePage = () => {
           setTimeout(() => {
             setShouldAnimateOut(true);
             setTimeout(() => {
-              setEnemy(kinTheConqueror);
+              const randomEnemy = Math.random() < 0.5 ? kinTheConqueror : Kyletronic;
+              setEnemy(randomEnemy);
               setEnemy((prevEnemy) => ({
                 ...prevEnemy,
                 health: prevEnemy.defaultHealth,
@@ -189,9 +190,7 @@ const GamePage = () => {
             }, 500);
           }, 700);
         }, 1000);
-      }
-      
-      else {
+      }else {
         setAttackAnimation(true);
         setTimeout(() => {
           setEnemy((prevEnemy) => ({
