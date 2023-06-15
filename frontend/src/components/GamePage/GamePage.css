@@ -59,7 +59,7 @@
 
 .game-content.player-board {
   display: grid;
-  grid-template-columns: 24% 75%;
+  grid-template-columns: 50% 50%;
   column-gap: 1%;
 }
 

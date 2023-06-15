@@ -1,31 +1,66 @@
 .player-character {
-    display: flex;
-  }
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
 
 .player-image {
   display: flex;
   width: 100%;
+  /* background: transparent; */
+  overflow: hidden;
   align-items: center;
+  margin: 5%;
+  padding: 0.3%;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
 }
-  
+
+.player-image::before {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  content: "";
+  background-size: 100% 100%;
+  /* z-index: -1; */
+
+  background: linear-gradient(to right, rgb(104, 145, 123), brown, rgba(54, 15, 181, 0.878));
+  animation: borderAnimation 2s linear infinite;
+}
+
+@keyframes borderAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .player-picture {
-    width: 100%;
-    height: 194px;
-    object-fit: cover;
-    margin-left: 20px;
-    display: flex;
+  z-index: 1;
+  width: 100%;
+  padding: 1%;
+  box-sizing: border-box;
+  background: transparent;
+  height: 194px;
+  object-fit: cover;
+  /* margin-left: 20px; */
+  display: flex;
+  /* border: 5px ridge; */
 }
-  
+
 .player-sprite {
-    height: 150px;
-    display: flex;
-    position: absolute;
-    left: 25%;
-    bottom: 5%;
-    animation: playerHover 1.5s infinite alternate;
+  height: 150px;
+  display: flex;
+  /* position: absolute; */
+  left: 25%;
+  bottom: 5%;
+  animation: playerHover 1.5s infinite alternate;
 }
 .p-sprite {
-    transform: scaleX(-1) rotate(20deg);
+  transform: scaleX(-1) rotate(20deg);
 }
 
 .playerExplosion {
@@ -37,14 +72,13 @@
 }
 
 @keyframes playerHover {
-    0% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-5px);
-    }
-    100% {
-      transform: translateY(0);
-    }
+  0% {
+    transform: translateY(0);
   }
-
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
