@@ -10,8 +10,8 @@ import Enemy from "../Enemy/enemy.js";
 import enemy1 from "../Enemy/enemy1.js";
 import enemy2 from "../Enemy/enemy2.js";
 import GamePlayer from "../GameCharacter/gamePlayer";
-import { shuffleArray } from "../Utils/Helpers/HelperFunctions";
 import { updateUser } from "../../store/session";
+import GameOver from "./GameOver";
 
 const GamePage = () => {
   const dispatch = useDispatch();
@@ -45,16 +45,27 @@ const GamePage = () => {
 
   const max = questions.length;
   const question = questions[idx];
-  const correctAnswer = question.answers[question.correct_answer];
-  console.log(correctAnswer);
+  const correctAnswers = Object.values(question.correct_answers)
+    .map((correct, idx) => {
+      if (correct === "true") {
+        return Object.values(question.answers)[idx];
+      } else return null;
+    })
+    .filter((ans) => ans);
+
+  console.log(correctAnswers);
+
+  const correct = (ans) =>
+    correctAnswers.find((correctAns) => correctAns === ans);
 
   const handleSelect = (e) => {
     e.preventDefault();
     setSelected(true);
     const newTotal = totalAnswered + 1;
     setTotalAnswered(newTotal);
-    if (e.target.value === correctAnswer) {
-      // Correct answer logic
+    const answer = e.target.value;
+    if (!!correct(answer)) {
+      // stuff that happens when user answers correctly
       setAttackAnimation(true);
       setTimeout(() => {
         setShowExplosion(true);
@@ -70,7 +81,13 @@ const GamePage = () => {
       setTotalCorrects(newCorrects);
       user.gold += 1;
       setMessage(
-        <div className="answer-result correct">Nice. That was correct!</div>
+        <div className="answer-result correct">
+          <div className="result">
+            Your answer:{" "}
+            <span className="selected-answer correct">{e.target.value}</span>
+          </div>
+          <div>Nice. That was correct !</div>
+        </div>
       );
     } else {
       // Wrong answer logic
@@ -88,11 +105,14 @@ const GamePage = () => {
 
       setMessage(
         <div className="answer-result incorrect">
-          Oops... That was incorrect...
+          <div className="result">
+            Your answer:{" "}
+            <span className="selected-answer incorrect">{e.target.value}</span>
+          </div>
+          <div>Oops... That was incorrect...</div>
         </div>
       );
       if (user.health - enemy.attack <= 0) {
-        user.health = 0;
         setGameover(true);
         user.health = 100;
       } else {
@@ -100,6 +120,10 @@ const GamePage = () => {
       }
     }
 
+    // need to dispatch an update to player becuase of gold and hp update
+    //all changes above are temporary and only in frontend store state, reset upon refresh currently
+
+    // giving 2s buffer before switching to next question
     setTimeout(() => {
       if (idx + 1 < max) {
         setIdx((prevIdx) => prevIdx + 1);
@@ -164,7 +188,11 @@ const GamePage = () => {
       }));
     }
   };
-  
+
+  const restart = () => {
+    // restart logic, reseting states, etc...
+  };
+
   return (
     <div className="game-page-container">
       <div className="game-page-content left">
@@ -184,7 +212,7 @@ const GamePage = () => {
         </div>
         <div className="game-content game-questions">
           {gameOver ? (
-            <div className="">GAME OVER...</div>
+            <GameOver restart={restart} />
           ) : (
             <Question
               question={question}
