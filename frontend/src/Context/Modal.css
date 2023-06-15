@@ -22,8 +22,6 @@
 
 #modal-content {
   position: absolute;
-  background-color:white;
+  /* background-color:white; */
   border-radius: 10px;
-  /* z-index: 4; */
-  /* flex-direction: column; */
 }
