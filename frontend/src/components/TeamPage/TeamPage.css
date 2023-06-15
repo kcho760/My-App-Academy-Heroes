@@ -14,11 +14,11 @@
   border-top-right-radius: 5px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 25px;
-  position: absolute;
-  left: 70%;
+  position: relative;
+  left: 56%;
   top: 46%;
-  height: 50px;
-  width: 200px;
+  height: 54%;
+  width: 11%;
   display: block;
   text-shadow:0 0 20px rgba(137, 43, 226, 0.76);
 }
@@ -46,8 +46,8 @@
 .team-modal-container {
   border-radius: 10px;
   background: linear-gradient(to right, black, lightcoral, white, lightcoral, black);
-  width: 1250px;
-  height: 750px;
+  width: 700px;
+  height: 800px;
   position: flex;
   display: flex;
   flex-direction: column;
@@ -67,8 +67,10 @@
   font-size: 20px;
   font-family: Futura;
   border-color: black;
-  width: 250px;  
-  /* display: fixed; */
+  width: 45%;
+  height: 35%; 
+  margin: 10px;
+  /* overflow: hidden; */
 }
 
 .team-tabs button.tab:hover {
@@ -79,10 +81,9 @@
 }
 
 .activeTab {
-  transform: scale(1.1);
+  transform: scale(1.2);
   transition: transform 0.5s;
   z-index: 1;
-
 }
 
 .li-space {
@@ -94,11 +95,16 @@
   background-color: black;
   border-radius: 20px;
   color: white;
-  font-size: 20px; 
-  margin-top: 15%;
-  height: 300px;
-  width: 700px;
+  font-size: 20px;
+  top: 20%; 
+  height: 400px;
+  width: 400px;
   position: relative;
+  /* position: fixed; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* overflow: auto; */
 }
 
 .teamDescription {
@@ -118,6 +124,6 @@
 
 .photo {
   position: relative;
-  top: 100px;
+  /* top: 100px; */
   opacity: 1;
 }
