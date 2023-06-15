@@ -2,16 +2,17 @@ import React from "react";
 import Card from "../Card/Card";
 import "./CardSelection.css";
 
-const CardSelection = ({ cards, selectedCard, setSelectedCard }) => {
+const CardSelection = ({ cards, selectedCard, setSelectedCard, handleCardClick }) => {
+
   return (
     <div className="card-selection">
-      {cards.map((card, index) => {
-        return (
+      {cards.map((card, index) => (
           <button
             key={index}
-            className="card-option"
+            className={`card-option gamecard-${index}`}
             onMouseEnter={() => setSelectedCard(index)}
             onMouseLeave={() => setSelectedCard(null)}
+            onClick={(e) => handleCardClick(e, card, `.gamecard-${index}`)}
           >
             <div className="card-name">{card.name}</div>
             <div className="card-ability">{card.abilityType}</div>
@@ -22,8 +23,8 @@ const CardSelection = ({ cards, selectedCard, setSelectedCard }) => {
               </div>
             )}
           </button>
-        );
-      })}
+        )
+      )}
     </div>
   );
 };

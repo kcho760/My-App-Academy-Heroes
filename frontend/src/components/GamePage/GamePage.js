@@ -17,6 +17,7 @@ import GameOver from "./GameOver";
 import Card from "../Card/Card";
 import CardSelection from "../CardSelection/CardSelection";
 const GamePage = () => {
+  const defaultPlayerAttack = 100;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
   const questions = useSelector((state) => Object.values(state.questions));
@@ -28,7 +29,7 @@ const GamePage = () => {
   const [message, setMessage] = useState(<></>);
   const [enemy, setEnemy] = useState(enemy1);
   const [round, setRound] = useState(1);
-  const [playerAttack, setPlayerAttack] = useState(100);
+  const [playerAttack, setPlayerAttack] = useState(defaultPlayerAttack);
   const [showExplosion, setShowExplosion] = useState(false);
   const [showPlayerExplosion, setShowPlayerExplosion] = useState(false);
   const [attackAnimation, setAttackAnimation] = useState(false);
@@ -129,8 +130,13 @@ const GamePage = () => {
     // need to dispatch an update to player becuase of gold and hp update
     //all changes above are temporary and only in frontend store state, reset upon refresh currently
 
+    nextQuestion();
+  };
+
+  const nextQuestion = () => {
     // giving 2s buffer before switching to next question
     setTimeout(() => {
+      setPlayerAttack(defaultPlayerAttack);
       if (idx + 1 < max) {
         setIdx((prevIdx) => prevIdx + 1);
       } else {
@@ -141,15 +147,15 @@ const GamePage = () => {
     }, 2000);
   };
 
-  const handleEnemyLogic = () => {
-    if (enemy.health - playerAttack <= 0) {
+  const handleEnemyLogic = (instantKill = false) => {
+    if (instantKill || enemy.health - playerAttack <= 0) {
       // Handle enemy defeated logic, such as updating round, gaining rewards, etc.
       // For example:
       user.gold += enemy.gold;
       const newRound = round + 1;
       setRound(newRound);
 
-      if (newRound + 5 % 5 === 3 || newRound + 5 % 5 === 4) {
+      if ((newRound + 5) % 5 === 3 || (newRound + 5) % 5 === 4) {
         setAttackAnimation(true);
         setTimeout(() => {
           setEnemy((prevEnemy) => ({
@@ -169,7 +175,7 @@ const GamePage = () => {
             }, 500);
           }, 700);
         }, 1000);
-      }else if (newRound % 5 === 0) {
+      } else if (newRound % 5 === 0) {
         setAttackAnimation(true);
         setTimeout(() => {
           setEnemy((prevEnemy) => ({
@@ -189,9 +195,7 @@ const GamePage = () => {
             }, 500);
           }, 700);
         }, 1000);
-      }
-      
-      else {
+      } else {
         setAttackAnimation(true);
         setTimeout(() => {
           setEnemy((prevEnemy) => ({
@@ -208,6 +212,10 @@ const GamePage = () => {
           }, 700);
         }, 1000);
       }
+
+      if (newRound % 5 === 1) {
+        setTimeout(() => resetCardUse(), 1000);
+      }
     } else {
       setEnemy((prevEnemy) => ({
         ...prevEnemy,
@@ -216,26 +224,47 @@ const GamePage = () => {
     }
   };
 
-  
-  const useCard = (card) => {
-    switch (card.abilityType) {
-      case "Attack Up":
-        setPlayerAttack((prev) => prev + card.abilityValue);
-        break;
-      case "Attack Multiplier":
-        setPlayerAttack((prev) => prev * card.abilityValue);
-        break;
-      case "Heal":
-        user.health += card.abilityValue;
-        break;
-      case "Instant Kill":
-
-      default:
-        break;
+  const handleCardClick = (e, card, elClassName) => {
+    e.preventDefault();
+    const cardEl = document.querySelector(elClassName);
+    cardEl.classList.add("card-in-use");
+    if (!cardEl.disabled) {
+      cardEl.disabled = true;
+      switch (card.abilityType) {
+        case "Attack Up":
+          setPlayerAttack((prev) => prev + card.abilityValue);
+          break;
+        case "Attack Multiplier":
+          setPlayerAttack((prev) => prev * card.abilityValue);
+          break;
+        case "Heal":
+          user.health += card.abilityValue;
+          break;
+        case "Instant Kill":
+          const newTotal = totalAnswered + 1;
+          setTotalAnswered(newTotal);
+          handleEnemyLogic(true);
+          nextQuestion();
+          break;
+        default:
+          break;
+      }
     }
   };
 
+  const resetCardUse = () => {
+    const cardsInUse = document.querySelectorAll(".card-in-use");
+    cardsInUse.forEach((button) => {
+      button.disabled = false;
+    });
+  };
+
+  const deleteCards = () => {
+    dispatch();
+  };
+
   const restart = () => {
+    setGameover(false);
     // restart logic, reseting states, etc...
   };
 
@@ -296,6 +325,7 @@ const GamePage = () => {
               cards={filteredCards}
               selectedCard={selectedCard}
               setSelectedCard={setSelectedCard}
+              handleCardClick={handleCardClick}
             />
             {selectedCard !== null && (
               <div className="card-detail">
