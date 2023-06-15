@@ -69,53 +69,62 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
     });
   });
 
-  const base64Image = req.body.image.replace(/^data:image\/jpeg;base64,/, "");
-  fs.writeFile("/tmp/output.jpg", base64Image, "base64", async function (err) {
-    if (err) {
-      console.log(err);
-    } else {
-      let form = new FormData();
-      form.append("image", fs.createReadStream("/tmp/output.jpg"));
-      form.append("type", "anime");
+  let imageUrl = null;
 
-      const response = await fetch(
-        "https://www.ailabapi.com/api/portrait/effects/portrait-animation",
-        {
-          method: "POST",
-          headers: {
-            "ailabapi-api-key": process.env.AILAB_API,
-          },
-          body: form,
-        }
-      );
+  if (!req.body.image) {
+    // Use a predefined image if req.body.image is not provided
+    imageUrl = "../../assets/default.png";
+    return res.json(await loginUser(newUser));
 
-      const jsonResponse = await response.json();
-      const imageUrl = jsonResponse.data.image_url;
+  } else {
+    const base64Image = req.body.image.replace(/^data:image\/jpeg;base64,/, "");
+    fs.writeFile("/tmp/output.jpg", base64Image, "base64", async function (err) {
+      if (err) {
+        console.log(err);
+      } else {
+        let form = new FormData();
+        form.append("image", fs.createReadStream("/tmp/output.jpg"));
+        form.append("type", "anime");
 
-      // Fetch image from the URL given by the API
-      const apiImageResponse = await fetch(imageUrl);
-      const apiImageBuffer = await apiImageResponse.buffer();
+        const response = await fetch(
+          "https://www.ailabapi.com/api/portrait/effects/portrait-animation",
+          {
+            method: "POST",
+            headers: {
+              "ailabapi-api-key": process.env.AILAB_API,
+            },
+            body: form,
+          }
+        );
 
-      // Now upload this buffer to AWS S3.
-      const params = {
-        Bucket: process.env.AWS_S3_BUCKET_NAME,
-        Key: `${newUser._id}.jpg`,
-        Body: apiImageBuffer,
-        ContentType: "image/jpeg",
-      };
+        const jsonResponse = await response.json();
+        imageUrl = jsonResponse.data.image_url;
 
-      s3.upload(params, async function (err, data) {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(`File uploaded successfully. ${data.Location}`);
-          newUser.imageUrl = data.Location;
-          await newUser.save();
-          return res.json(await loginUser(newUser));
-        }
-      });
-    }
-  });
+        // Fetch image from the URL given by the API
+        const apiImageResponse = await fetch(imageUrl);
+        const apiImageBuffer = await apiImageResponse.buffer();
+
+        // Now upload this buffer to AWS S3.
+        const params = {
+          Bucket: process.env.AWS_S3_BUCKET_NAME,
+          Key: `${newUser._id}.jpg`,
+          Body: apiImageBuffer,
+          ContentType: "image/jpeg",
+        };
+
+        s3.upload(params, async function (err, data) {
+          if (err) {
+            console.log(err);
+          } else {
+            console.log(`File uploaded successfully. ${data.Location}`);
+            newUser.imageUrl = data.Location;
+            await newUser.save();
+            return res.json(await loginUser(newUser));
+          }
+        });
+      }
+    });
+  }
 });
 
 // POST /api/users/login
