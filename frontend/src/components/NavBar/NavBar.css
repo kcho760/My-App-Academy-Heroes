@@ -1,7 +1,6 @@
 .navHeader {
   position: sticky;
   top: 0;
-  /* background-color: red; */
   background: linear-gradient(to right, #ff7f50, goldenrod, red);
   border: solid black;
   display: flex;
@@ -94,6 +93,7 @@
 } */
 
 .profile-link {
+  line-height: 50px;
   text-decoration: none;
   font-size: 25px;
   -webkit-backdrop-filter: blur(10px);
@@ -111,48 +111,42 @@
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 25px;
   position: absolute;
-  margin-top: 42px;
+  margin-top: 37.5px;
   height: 50px;
   width: 200px;
   display: block;
-  text-shadow:0 0 20px blueviolet;
+  text-shadow:0 0 20px rgba(137, 43, 226, 0.76);
   align-items: center;
   text-align: center;
   left: 215px;
-  animation: profileAnimation 2s ease-out infinite;
-  background-size: 100% 200%;
+  /* animation: profileAnimation 2s ease-out infinite;
+  background-size: 100% 200%; */
 }
 
 .profile-link::before {
   content: "";
-  display: block;
+  display: flex;
   width: calc(100% - 18px);
   height: calc(100% - 18px);
   position: absolute;
-  border: inset aquamarine;
+  border: outset aquamarine;
   border-top-left-radius: 20px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 20px;
+  margin: 5px;
 }
 
 .profile-link:hover {
   transform: scale(1.1);
   transition: transform 0.2s;
-  text-shadow:0 0 10px blueviolet;
+  text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
   box-shadow: 0 0 50px rgb(143, 194, 239);
 }
 
-@keyframes profileAnimation {
-  0%{
-    background-position: 0 100%;
-  }
-  100%{
-    background-position: 0 -100%;
-  }
-}
 
 .game-link {
+  line-height: 50px;
   text-decoration: none;
   font-size: 25px;
   -webkit-backdrop-filter: blur(10px);
@@ -163,40 +157,62 @@
   color: slateblue;
   background-image: linear-gradient(
     to bottom, rgb(143, 194, 239), rgb(124, 226, 226), purple
-  );
-  box-shadow: 0 0 20px rgb(143, 194, 239);
-  border-top-left-radius: 25px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 25px;
-  position: absolute;
-  margin-top: 42px;
-  height: 50px;
-  width: 200px;
-  left: 395px;
-  display: block;
-  text-shadow:0 0 20px blueviolet;
-  align-items: center;
-  text-align: center;
-}
-
+    );
+    box-shadow: 0 0 20px rgb(143, 194, 239);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 25px;
+    position: absolute;
+    margin-top: 37.5px;
+    height: 50px;
+    width: 200px;
+    left: 395px;
+    display: block;
+    text-shadow:0 0 20px rgba(137, 43, 226, 0.76);
+    align-items: center;
+    text-align: center;
+  }
+  
+  .active-link {
+    z-index: 1;
+    transform: scale(1.1);
+    transition: transform 0.2s;
+    animation: profileAnimation 2s linear infinite;
+    background-size: 100% 200%;
+    color: aliceblue;
+    font-size: 30px;
+    background-image: linear-gradient(
+      to bottom, rgb(143, 194, 239) 0%, rgb(124, 134, 226) 15%, rgba(110, 33, 173, 0.521) 30%, purple 45%, rgb(56, 15, 206) 60%, rgb(124, 129, 226) 75%, rgb(143, 194, 239) 90%
+    );
+  }
+  
+  @keyframes profileAnimation {
+    0%{
+      background-position: 0 100%;
+    }
+    100%{
+      background-position: 0 -100%;
+    }
+  }
 .game-link::before {
   content: "";
   display: block;
   width: calc(100% - 18px);
   height: calc(100% - 18px);
   position: absolute;
-  border: inset aquamarine;
+  border: outset aquamarine;
   border-top-left-radius: 20px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 20px;
+  margin: 5px;
 }
 
 .game-link:hover {
   transform: scale(1.2);
   transition: transform 0.2s;
-  text-shadow:0 0 10px blueviolet;
+  text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
   box-shadow: 0 0 50px rgb(143, 194, 239);
 }
 

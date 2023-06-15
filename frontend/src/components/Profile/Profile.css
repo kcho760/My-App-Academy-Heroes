@@ -65,6 +65,15 @@
   max-width: 200px;
 }
 
+.gach {
+  position: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 50px;
+}
+
 .gachButton {
   border-radius: 20px;
   font-size: 20px;
@@ -80,6 +89,45 @@
 .gachButton:hover {
   transition: transform 0.1s;
   transform: scale(1.1);
+}
+
+.deselectButton {
+  border-radius: 15px;
+  font-size: 20px;
+  font-family: Futura;
+  background-color: firebrick;
+  color: black;
+  width: 240px;
+}
+
+.deselectButton:hover {
+  transition: transform 0.1s;
+  transform: scale(1.1);
+  color: ivory;
+}
+
+.cardContainer {
+  position: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+.selectButton {
+  margin: 10px;
+  background-color: green;
+  border-radius: 15px;
+  font-size: 20px;
+  width: 170px;
+  font-family: Futura;
+}
+
+.selectButton:hover {
+  transition: transform 0.1s;
+  transform: scale(1.1);
+  color: ivory;
 }
 
 @keyframes gachAnimation {

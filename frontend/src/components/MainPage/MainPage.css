@@ -29,10 +29,14 @@ footer {
   background-color: rgba(226, 187, 98, 0.477);
   width: 75%;
   height: 50%;
-  border-radius: 8px;
+  border-radius: 18px;
   margin-left: 175px;
   margin-top: 75px;
-  border: solid red;
+  /* border: solid red; */
+  position: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* .gameIntro:hover {
@@ -53,8 +57,8 @@ footer {
   /* margin-left: 950px;
   margin-top: -80px; */
   position: absolute; 
-  left: 83%;
-  top: 25px;
+  left: 84%;
+  top: 10px;
 }
 
 .cardLogo2 {
@@ -66,11 +70,11 @@ footer {
 }
 
 .cardLogo1:hover {
-  animation: rotate 1s infinite linear;
+  animation: rotate 1.2s infinite linear;
 }
 
 .cardLogo2:hover {
-  animation: rotate 1s infinite linear;
+  animation: rotate 1.2s infinite linear;
 }
 
 @keyframes rotate {

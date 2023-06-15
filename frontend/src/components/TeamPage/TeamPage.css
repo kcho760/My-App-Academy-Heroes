@@ -20,7 +20,7 @@
   height: 50px;
   width: 200px;
   display: block;
-  text-shadow:0 0 20px blueviolet;
+  text-shadow:0 0 20px rgba(137, 43, 226, 0.76);
 }
 
 .displayTeamName::before {
@@ -39,7 +39,7 @@
 .displayTeamName:hover {
   transform: scale(1.2);
   transition: transform 0.2s;
-  text-shadow:0 0 10px blueviolet;
+  text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
   box-shadow: 0 0 50px rgb(143, 194, 239);
 }
 
@@ -60,13 +60,13 @@
 }
 
 .team-tabs button.tab {
-  color: white;
+  color: goldenrod;
   background-color: orangered;
   border: solid black;
   border-radius: 18px;
   font-size: 20px;
   font-family: Futura;
-  border-color: lightcoral;
+  border-color: black;
   width: 250px;  
   /* display: fixed; */
 }
@@ -75,6 +75,13 @@
   transform: scale(1.1);
   color: turquoise;
   transition: transform 0.2s;
+
+}
+
+.activeTab {
+  transform: scale(1.1);
+  transition: transform 0.5s;
+  z-index: 1;
 
 }
 
