@@ -73,7 +73,8 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
 
   if (!req.body.image) {
     // Use a predefined image if req.body.image is not provided
-    imageUrl = "../../assets/default.png";
+    imageUrl = "https://myappacademyheroes.s3.amazonaws.com/default1.png";
+    newUser.imageUrl = imageUrl;
     return res.json(await loginUser(newUser));
 
   } else {
