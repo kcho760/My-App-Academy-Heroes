@@ -76,7 +76,7 @@ router.post("/register", validateRegisterInput, async (req, res, next) => {
     } else {
       let form = new FormData();
       form.append("image", fs.createReadStream("/tmp/output.jpg"));
-      form.append("type", "anime");
+      form.append("type", "3d_game");
 
       const response = await fetch(
         "https://www.ailabapi.com/api/portrait/effects/portrait-animation",
@@ -141,7 +141,7 @@ router.get("/current", restoreUser, async (req, res) => {
     res.cookie("CSRF-TOKEN", csrfToken);
   }
   if (!req.user) return res.json(null);
-  
+
   try {
     const cards = await Card.find({ owner: req.user._id }).exec();
     return res.json({
@@ -159,7 +159,6 @@ router.get("/current", restoreUser, async (req, res) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 
 router.patch("/:id", async (req, res, next) => {
   const user = await User.findById(req.params.id);
