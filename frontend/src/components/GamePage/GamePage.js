@@ -17,6 +17,9 @@ import GameOver from "./GameOver";
 import Card from "../Card/Card";
 import CardSelection from "../CardSelection/CardSelection";
 import jwtFetch from "../../store/jwt";
+import attackAudio1 from "../../assets/audio/attackAudio.mp3";
+import attackAudio2 from "../../assets/audio/yamatoCannon3.mp3";
+import explosionAudio from "../../assets/audio/Explosion2.mp3";
 
 const GamePage = () => {
   const defaultPlayerAttack = 25;
@@ -41,6 +44,12 @@ const GamePage = () => {
   const [selectedCard, setSelectedCard] = useState(null);
   const filteredCards = playerCards.filter((card) => card.selected).slice(0, 4);
   const [loadBuffer, setLoadBuffer] = useState(true);
+  const [incorrectAudio, setIncorrectAudio] = useState(null);
+
+  useEffect(() => {
+    setIncorrectAudio(new Audio(explosionAudio));
+  }, []);
+
 
   useEffect(() => {
     dispatch(fetchQuestions())
@@ -78,11 +87,13 @@ const GamePage = () => {
     const answer = e.target.value;
     if (!!correct(answer)) {
       // stuff that happens when user answers correctly
+      
       setAttackAnimation(true);
+      const correctAudio = new Audio(attackAudio1);
+      correctAudio.play();
       setTimeout(() => {
         setShowExplosion(true);
-      }, 1000);
-
+      }, 800);
       setTimeout(() => {
         setAttackAnimation(false);
         setShowExplosion(false);
@@ -102,12 +113,31 @@ const GamePage = () => {
         </div>
       );
     } else {
-      // Wrong answer logic
-      setShowPlayerExplosion(true);
+      if (user.health - enemy.attack <= 0) {
+        setGameover(true);
+        deleteCards();
+        user.health = 100;
 
-      setTimeout(() => {
-        setShowPlayerExplosion(false);
-      }, 1000);
+        return;
+      } else {
+        user.health -= enemy.attack;
+      
+        if (incorrectAudio) {
+          incorrectAudio.currentTime = 0;
+          incorrectAudio.play();
+        }
+      
+        setShowPlayerExplosion(false); // Hide the explosion initially
+      
+        setTimeout(() => {
+          setShowPlayerExplosion(true); // Show the explosion after 1 second
+        }, 1000);
+      
+        setTimeout(() => {
+          setShowPlayerExplosion(false); // Hide the explosion after 2 seconds
+        }, 2000);
+      }
+      
 
       const healthText = document.querySelector(".health-text");
       healthText.classList.add("flash-red");
