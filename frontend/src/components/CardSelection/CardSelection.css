@@ -3,16 +3,19 @@
   justify-content: space-around;
   width: 100%;
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 49%);
+  gap: 2%;
 }
 
 .card-option {
   position: relative;
-  border: 1px solid black;
+  border: 2px ridge rgba(255, 255, 255, 0.7);
   border-radius: 15px;
   padding: 10px;
   cursor: pointer;
-  width: 24%;
-  height: 50%;
+  /* width: 24%; */
+  /* height: 50%; */
   /* transition: background-color 0.3s ease; */
   font-family: Futura;
   /* transition: transform 0.2;
@@ -20,6 +23,12 @@
   background-size: 200%, 100%; */
   background: linear-gradient(33deg,rgba(255, 255, 255, 0.467) 0%, rgba(73, 150, 73, 0.706) 50%, rgba(128, 0, 128, 0.569) 60%, rgba(255, 166, 0, 0.567) 90%);
   text-shadow:0 0 25px white;
+  font-size: 100%;
+}
+
+.card-option .card-name {
+  color: white;
+  text-shadow: 0 0 10px red;
 }
 
 /* @keyframes cardAnimation {
@@ -31,21 +40,40 @@
   }
 } */
 
-.card-option:hover {
-  background-color: red;
-  color: black
+.card-option:enabled:hover {
+  text-shadow: 0 0 3px red;
+  border-width: 5px;
+  scale: 1.1;
+  z-index: 1;
+  /* box-shadow: 0 0 10px yellow; */
+  animation: pulseBorder 1s linear infinite;
 }
+
+@keyframes pulseBorder {
+  0% {
+    box-shadow: 0 0 12px yellow;
+  }
+  50% {
+    box-shadow: 0 0 8px yellow
+  }
+  100% {
+    box-shadow: 0 0 12px yellow;
+  }
+  
+}
+
 .card-option:active {
   background-color: darkgray;
 }
+
 .card-detail {
   display: none;
   position: absolute;
   z-index: 2;
   width: 200px;
   height: 50%;
-  top: -50%;
-  right: 50%;
+  top: -180%;
+  right: 80%;
   padding: 10px;
   pointer-events: none; /* Add this line */
   /* background: linear-gradient(33deg,rgba(255, 255, 255, 0.467) 0%, rgba(73, 150, 73, 0.706) 50%, rgba(128, 0, 128, 0.569) 60%, rgba(255, 166, 0, 0.567) 90%); */
@@ -58,5 +86,6 @@
 }
 
 .card-option:hover .card-body {
-  background-color: rgb(220, 220, 220);
+  box-sizing: border-box;
+  background-color: rgba(220, 220, 220, 0.8);
 }
