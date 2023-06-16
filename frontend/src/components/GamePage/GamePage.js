@@ -40,9 +40,10 @@ const GamePage = () => {
   const playerCards = useSelector((state) => state.session.user.ownedCards);
   const [selectedCard, setSelectedCard] = useState(null);
   const filteredCards = playerCards.filter((card) => card.selected).slice(0, 4);
+  const [loadBuffer, setLoadBuffer] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchQuestions());
+    dispatch(fetchQuestions()).then(() => setLoadBuffer(false));
   }, []);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const GamePage = () => {
   }, [user.gold, user.health]);
 
   if (!user) return <Redirect to="/login" />;
-  if (questions.length === 0) return <LoadingPage />;
+  if (questions.length === 0 || loadBuffer) return <LoadingPage />;
 
   const max = questions.length;
   const question = questions[idx];
