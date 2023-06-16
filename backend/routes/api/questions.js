@@ -77,7 +77,6 @@ router.get("/", async (req, res) => {
     // Process responses and concatenate the questions
     for (const response of responses) {
       const data = await response.json();
-      console.log(data);
       questions.push(...data);
     }
     const uniqueQuestions = questions.filter(
