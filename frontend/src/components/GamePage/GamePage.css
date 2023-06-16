@@ -6,6 +6,7 @@
   column-gap: 1%;
   height: calc(100vh - 100px);
   max-height: calc(100vh - 100px);
+  background-image: linear-gradient(to bottom, lightblue, aqua, white, aqua, lightblue);
 
   box-sizing: border-box;
   min-width: 950px;
@@ -21,11 +22,13 @@
   grid-template-rows: 34% 5% 57%;
   row-gap: 2%;
   box-sizing: border-box;
-  /* background-image: url(../../assets/images/gameleftbackground.png); */
-  /* background-size: cover; */
-  /* background-repeat: no-repeat; */
+  background-image: url(https://img.freepik.com/free-vector/modern-technological-elements-with-transparent-background_1035-7108.jpg?w=2000);
+  background-size: cover;
+  background-repeat: no-repeat;
   min-width: 455px;
   height: 100%;
+  background-color: rgba(0, 255, 247, 0.064);
+  text-shadow: 0 0 20px teal;
 }
 
 .game-page-content.right {

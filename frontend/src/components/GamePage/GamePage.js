@@ -12,10 +12,15 @@ import enemy2 from "../Enemy/enemy2.js";
 import kinTheConqueror from "../Enemy/kinTheConqueror.js";
 import Kyletronic from "../Enemy/kyletronic";
 import GamePlayer from "../GameCharacter/gamePlayer";
-import { updateUser } from "../../store/session";
+import { updateUser, getCurrentUser } from "../../store/session";
 import GameOver from "./GameOver";
 import Card from "../Card/Card";
 import CardSelection from "../CardSelection/CardSelection";
+import jwtFetch from "../../store/jwt";
+import attackAudio1 from "../../assets/audio/attackAudio.mp3";
+import attackAudio2 from "../../assets/audio/yamatoCannon3.mp3";
+import explosionAudio from "../../assets/audio/Explosion2.mp3";
+
 const GamePage = () => {
   const defaultPlayerAttack = 25;
   const dispatch = useDispatch();
@@ -38,9 +43,18 @@ const GamePage = () => {
   const playerCards = useSelector((state) => state.session.user.ownedCards);
   const [selectedCard, setSelectedCard] = useState(null);
   const filteredCards = playerCards.filter((card) => card.selected).slice(0, 4);
+  const [loadBuffer, setLoadBuffer] = useState(true);
+  const [incorrectAudio, setIncorrectAudio] = useState(null);
 
   useEffect(() => {
-    dispatch(fetchQuestions());
+    setIncorrectAudio(new Audio(explosionAudio));
+  }, []);
+
+
+  useEffect(() => {
+    dispatch(fetchQuestions())
+      .then(() => setLoadBuffer(false))
+      .catch((error) => console.error(error));
   }, []);
 
   useEffect(() => {
@@ -73,11 +87,13 @@ const GamePage = () => {
     const answer = e.target.value;
     if (!!correct(answer)) {
       // stuff that happens when user answers correctly
+      
       setAttackAnimation(true);
+      const correctAudio = new Audio(attackAudio1);
+      correctAudio.play();
       setTimeout(() => {
         setShowExplosion(true);
-      }, 1000);
-
+      }, 800);
       setTimeout(() => {
         setAttackAnimation(false);
         setShowExplosion(false);
@@ -97,12 +113,31 @@ const GamePage = () => {
         </div>
       );
     } else {
-      // Wrong answer logic
-      setShowPlayerExplosion(true);
+      if (user.health - enemy.attack <= 0) {
+        setGameover(true);
+        deleteCards();
+        user.health = 100;
 
-      setTimeout(() => {
-        setShowPlayerExplosion(false);
-      }, 1000);
+        return;
+      } else {
+        user.health -= enemy.attack;
+      
+        if (incorrectAudio) {
+          incorrectAudio.currentTime = 0;
+          incorrectAudio.play();
+        }
+      
+        setShowPlayerExplosion(false); // Hide the explosion initially
+      
+        setTimeout(() => {
+          setShowPlayerExplosion(true); // Show the explosion after 1 second
+        }, 1000);
+      
+        setTimeout(() => {
+          setShowPlayerExplosion(false); // Hide the explosion after 2 seconds
+        }, 2000);
+      }
+      
 
       const healthText = document.querySelector(".health-text");
       healthText.classList.add("flash-red");
@@ -121,7 +156,11 @@ const GamePage = () => {
       );
       if (user.health - enemy.attack <= 0) {
         setGameover(true);
+        deleteCards();
         user.health = 100;
+        dispatch(updateUser(user));
+
+        return;
       } else {
         user.health -= enemy.attack;
       }
@@ -135,8 +174,8 @@ const GamePage = () => {
 
   const nextQuestion = () => {
     // giving 2s buffer before switching to next question
+    // setPlayerAttack(()=>defaultPlayerAttack); // should reset attack on round not question
     setTimeout(() => {
-      setPlayerAttack(defaultPlayerAttack);
       if (idx + 1 < max) {
         setIdx((prevIdx) => prevIdx + 1);
       } else {
@@ -154,6 +193,7 @@ const GamePage = () => {
       user.gold += enemy.gold;
       const newRound = round + 1;
       setRound(newRound);
+      setPlayerAttack(()=>defaultPlayerAttack);
 
       if ((newRound + 5) % 5 === 3 || (newRound + 5) % 5 === 4) {
         setAttackAnimation(true);
@@ -185,7 +225,8 @@ const GamePage = () => {
           setTimeout(() => {
             setShouldAnimateOut(true);
             setTimeout(() => {
-              const randomEnemy = Math.random() < 0.5 ? kinTheConqueror : Kyletronic;
+              const randomEnemy =
+                Math.random() < 0.5 ? kinTheConqueror : Kyletronic;
               setEnemy(randomEnemy);
               setEnemy((prevEnemy) => ({
                 ...prevEnemy,
@@ -260,14 +301,56 @@ const GamePage = () => {
     });
   };
 
-  const deleteCards = () => {
-    dispatch();
+  const deleteCards = async () => {
+    const cardsToDelete = filteredCards.map((card) => card._id);
+    const userId = user._id;
+
+    const payload = { userId, cardsToDelete };
+
+    try {
+      const res = await jwtFetch("/api/cards", {
+        method: "DELETE",
+        body: JSON.stringify(payload),
+      });
+    } catch (error) {
+      console.error("Error deleting cards:", error);
+    } finally {
+      dispatch(getCurrentUser());
+    }
   };
 
   const restart = () => {
-    setGameover(false);
-    // restart logic, reseting states, etc...
+    setLoadBuffer(true);
+    setPlayerAttack(defaultPlayerAttack);
+    setTotalAnswered(0);
+    setTotalCorrects(0);
+    setRound(1);
+    setEnemy(enemy1);
+    setEnemy((prevEnemy) => ({
+      ...prevEnemy,
+      health: prevEnemy.defaultHealth,
+    }));
+
+    setTimeout(() => {
+      setGameover(false);
+    }, 500);
+
+    setTimeout(() => {
+      setLoadBuffer(false);
+    }, 1000);
+
+    dispatch(fetchQuestions()).then(() => {
+      setTimeout(() => {
+        setGameover(false);
+      }, 500);
+
+      setTimeout(() => {
+        setLoadBuffer(false);
+      }, 1000);
+    });
   };
+
+  if (loadBuffer) return <LoadingPage />;
 
   return (
     <div className="game-page-container">
@@ -321,19 +404,21 @@ const GamePage = () => {
               showPlayerExplosion={showPlayerExplosion}
             />
           </div>
-          <div className="Card-Choice-Container">
-            <CardSelection
-              cards={filteredCards}
-              selectedCard={selectedCard}
-              setSelectedCard={setSelectedCard}
-              handleCardClick={handleCardClick}
-            />
-            {selectedCard !== null && (
-              <div className="card-detail">
-                <Card card={filteredCards[selectedCard]} />
-              </div>
-            )}
-          </div>
+          {!gameOver && filteredCards.length !== 0 && (
+            <div className="Card-Choice-Container">
+              <CardSelection
+                cards={filteredCards}
+                selectedCard={selectedCard}
+                setSelectedCard={setSelectedCard}
+                handleCardClick={handleCardClick}
+              />
+              {selectedCard !== null && (
+                <div className="card-detail">
+                  <Card card={filteredCards[selectedCard]} />
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

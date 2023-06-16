@@ -65,9 +65,11 @@
   font-size: 20px;
   font-family: Futura;
   border-color: black;
-  width: 45%;
-  height: 35%; 
-  margin: 10px;
+  display: relative;
+  position: relative;
+  align-items: center;
+  height: 100%; 
+  /* margin: 10px; */
   /* overflow: hidden; */
 }
 
@@ -79,13 +81,18 @@
 }
 
 .activeTab {
-  transform: scale(1.2);
+  transform: scale(1.1);
   transition: transform 0.5s;
   z-index: 1;
 }
 
 .li-space {
   margin-bottom: 10%;
+}
+
+.tab-contents {
+  width: 100%;
+  height: 100%;
 }
 
 .team-tab {
@@ -95,17 +102,38 @@
   color: white;
   font-size: 20px;
   top: 20%; 
-  height: 100%;
-  width: 100%;
+  height: 50%;
+  width: 50%;
   position: relative;
-  display: flex;
   flex-direction: column;
   align-items: center;
+  left: 25%;
   overflow: auto;
+  
+  /* box-sizing: border-box; */
+}
+
+.team-tab {
+  box-sizing: border-box;
+}
+
+.team-tab::-webkit-scrollbar{
+  width: 8px; /* Width of the scrollbar */
+}
+
+.team-tab::-webkit-scrollbar-thumb {
+  background-color: #8f8f8f; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Radius of the scrollbar thumb */
+}
+
+.team-tab::-webkit-scrollbar-track {
+  background-color: #e1e1e1; /* Color of the scrollbar track */
+  border-radius: 4px;
 }
 
 .teamDescription {
   position: relative;
+  display: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -116,10 +144,21 @@
 }
 
 .team-tab:hover .teamDescription {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* left: 30%; */
+  top: 15%;
   opacity: 2;
 }
 
 .photo {
-  position: relative;
+  position: absolute;
+  display: relative;
+  flex-direction: column;
+  align-items: center;
+  left: 39%;
+  top: 15%;
   opacity: 1;
 }

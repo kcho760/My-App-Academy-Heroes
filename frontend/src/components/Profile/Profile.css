@@ -6,18 +6,32 @@
   width: 100%;
   position: relative;
   height: calc(100vh - 100px);
+  background:linear-gradient(to bottom, rgb(2, 2, 22),teal, cyan, rgb(57, 114, 188));
+
 }
+
 
 .profile-div {
   border: solid slategray;
   flex: 1;
   box-sizing: border-box;
   font-size: 20px;
+  background-image: url("https://e0.pxfuel.com/wallpapers/69/1009/desktop-wallpaper-blue-minimalistic-electronic-technology-border-background-technology-technology-design-graphic-graphic-design-background-templates-thumbnail.jpg");
+  background-size: cover;
+  color: white;
+  /* font-size: 40px; */
+  text-shadow: 0 0 20px cyan;
+}
+
+.profile-text{
+  font-size: 40px;
 }
 
 .defaultPic {
   width: 100%;
   height: 100%;
+  background-color: rgba(105, 90, 205, 0.596);
+  box-shadow: 0 0 20px violet;
 }
 
 .profile-pic {
@@ -34,7 +48,10 @@
   position: relative;
   font-size: 20px;
   padding: 30px;
+  padding-bottom: 10px;
   box-sizing: border-box;
+  color: white;
+  text-shadow: 0 0 20px greenyellow;
 }
 
 .card-collection {
@@ -44,6 +61,14 @@
   gap: 1rem;
   padding: 1rem;
   align-content: flex-start;
+  background-image: url("https://i.pinimg.com/736x/f2/3d/71/f23d71105fbe64ab8a5689494842f3c3--wallpaper-borders-art-pictures.jpg");
+  background-size: cover;
+}
+
+.collection-title {
+  color: white;
+  font-size: 40px;
+  text-shadow: 0 0 20px orange;
 }
 
 .card-index {
@@ -68,12 +93,29 @@
 }
 
 .gach {
-  position: flex;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  padding: 50px;
+  padding: 5%;
+  padding-top: 20px;
+  color: white;
+  text-shadow: 0 0 20px blue;
+}
+
+.profile-deck {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 49%);
+  gap: 2%;
+}
+
+.gachButton-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 10px 0;
 }
 
 .gachButton {
@@ -93,13 +135,19 @@
   );
   animation: gachAnimation 10s linear infinite;
   background-size: 200% 100%;
-  position: absolute;
-  left: 30%;
+  /* position: absolute; */
+  /* left: 30%; */
 }
 
 .gachButton:hover {
   transition: transform 0.1s;
   transform: scale(1.1);
+}
+.deck-deselect-button{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .deselectButton {
@@ -108,13 +156,14 @@
   font-family: Futura;
   background-color: firebrick;
   color: black;
-  width: 240px;
+  /* width: 240px; */
 }
 
 .deselectButton:hover {
   transition: transform 0.1s;
   transform: scale(1.1);
   color: ivory;
+  text-shadow: 0 0 20px red;
 }
 
 .cardContainer {
@@ -139,6 +188,7 @@
   transition: transform 0.1s;
   transform: scale(1.1);
   color: ivory;
+  text-shadow: 0 0 20px green;
 }
 
 @keyframes gachAnimation {

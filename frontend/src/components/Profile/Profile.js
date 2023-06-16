@@ -128,7 +128,7 @@ const Profile = () => {
   return (
     <div className="profile-container">
       <div className="profile-div">
-        Profile
+        <span className="profile-text">Profile</span>
         <div className="profile-pic">
           {" "}
           <img className="defaultPic" src={currentUser.imageUrl} />{" "}
@@ -138,17 +138,23 @@ const Profile = () => {
           <p>email: {currentUser.email} </p>
           <p>gold: {gold} </p>
           <p>cards: {playerCards.length}</p>
+          <div className="gachButton-wrapper">
           <button onClick={pullCard} className="gachButton">
             Pull a Card (Cost: 10 Gold)
           </button>
+
+          </div>
         </div>
         <div className="gach">
-          Your deck
+          <span className="profile-text">Your deck</span>
+          <div className="profile-deck">
+
           {playerCards
             .filter((card) => card.selected)
             .map((card, index) => (
               <div key={index}>
                 <Card card={card} />
+                <div className="deck-deselect-button">
                 <button
                   onClick={() =>
                     handleToggleCardSelection(card._id, card.selected)
@@ -157,13 +163,16 @@ const Profile = () => {
                 >
                   Deselect
                 </button>
+
+                </div>
               </div>
             ))}
+          </div>
         </div>
       </div>
 
       <div className="card-collection">
-        Collection
+        <div className="collection-title">Collection</div>
         {allCards.length === 0 ? (
           <p>No cards in collection.</p>
         ) : (

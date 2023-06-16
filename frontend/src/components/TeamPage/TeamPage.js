@@ -50,8 +50,7 @@ function TeamPage() {
               <p className="photo">Photo here</p>              
               <div className="teamDescription">               
               <p className="li-space">Study your CSS. </p>
-              <p>Wanted to be FlexLead to do the least amount of work but ended up breaking</p>
-              <p>his back carrying; at least carrying me.</p>              
+              <p>Wanted to be FlexLead to do the least amount of work but ended up breaking his back carrying; at least carrying me. </p>             
               
               </div>
           </div>
@@ -70,8 +69,7 @@ function TeamPage() {
               <p className="photo">Photo here</p>  
               <div className="teamDescription"> 
               <p className="li-space">I'm just here for decoration.</p>
-              <p> You read correctly; I was in charge of keeping the seat warm and occasional </p>
-              <p>spellcheck.</p>
+              <p> You read correctly; I was in charge of keeping the seat warm and occasional spellcheck.</p>
               </div>
           </div>
         )}
