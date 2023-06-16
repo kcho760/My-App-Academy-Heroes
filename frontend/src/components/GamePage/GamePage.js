@@ -318,7 +318,7 @@ const GamePage = () => {
     });
   };
 
-  if(loadBuffer) return <LoadingPage />
+  if (loadBuffer) return <LoadingPage />;
 
   return (
     <div className="game-page-container">
@@ -372,19 +372,21 @@ const GamePage = () => {
               showPlayerExplosion={showPlayerExplosion}
             />
           </div>
-          <div className="Card-Choice-Container">
-            <CardSelection
-              cards={filteredCards}
-              selectedCard={selectedCard}
-              setSelectedCard={setSelectedCard}
-              handleCardClick={handleCardClick}
-            />
-            {selectedCard !== null && (
-              <div className="card-detail">
-                <Card card={filteredCards[selectedCard]} />
-              </div>
-            )}
-          </div>
+          {!gameOver && filteredCards.length !== 0 && (
+            <div className="Card-Choice-Container">
+              <CardSelection
+                cards={filteredCards}
+                selectedCard={selectedCard}
+                setSelectedCard={setSelectedCard}
+                handleCardClick={handleCardClick}
+              />
+              {selectedCard !== null && (
+                <div className="card-detail">
+                  <Card card={filteredCards[selectedCard]} />
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
