@@ -43,7 +43,9 @@ const GamePage = () => {
   const [loadBuffer, setLoadBuffer] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchQuestions()).then(() => setLoadBuffer(false));
+    dispatch(fetchQuestions())
+      .then(() => setLoadBuffer(false))
+      .catch((error) => console.error(error));
   }, []);
 
   useEffect(() => {
@@ -51,7 +53,7 @@ const GamePage = () => {
   }, [user.gold, user.health]);
 
   if (!user) return <Redirect to="/login" />;
-  if (questions.length === 0 || loadBuffer) return <LoadingPage />;
+  if (questions.length === 0) return <LoadingPage />;
 
   const max = questions.length;
   const question = questions[idx];
@@ -286,11 +288,37 @@ const GamePage = () => {
   };
 
   const restart = () => {
-    // restart logic, reseting states, etc...
+    setLoadBuffer(true);
+    setPlayerAttack(defaultPlayerAttack);
+    setTotalAnswered(0);
+    setTotalCorrects(0);
+    setRound(1);
+    setEnemy(enemy1);
+    setEnemy((prevEnemy) => ({
+      ...prevEnemy,
+      health: prevEnemy.defaultHealth,
+    }));
+
     setTimeout(() => {
       setGameover(false);
-    }, 1500);
+    }, 500);
+
+    setTimeout(() => {
+      setLoadBuffer(false);
+    }, 1000);
+
+    dispatch(fetchQuestions()).then(() => {
+      setTimeout(() => {
+        setGameover(false);
+      }, 500);
+
+      setTimeout(() => {
+        setLoadBuffer(false);
+      }, 1000);
+    });
   };
+
+  if(loadBuffer) return <LoadingPage />
 
   return (
     <div className="game-page-container">
