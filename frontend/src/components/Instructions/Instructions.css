@@ -102,6 +102,7 @@
 .tab-contents {
   height: 100%;
   width: 100%;
+  padding: 0 2%;
 }
 
 .tab {
@@ -113,10 +114,28 @@
   height: 100%;
   /* width: 100%; */
   position: relative;
-  display: fixed;
   flex-direction: column;
   align-items: center; 
   overflow: auto;
 
   /* display: absolute; */
+}
+
+.tab-contents > * {
+  padding: 2% 5%;
+  box-sizing: border-box;
+}
+
+.tab::-webkit-scrollbar{
+  width: 8px; /* Width of the scrollbar */
+}
+
+.tab::-webkit-scrollbar-thumb {
+  background-color: #8f8f8f; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Radius of the scrollbar thumb */
+}
+
+.tab::-webkit-scrollbar-track {
+  background-color: #e1e1e1; /* Color of the scrollbar track */
+  border-radius: 4px;
 }

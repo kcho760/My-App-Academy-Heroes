@@ -105,13 +105,30 @@
   height: 50%;
   width: 50%;
   position: relative;
-  display: relative;
   flex-direction: column;
   align-items: center;
   left: 25%;
   overflow: auto;
   
   /* box-sizing: border-box; */
+}
+
+.team-tab {
+  box-sizing: border-box;
+}
+
+.team-tab::-webkit-scrollbar{
+  width: 8px; /* Width of the scrollbar */
+}
+
+.team-tab::-webkit-scrollbar-thumb {
+  background-color: #8f8f8f; /* Color of the scrollbar thumb */
+  border-radius: 4px; /* Radius of the scrollbar thumb */
+}
+
+.team-tab::-webkit-scrollbar-track {
+  background-color: #e1e1e1; /* Color of the scrollbar track */
+  border-radius: 4px;
 }
 
 .teamDescription {

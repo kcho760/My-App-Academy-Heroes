@@ -174,8 +174,8 @@ const GamePage = () => {
 
   const nextQuestion = () => {
     // giving 2s buffer before switching to next question
+    // setPlayerAttack(()=>defaultPlayerAttack); // should reset attack on round not question
     setTimeout(() => {
-      setPlayerAttack(defaultPlayerAttack);
       if (idx + 1 < max) {
         setIdx((prevIdx) => prevIdx + 1);
       } else {
@@ -193,6 +193,7 @@ const GamePage = () => {
       user.gold += enemy.gold;
       const newRound = round + 1;
       setRound(newRound);
+      setPlayerAttack(()=>defaultPlayerAttack);
 
       if ((newRound + 5) % 5 === 3 || (newRound + 5) % 5 === 4) {
         setAttackAnimation(true);

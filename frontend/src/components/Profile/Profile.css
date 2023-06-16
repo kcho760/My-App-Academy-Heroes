@@ -19,9 +19,12 @@
   background-image: url("https://e0.pxfuel.com/wallpapers/69/1009/desktop-wallpaper-blue-minimalistic-electronic-technology-border-background-technology-technology-design-graphic-graphic-design-background-templates-thumbnail.jpg");
   background-size: cover;
   color: white;
-  font-size: 40px;
+  /* font-size: 40px; */
   text-shadow: 0 0 20px cyan;
-  
+}
+
+.profile-text{
+  font-size: 40px;
 }
 
 .defaultPic {
@@ -45,6 +48,7 @@
   position: relative;
   font-size: 20px;
   padding: 30px;
+  padding-bottom: 10px;
   box-sizing: border-box;
   color: white;
   text-shadow: 0 0 20px greenyellow;
@@ -89,14 +93,29 @@
 }
 
 .gach {
-  position: flex;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  padding: 50px;
+  padding: 5%;
+  padding-top: 20px;
   color: white;
   text-shadow: 0 0 20px blue;
+}
+
+.profile-deck {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 49%);
+  gap: 2%;
+}
+
+.gachButton-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  margin: 10px 0;
 }
 
 .gachButton {
@@ -107,13 +126,19 @@
   background: linear-gradient(to left, green, purple,orange, red, orange, purple, green);
   animation: gachAnimation 10s linear infinite;
   background-size: 200% 100%;
-  position: absolute;
-  left: 30%;
+  /* position: absolute; */
+  /* left: 30%; */
 }
 
 .gachButton:hover {
   transition: transform 0.1s;
   transform: scale(1.1);
+}
+.deck-deselect-button{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .deselectButton {
@@ -122,7 +147,7 @@
   font-family: Futura;
   background-color: firebrick;
   color: black;
-  width: 240px;
+  /* width: 240px; */
 }
 
 .deselectButton:hover {
