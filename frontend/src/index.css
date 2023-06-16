@@ -4,10 +4,6 @@
   src: url("./assets/fonts/FuturaDisplayBQRegular.otf") format("opentype");
 }
 
-html {
-  width: 100vw;
-}
-
 #root {
   font-family: Futura;
 }

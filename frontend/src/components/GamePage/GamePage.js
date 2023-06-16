@@ -12,10 +12,12 @@ import enemy2 from "../Enemy/enemy2.js";
 import kinTheConqueror from "../Enemy/kinTheConqueror.js";
 import Kyletronic from "../Enemy/kyletronic";
 import GamePlayer from "../GameCharacter/gamePlayer";
-import { updateUser } from "../../store/session";
+import { updateUser, getCurrentUser } from "../../store/session";
 import GameOver from "./GameOver";
 import Card from "../Card/Card";
 import CardSelection from "../CardSelection/CardSelection";
+import jwtFetch from "../../store/jwt";
+
 const GamePage = () => {
   const defaultPlayerAttack = 25;
   const dispatch = useDispatch();
@@ -121,7 +123,10 @@ const GamePage = () => {
       );
       if (user.health - enemy.attack <= 0) {
         setGameover(true);
+        deleteCards();
         user.health = 100;
+
+        return;
       } else {
         user.health -= enemy.attack;
       }
@@ -185,7 +190,8 @@ const GamePage = () => {
           setTimeout(() => {
             setShouldAnimateOut(true);
             setTimeout(() => {
-              const randomEnemy = Math.random() < 0.5 ? kinTheConqueror : Kyletronic;
+              const randomEnemy =
+                Math.random() < 0.5 ? kinTheConqueror : Kyletronic;
               setEnemy(randomEnemy);
               setEnemy((prevEnemy) => ({
                 ...prevEnemy,
@@ -260,13 +266,29 @@ const GamePage = () => {
     });
   };
 
-  const deleteCards = () => {
-    dispatch();
+  const deleteCards = async () => {
+    const cardsToDelete = filteredCards.map((card) => card._id);
+    const userId = user._id;
+
+    const payload = { userId, cardsToDelete };
+
+    try {
+      const res = await jwtFetch("/api/cards", {
+        method: "DELETE",
+        body: JSON.stringify(payload),
+      });
+    } catch (error) {
+      console.error("Error deleting cards:", error);
+    } finally {
+      dispatch(getCurrentUser());
+    }
   };
 
   const restart = () => {
-    setGameover(false);
     // restart logic, reseting states, etc...
+    setTimeout(() => {
+      setGameover(false);
+    }, 1500);
   };
 
   return (
