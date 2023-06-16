@@ -20,6 +20,7 @@ const Profile = () => {
   const [allCards, setAllCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [toggleButton, setToggleButton] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const pullCard = async () => {
     if (gold >= 10) {
@@ -35,8 +36,10 @@ const Profile = () => {
         });
 
         if (response.ok) {
+          setLoading(true);
           setTimeout(() => {
             setIsModalOpen(false);
+            setLoading(false);
           }, 8000);
         } else {
           console.error("Failed to assign card:", response.status);
@@ -91,12 +94,18 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    dispatch(getCurrentUser());
+    const fetchCurrentUser = async () => {
+      setLoading(true);
+      await dispatch(getCurrentUser());
+      setLoading(false);
+    };
+    fetchCurrentUser();
   }, [pulling, toggleButton, dispatch]);
   useEffect(() => {
     fetchallCards();
   }, []);
-
+  const lastCardRarity =
+    playerCards.length > 0 ? playerCards[playerCards.length - 1].rarity : null;
   return (
     <div className="profile-container">
       <div className="profile-div">
@@ -182,24 +191,39 @@ const Profile = () => {
         )}
       </div>
 
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-        style={{
-          content: {
-            maxWidth: "50%", // limit the maximum width of the video
-            maxHeight: "50%", // limit the maximum height of the video
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          },
-        }}
-      >
-        <video autoPlay style={{ width: "100%", height: "auto" }}>
-          <source src={RareGacha} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </Modal>
+      {!loading && (
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          style={{
+            content: {
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              right: "auto",
+              bottom: "auto",
+              transform: "translate(-50%, -50%)", // Centres the modal box
+              display: "flex", // These three styles will help center the video.
+              justifyContent: "center",
+              alignItems: "center",
+            },
+          }}
+        >
+          <video autoPlay style={{ width: "100%", height: "auto" }}>
+            {/* {const lastCardRarity = playerCards[playerCards.length - 1]} */}
+            {lastCardRarity === "SR" && (
+              <source src={SuperRareGacha} type="video/mp4" />
+            )}
+            {lastCardRarity === "R" && (
+              <source src={RareGacha} type="video/mp4" />
+            )}
+            {lastCardRarity === "N" && (
+              <source src={NormalGacha} type="video/mp4" />
+            )}
+            Your browser does not support the video tag.
+          </video>
+        </Modal>
+      )}
     </div>
   );
 };
