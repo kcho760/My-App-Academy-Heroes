@@ -174,8 +174,8 @@ const GamePage = () => {
 
   const nextQuestion = () => {
     // giving 2s buffer before switching to next question
+    setPlayerAttack(()=>defaultPlayerAttack);
     setTimeout(() => {
-      setPlayerAttack(defaultPlayerAttack);
       if (idx + 1 < max) {
         setIdx((prevIdx) => prevIdx + 1);
       } else {
