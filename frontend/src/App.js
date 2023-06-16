@@ -29,8 +29,6 @@ function App() {
           <AuthRoute exact path="/signup" component={SignupForm} />
           <ProtectedRoute exact path="/game" component={GamePage} />
           <ProtectedRoute exact path="/profile" component={Profile} />
-          {/* for testing purpose, delete after!!! */}
-          <ProtectedRoute exact path="/gameover" component={GameOver} />
         </Switch>
       </div>
     )
