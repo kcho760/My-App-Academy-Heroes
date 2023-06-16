@@ -128,6 +128,7 @@ const GamePage = () => {
         setGameover(true);
         deleteCards();
         user.health = 100;
+        dispatch(updateUser(user));
 
         return;
       } else {
