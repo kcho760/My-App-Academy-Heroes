@@ -141,7 +141,29 @@
   display: relative;
   flex-direction: column;
   align-items: center;
-  left: 39%;
-  top: 15%;
+  bottom: 1%;
   opacity: 1;
+  color: black;
+  background-color: lightblue;
+  font-size: 30px;
+  text-shadow: 0 0 20px navy;
+  border-radius: 12px;
+  width: 40%;
+  text-align: center;
+}
+
+.linkedin-button {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  top: 73%;
+  left: 37%;
+}
+
+.git-button {
+  position: absolute;
+  width: 10%;
+  height: 11%;
+  top: 73%;
+  left: 47%;
 }
