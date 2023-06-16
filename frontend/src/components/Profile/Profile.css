@@ -81,7 +81,16 @@
   font-size: 20px;
   font-family: Futura;
   color: rgb(184, 248, 87);
-  background: linear-gradient(to left, green, purple,orange, red, orange, purple, green);
+  background: linear-gradient(
+    to left,
+    green,
+    purple,
+    orange,
+    red,
+    orange,
+    purple,
+    green
+  );
   animation: gachAnimation 10s linear infinite;
   background-size: 200% 100%;
   position: absolute;
@@ -133,15 +142,16 @@
 }
 
 @keyframes gachAnimation {
-  0%{
+  0% {
     background-position: 100% 0;
   }
-  100%{
+  100% {
     background-position: -100% 0;
   }
 }
 
-.profile-div, .card-collection {
+.profile-div,
+.card-collection {
   position: sticky;
   top: 0;
   overflow-y: scroll;
@@ -149,16 +159,69 @@
   scrollbar-color: #8f8f8f #e1e1e1;
 }
 
-.profile-div::-webkit-scrollbar, .card-collection::-webkit-scrollbar {
+.profile-div::-webkit-scrollbar,
+.card-collection::-webkit-scrollbar {
   width: 10px; /* Width of the scrollbar */
 }
 
-.profile-div::-webkit-scrollbar-thumb, .card-collection::-webkit-scrollbar-thumb {
+.profile-div::-webkit-scrollbar-thumb,
+.card-collection::-webkit-scrollbar-thumb {
   background-color: #8f8f8f; /* Color of the scrollbar thumb */
   border-radius: 4px; /* Radius of the scrollbar thumb */
 }
 
-.profile-div::-webkit-scrollbar-track, .card-collection::-webkit-scrollbar-track {
+.profile-div::-webkit-scrollbar-track,
+.card-collection::-webkit-scrollbar-track {
   background-color: #e1e1e1; /* Color of the scrollbar track */
   border-radius: 4px;
+}
+.card-animation-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 15%;
+  height: 400px;
+  width: 400px;
+  transform: translate(-50%, -50%);
+  background-color: rgba(20, 5, 5, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-animation {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+
+.card-animation .card-body {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.star-effect {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000,
+      0 0 20px #ff0000;
+  }
+  50% {
+    box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000,
+      0 0 40px #ff0000;
+  }
+  100% {
+    box-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000,
+      0 0 20px #ff0000;
+  }
 }
