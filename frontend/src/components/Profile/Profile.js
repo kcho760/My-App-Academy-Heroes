@@ -135,7 +135,7 @@ const Profile = () => {
       </div>
 
       <div className="card-collection">
-        Collection
+        <div className="collection-title">Collection</div>
         {allCards.length === 0 ? (
           <p>No cards in collection.</p>
         ) : (
