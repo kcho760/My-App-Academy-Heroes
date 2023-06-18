@@ -115,6 +115,12 @@
 
 .team-tab {
   box-sizing: border-box;
+  height: 50%;
+  width: 50%;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  display: relative;
 }
 
 .team-tab::-webkit-scrollbar{
@@ -132,7 +138,7 @@
 }
 
 .teamDescription {
-  position: relative;
+  position: absolute;
   display: relative;
   top: 0;
   left: 0;
@@ -149,12 +155,12 @@
   flex-direction: column;
   align-items: center;
   /* left: 30%; */
-  top: 15%;
+  /* top: 15%; */
   opacity: 2;
 }
 
-.photo {
-  position: absolute;
+/* .photo {
+  position: relative;
   display: relative;
   flex-direction: column;
   align-items: center;
@@ -165,16 +171,16 @@
   font-size: 30px;
   text-shadow: 0 0 20px navy;
   border-radius: 12px;
-  width: 40%;
+  width: 100%;
   text-align: center;
-}
+} */
 
 .linkedin-button {
   position: absolute;
   width: 10%;
   height: 10%;
   top: 73%;
-  left: 37%;
+  left: 40%;
 }
 
 .git-button {
@@ -182,5 +188,14 @@
   width: 10%;
   height: 11%;
   top: 73%;
-  left: 47%;
+  left: 50%;
+}
+
+.teamPhoto {
+  position: relative;
+  height: 90%;
+  width: 100%;
+  top: 0.8%;
+  border-radius: 15px;
+  box-shadow: 0 0 20px turquoise;
 }
