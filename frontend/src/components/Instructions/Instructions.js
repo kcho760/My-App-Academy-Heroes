@@ -5,34 +5,34 @@ import '../NavBar/NavBar.css'
 
 function Instructions() {
 
-  const [activeTab, setActiveTab] = useState("generalTab");
+  const [instructionTab, setInstructionTab] = useState("generalTab");
 
   const handleTabClick = (tab) => {
-    setActiveTab(tab)
+    setInstructionTab(tab)
   };
 
   return (
     <div className="instructions-container">
       <div className="modal-tabs">
         
-        <button className={`tab ${activeTab === "generalTab" && "active"}`}
+        <button className={`tab ${instructionTab === "generalTab" && "instructionTab"}`}
           onClick={() => handleTabClick("generalTab")}>
             General
         </button>
 
-        <button className={`tab ${activeTab === "gameTab" && "active"}`}
+        <button className={`tab ${instructionTab === "gameTab" && "instructionTab"}`}
           onClick={() => handleTabClick("gameTab")}>
             Game
         </button>
 
-        <button className={`tab ${activeTab === "other" && "active"}`}
+        <button className={`tab ${instructionTab === "other" && "instructionTab"}`}
           onClick={() => handleTabClick("other")}>
             Warnings
         </button>
 
         </div>
       <div className="tab-contents">
-        {activeTab === "generalTab" && (
+        {instructionTab === "generalTab" && (
           <div className="tab">
             <h1 className= "generalHeader">**"Profile" and "Game" tabs only visible when logged in**</h1>
               <ul className="tabDescription">
@@ -43,7 +43,7 @@ function Instructions() {
               </ul>
           </div>
         )}
-        {activeTab === "gameTab" && (
+        {instructionTab === "gameTab" && (
           <div className="tab">
               <ul className="tabDescription">
               <li className="li-space">On the "game" tab; you'd see waves of enemies on the right side of the screen. </li>
@@ -66,7 +66,7 @@ function Instructions() {
               </ul>
           </div>
         )}
-        {activeTab === "other" && (
+        {instructionTab === "other" && (
           <div className="tab">
               <ul className="tabDescription">
               <li className="li-space">If for any reason your health bar reaches 0; your TA will be disappointed. </li>
