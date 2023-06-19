@@ -1,7 +1,12 @@
+[My App Academy Heroes](https://my-app-academy-heroes.onrender.com/)
+
+![pic 1](/frontend/src/assets/images/1.png)
+![pic 2](/frontend/src/assets/images/2.png)
+![pic 3](/frontend/src/assets/images/3.png)
+
 # My App Academy Heroes
 
 My App Academy Heroes is a Mern stack web based game where the player can fight enemies by answering questions, earn gold by defeating enemies, and obtain different cards to build their decks for powering up. 
-
 
 ## User Auth
 - User is able to sign up, log in, and log out
@@ -26,17 +31,22 @@ My App Academy Heroes is a Mern stack web based game where the player can fight 
 - Cards provide powerups. (lifelines)
 - Upon death, loses selected cards
 
-## Canvas
-- Graphical representation of game
-
 ## Generate Profile Avatar
 - User takes picture using webcam and it gets sent to ai generator
  to use as profile picture
 - Default picture will be provided if user doesn’t want to use webcam
 
-## Production Readme
+## Technologies, Libraries
 
-## Hosting
+- React
+- MongoDB
+- ExpressJs
+- NodeJs
+- AWS S3
+- Ai Lab Tools API
+- QuizAPI
+- HTML
+- CSS
 
 ## Team:
 - Team Leader: Kevin Cho
