@@ -32,8 +32,7 @@ My App Academy Heroes is a Mern stack web based game where the player can fight 
 - Every 5th round is a boss stage, upon defeating boss, deck card useability will be reset
 
 ## Generate Profile Avatar
-- User takes picture using webcam and it gets sent to ai generator
- to use as profile picture
+- User can takes picture using webcam which gets sent to the backend and then to AILabTools and then to Amazon to be stored and linked to user
 - Default picture will be provided if user doesn’t want to use webcam
 
 ## Technologies, Libraries
@@ -51,5 +50,5 @@ My App Academy Heroes is a Mern stack web based game where the player can fight 
 - Team Leader: Kevin Cho
 - Front-end Lead: Henry Lin
 - Back-end Lead: Hong Chen
-- Flex Lead: Jia Min
+- Flex Lead: Jiamin Zou
 
