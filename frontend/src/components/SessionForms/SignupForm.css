@@ -1,34 +1,42 @@
-/* label {
-  display: block;
-  margin-bottom: 20px;
-  margin-left: 20px;
-  font-size: 20px;
-  font-weight: bold;
-  position: relative;
-}
-
-input {
-  display: block;
-  border-radius: 8px;
-  font-size: 20px;
-  margin-top: 10px;
-} */
-
 .session-page {
-  /* margin-top: 20px; */
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
-  /* background-color: tan; */
   background: linear-gradient(to right, #ff4f00, goldenrod);
 
   height: calc(100vh - 100px);
 }
 
+.signup-page {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 42% 55%;
+  column-gap: 3%;
+  box-sizing: border-box;
+}
+
+.camera-section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+  box-sizing: border-box;
+  padding-left: 30%;
+}
+
+.camera-explain {
+  margin-top: 15px;
+ display: flex;
+ flex-direction: column;
+}
+.camera-explain>span {
+  margin-bottom: 2px;
+}
+
+
 .session-form {
-  /* width: 50%;
-  margin-top: 10px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,7 +73,8 @@ input {
 }
 
 .session-btn:disabled {
-  color: gray;
+  color: lightgray;
+  background: gray;
 }
 
 .session-header {
@@ -84,8 +93,13 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 100%;
   flex-direction: column;
+}
+
+.session-form-container.signup {
+  padding-right: 30%;
+  box-sizing: border-box;
 }
 
 .processing-signup {

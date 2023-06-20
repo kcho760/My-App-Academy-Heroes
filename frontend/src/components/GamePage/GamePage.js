@@ -74,7 +74,6 @@ const GamePage = () => {
     })
     .filter((ans) => ans);
 
-  console.log(correctAnswers);
 
   const correct = (ans) =>
     correctAnswers.find((correctAns) => correctAns === ans);

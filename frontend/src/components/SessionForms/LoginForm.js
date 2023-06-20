@@ -7,6 +7,7 @@ import "./LoginForm.css";
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [logingIn, setLogingIn] = useState(false);
   const errors = useSelector((state) => state.errors.session);
   const dispatch = useDispatch();
 
@@ -20,20 +21,29 @@ function LoginForm() {
     const setState = field === "email" ? setEmail : setPassword;
     return (e) => setState(e.currentTarget.value);
   };
-  const demoLogin = (e) => {
+  const demoLogin = async (e) => {
+    setLogingIn(true);
     e.preventDefault();
-    dispatch(login({ email: "demo@gmail.com", password: "password" }));
+    try {
+      dispatch(login({ email: "demo@gmail.com", password: "password" }));
+    } finally {
+      setLogingIn(false);
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    setLogingIn(true);
     e.preventDefault();
-    dispatch(login({ email, password }));
+    try {
+      await dispatch(login({ email, password }));
+    } finally {
+      setLogingIn(false);
+    }
   };
-
 
   return (
     <div className="session-page">
-        <div className="session-form-container">
+      <div className="session-form-container">
         <h2 className="session-header">Log In Form</h2>
         <form className="session-form" onSubmit={handleSubmit}>
           <div className="input-field">
@@ -63,17 +73,20 @@ function LoginForm() {
             </label>
             <div className="errors">{errors?.password}</div>
           </div>
-          <input
-            className="session-btn"
-            type="submit"
-            value="Log In"
-            disabled={!email || !password}
-          />
-        </form>
           <button
-            className="session-btn"
-            onClick={demoLogin}
-          >Demo Login</button>
+            className={`session-btn ${logingIn ? "processing-signup" : ""}`}
+            disabled={!email || !password || logingIn}
+          >
+            {logingIn ? "Processing" : "Log In"}
+          </button>
+        </form>
+        <button
+          className={`session-btn ${logingIn ? "processing-signup" : ""}`}
+          onClick={demoLogin}
+          disabled={logingIn}
+        >
+          {logingIn ? "Processing" : "Demo Log In"}
+        </button>
       </div>
     </div>
   );
