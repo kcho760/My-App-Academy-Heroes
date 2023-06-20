@@ -20,6 +20,7 @@ const Profile = () => {
   const [allCards, setAllCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [toggleButton, setToggleButton] = useState(false);
+  const [sellLoad, setSellLoad] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const pullCard = async () => {
@@ -73,6 +74,24 @@ const Profile = () => {
       console.error("Error toggling card selection:", error);
     }
   };
+
+  const sellCard = async (cardId, owner) => {
+    setSellLoad(() => true);
+    try {
+      const response = await jwtFetch(`/api/cards/${cardId}`, {
+        method: "DELETE",
+        body: JSON.stringify({ userId: owner, gold: 5 }),
+      });
+      if (response.ok) {
+        dispatch(getCurrentUser());
+      }
+    } catch (error) {
+      console.error("Error selling card:", error);
+    } finally {
+      setSellLoad(() => false);
+    }
+  };
+
   const fetchallCards = async () => {
     try {
       const response = await jwtFetch("/api/cards", {
@@ -101,9 +120,11 @@ const Profile = () => {
     };
     fetchCurrentUser();
   }, [pulling, toggleButton, dispatch]);
+
   useEffect(() => {
     fetchallCards();
   }, []);
+
   const lastCardRarity =
     playerCards.length > 0 ? playerCards[playerCards.length - 1].rarity : null;
   return (
@@ -120,34 +141,31 @@ const Profile = () => {
           <p>gold: {gold} </p>
           <p>cards: {playerCards.length}</p>
           <div className="gachButton-wrapper">
-          <button onClick={pullCard} className="gachButton">
-            Pull a Card (Cost: 10 Gold)
-          </button>
-
+            <button onClick={pullCard} className="gachButton">
+              Pull a Card (Cost: 10 Gold)
+            </button>
           </div>
         </div>
         <div className="gach">
           <span className="profile-text">Your deck</span>
           <div className="profile-deck">
-
-          {playerCards
-            .filter((card) => card.selected)
-            .map((card, index) => (
-              <div key={index}>
-                <Card card={card} />
-                <div className="deck-deselect-button">
-                <button
-                  onClick={() =>
-                    handleToggleCardSelection(card._id, card.selected)
-                  }
-                  className="deselectButton"
-                >
-                  Deselect
-                </button>
-
+            {playerCards
+              .filter((card) => card.selected)
+              .map((card, index) => (
+                <div key={index}>
+                  <Card card={card} />
+                  <div className="deck-deselect-button">
+                    <button
+                      onClick={() =>
+                        handleToggleCardSelection(card._id, card.selected)
+                      }
+                      className="deselectButton"
+                    >
+                      Deselect
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
@@ -181,17 +199,29 @@ const Profile = () => {
                   {isOwned &&
                     playerCards.filter((card) => card.selected === true)
                       .length < 4 && (
-                      <button
-                        className="selectButton"
-                        onClick={() =>
-                          handleToggleCardSelection(
-                            firstCard._id,
-                            firstCard.selected
-                          )
-                        }
-                      >
-                        {firstCard.selected ? "Deselect" : "Select"}
-                      </button>
+                      <>
+                        <button
+                          className="selectButton"
+                          disabled={sellLoad}
+                          onClick={() =>
+                            handleToggleCardSelection(
+                              firstCard._id,
+                              firstCard.selected
+                            )
+                          }
+                        >
+                          {firstCard.selected ? "Deselect" : "Select"}
+                        </button>
+                        <button
+                          className="sellButton"
+                          disabled={sellLoad}
+                          onClick={() =>
+                            sellCard(firstCard._id, firstCard.owner)
+                          }
+                        >
+                          Sell: 5 Gold
+                        </button>
+                      </>
                     )}
                 </li>
               );
