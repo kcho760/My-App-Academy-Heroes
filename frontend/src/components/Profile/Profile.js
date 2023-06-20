@@ -196,33 +196,34 @@ const Profile = () => {
                 <li key={index} className="cardContainer">
                   <Card card={card} />
                   <p>Amount owned: {amountOwned}</p>
-                  {isOwned &&
-                    playerCards.filter((card) => card.selected === true)
-                      .length < 4 && (
-                      <>
-                        <button
-                          className="selectButton"
-                          disabled={sellLoad}
-                          onClick={() =>
-                            handleToggleCardSelection(
-                              firstCard._id,
-                              firstCard.selected
-                            )
-                          }
-                        >
-                          {firstCard.selected ? "Deselect" : "Select"}
-                        </button>
-                        <button
-                          className="sellButton"
-                          disabled={sellLoad}
-                          onClick={() =>
-                            sellCard(firstCard._id, firstCard.owner)
-                          }
-                        >
-                          Sell: 5 Gold
-                        </button>
-                      </>
+                  {isOwned && (
+                  <>
+                    {playerCards.filter((card) => card.selected === true).length < 4 && (
+                      <button
+                        className="selectButton"
+                        disabled={sellLoad}
+                        onClick={() =>
+                          handleToggleCardSelection(
+                            firstCard._id,
+                            firstCard.selected
+                          )
+                        }
+                      >
+                        {firstCard.selected ? "Deselect" : "Select"}
+                      </button>
                     )}
+                    <button
+                      className="sellButton"
+                      disabled={sellLoad}
+                      onClick={() =>
+                        sellCard(firstCard._id, firstCard.owner)
+                      }
+                    >
+                      Sell: 5 Gold
+                    </button>
+                  </>
+                )}
+
                 </li>
               );
             })}
