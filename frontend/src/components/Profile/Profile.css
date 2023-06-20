@@ -175,13 +175,17 @@
   padding: 5px;
 }
 
-.selectButton {
+.selectButton,.sellButton {
   margin: 10px;
   background-color: green;
   border-radius: 15px;
   font-size: 20px;
   width: 170px;
   font-family: Futura;
+}
+
+.sellButton {
+  background-color: gold;
 }
 
 .selectButton:hover {
