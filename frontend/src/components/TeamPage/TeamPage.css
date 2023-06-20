@@ -179,21 +179,21 @@
   position: absolute;
   width: 10%;
   height: 10%;
-  top: 73%;
+  top: 88%;
   left: 40%;
 }
 
 .git-button {
   position: absolute;
   width: 10%;
-  height: 11%;
-  top: 73%;
+  height: 10%;
+  top: 88%;
   left: 50%;
 }
 
 .teamPhoto {
   position: relative;
-  height: 90%;
+  height: 75%;
   width: 100%;
   top: 0.8%;
   border-radius: 15px;
