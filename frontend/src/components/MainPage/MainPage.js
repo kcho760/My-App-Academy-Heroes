@@ -6,10 +6,10 @@ function MainPage() {
       <>
       
         <div className="MainSplashDiv">
-          <div>
+          <div className="logoHolder">
+            <img src={CardLogo} className="cardLogo1"></img>
               <div className="gameIntro">
                 <div className="introText">
-            <img src={CardLogo} className="cardLogo1"></img>
                   Welcome to MyAppAcademy Hero; 
                   where the goal of the game is to waste your time and take 
                   your money.
