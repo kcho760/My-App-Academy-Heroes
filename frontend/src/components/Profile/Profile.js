@@ -23,6 +23,7 @@ const Profile = () => {
   const [sellLoad, setSellLoad] = useState(false);
   const [loading, setLoading] = useState(true);
   const [showCard, setShowCard] = useState(false);
+  const [timeoutId, setTimeoutId] = useState(null);
 
   const cardRef = useRef();
 
@@ -42,12 +43,12 @@ const Profile = () => {
         if (response.ok) {
           setLoading(true);
           setIsModalOpen(true);
-          setTimeout(() => {
+          const id = setTimeout(() => {
             setIsModalOpen(false);
-
+            setShowCard(true);
             setLoading(false);
-
           }, 8000);
+          setTimeoutId(id);
         } else {
           console.error("Failed to assign card:", response.status);
         }
@@ -256,6 +257,7 @@ const Profile = () => {
             setIsModalOpen(false);
 
             setShowCard(true);
+            clearTimeout(timeoutId);
             setTimeout(() => {
               setShowCard(false);
             }, 8000);
