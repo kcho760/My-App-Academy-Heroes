@@ -22,15 +22,21 @@
   transition: transform 0.4s;
 }
 
+.links-auth {
+  height: 100%;
+  width: 100%;
+}
+
 .loginButton {
   color: white;
   background-color:transparent;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 23px;
   border-radius: 5px;
-  position: absolute;
-  right: 7%;
-  top: 60%;
+  position: relative;
+  display: fixed;
+  left: 81%;
+  top: 65%;
   /* margin-left: 1120px;
   margin-right: 10px; */
   padding: 5px;
@@ -42,11 +48,12 @@
   color:white;
   background-color: transparent;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 23px;
   border-radius: 5px;
-  position: absolute;
-  top: 60%;
-  right: .8%;
+  position: relative;
+  display: fixed;
+  top: 65%;
+  left: 81%;
   padding: 5px;
   font-style: italic;
   /* margin-top: 4px; */
@@ -60,6 +67,7 @@
   border: solid goldenrod;
   border-radius: 8x;
   font-weight: bold;
+  z-index: 1;
 }
 
 .signupButton:hover {
@@ -68,6 +76,7 @@
   border: solid goldenrod;
   border-radius: 8px;
   font-weight: bold;
+  z-index: 1;
 }
 
 /* .links-nav a {

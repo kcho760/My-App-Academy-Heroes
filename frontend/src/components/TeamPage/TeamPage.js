@@ -39,7 +39,7 @@ function TeamPage() {
         {activeTab === "KevinTab" && (
           <div className="team-tab">
               <p className="photo">Kevin Li</p>
-              <img src="https://myappacademyheroes.s3.amazonaws.com/648b38a7f3bf866b98b62d5c.jpg" width={450} height={250} className="teamPhoto"/>
+              <img src="https://media.licdn.com/dms/image/C4E03AQGnqjeC6DL6aQ/profile-displayphoto-shrink_200_200/0/1626712341805?e=1692835200&v=beta&t=83yndSDi2c96grxXQu6MY0NTziiIQohJ8nVUZotDzQM" width={450} height={250} className="teamPhoto"/>
                 <div className="teamDescription"> 
                     <p className="li-space">Eat your broccoli.</p>
                     <p className="li-space">Was voted into TeamLead for being the most mature and being the oldest.</p>
@@ -58,7 +58,7 @@ function TeamPage() {
         {activeTab === "JiaminTab" && (
           <div className="team-tab">
               <p className="photo">Jiamin Zou</p> 
-              <img src="https://myappacademyheroes.s3.amazonaws.com/648b55a17c3c986f005b1c1d.jpg" width={450} height={250} className="teamPhoto"/>                           
+              <img src="https://media.licdn.com/dms/image/C5603AQFquSA1WwtuwQ/profile-displayphoto-shrink_200_200/0/1622231453344?e=1692835200&v=beta&t=slhpoyvo6u1h4zXm5dEgQY14pnRHlPF0z25a6uIhDis" width={450} height={250} className="teamPhoto"/>                           
               <div className="teamDescription">               
               <p className="li-space">Study your CSS. </p>
               <p>Wanted to be FlexLead to do the least amount of work but ended up breaking his back carrying; at least carrying me. </p>             
@@ -77,7 +77,7 @@ function TeamPage() {
         {activeTab === "HongTab" && (
           <div className="team-tab">
               <p className="photo">Hong Chen</p>
-              <img src="https://myappacademyheroes.s3.amazonaws.com/648b371815d853337ca15e6b.jpg" width={450} height={250} className="teamPhoto"/>
+              <img src="https://media.licdn.com/dms/image/D4E03AQELXDBSjifD5A/profile-displayphoto-shrink_200_200/0/1687233362344?e=1692835200&v=beta&t=7OxRu_nSrpiNkeNKQz_I5P5K5NC2t9v4dqu3-IEepOk" width={450} height={250} className="teamPhoto"/>
               <div className="teamDescription">
               <p className="li-space"> Are you sure? </p>
               <p className="li-space"> The OG Cheerleader </p>         
