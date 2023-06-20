@@ -20,7 +20,6 @@ function NavBar () {
 
   const {pathname} = useLocation() 
 
-  // console.log(pathname)
 
   const getLinks = () => {
     

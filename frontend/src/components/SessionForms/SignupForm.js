@@ -62,92 +62,105 @@ function SignupForm() {
 
   return (
     <div className="session-page">
-      {image ? (
-        <div className="retake">
-          <div>
-            <img src={image} alt="Captured selfie" />
+      <div className="signup-page">
+        <div className="camera-section">
+          {image ? (
+            <div className="retake">
+              <div>
+                <img src={image} alt="Captured selfie" />
+              </div>
+              <button className="capture-button" onClick={() => setImage(null)}>
+                Retake
+              </button>
+            </div>
+          ) : (
+            <WebcamCapture onCapture={setImage} />
+          )}
+          <div className="camera-explain">
+            <span>* Picture is not necessary</span>
+            <span>
+              - Picture taken will processed by AI for avatar creation
+            </span>
+            <span>
+              - If picture is not taken, a default avatar image will be provided
+            </span>
           </div>
-          <button className="capture-button" onClick={() => setImage(null)}>
-            Retake
-          </button>
         </div>
-      ) : (
-        <WebcamCapture onCapture={setImage} />
-      )}
-      <div className="session-form-container">
-        <h2 className="session-header">Sign Up Form</h2>
-        <form className="session-form" onSubmit={handleSubmit}>
-          <div className="input-field">
-            <label>
-              <span className="email-label-su">Email</span>
-              <input
-                type="text"
-                className="input-SU"
-                value={email}
-                onChange={update("email")}
-                placeholder="Email"
-              />
-            </label>
-            <div className="errors">{errors?.email}</div>
-          </div>
+        <div className="session-form-container signup">
+          <h2 className="session-header">Sign Up Form</h2>
+          <form className="session-form" onSubmit={handleSubmit}>
+            <div className="input-field">
+              <label>
+                <span className="email-label-su">Email</span>
+                <input
+                  type="text"
+                  className="input-SU"
+                  value={email}
+                  onChange={update("email")}
+                  placeholder="Email"
+                />
+              </label>
+              <div className="errors">{errors?.email}</div>
+            </div>
 
-          <div className="input-field">
-            <label>
-              <span className="username-label">Username</span>
-              <input
-                className="input-SU"
-                type="text"
-                value={username}
-                onChange={update("username")}
-                placeholder="Username"
-              />
-            </label>
-            <div className="errors">{errors?.username}</div>
-          </div>
+            <div className="input-field">
+              <label>
+                <span className="username-label">Username</span>
+                <input
+                  className="input-SU"
+                  type="text"
+                  value={username}
+                  onChange={update("username")}
+                  placeholder="Username"
+                />
+              </label>
+              <div className="errors">{errors?.username}</div>
+            </div>
 
-          <div className="input-field">
-            <label>
-              <span className="password-label-su">Password</span>
-              <input
-                type="password"
-                className="input-SU"
-                value={password}
-                onChange={update("password")}
-                placeholder="Password"
-              />
-            </label>
-            <div className="errors">{errors?.password}</div>
-          </div>
+            <div className="input-field">
+              <label>
+                <span className="password-label-su">Password</span>
+                <input
+                  type="password"
+                  className="input-SU"
+                  value={password}
+                  onChange={update("password")}
+                  placeholder="Password"
+                />
+              </label>
+              <div className="errors">{errors?.password}</div>
+            </div>
 
-          <div className="input-field">
-            <label>
-              <span className="confirmPW">Confirm Password</span>
-              <input
-                type="password"
-                className="input-SU"
-                value={password2}
-                onChange={update("password2")}
-                placeholder="Confirm Password"
-              />
-            </label>
-            {password !== password2 && (
-              <div className="errors">Confirm Password field must match</div>
-            )}
-          </div>
-          <button
-            className={`session-btn ${isLoading ? "processing-signup" : ""}`}
-            type="submit"
-            disabled={
-              !email ||
-              !username ||
-              !password ||
-              password !== password2 ||
-              isLoading
-            }
-          >
-            {isLoading ? "Processing..." : "Sign Up"}
-          </button>
-        </form>
+            <div className="input-field">
+              <label>
+                <span className="confirmPW">Confirm Password</span>
+                <input
+                  type="password"
+                  className="input-SU"
+                  value={password2}
+                  onChange={update("password2")}
+                  placeholder="Confirm Password"
+                />
+              </label>
+              {password !== password2 && (
+                <div className="errors">Confirm Password field must match</div>
+              )}
+            </div>
+            <button
+              className={`session-btn ${isLoading ? "processing-signup" : ""}`}
+              type="submit"
+              disabled={
+                !email ||
+                !username ||
+                !password ||
+                password !== password2 ||
+                isLoading
+              }
+            >
+              {isLoading ? "Processing..." : "Sign Up"}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
