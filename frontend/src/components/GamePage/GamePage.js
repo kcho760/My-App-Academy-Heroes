@@ -285,6 +285,14 @@ const GamePage = () => {
         case "Instant Kill":
           const newTotal = totalAnswered + 1;
           setTotalAnswered(newTotal);
+          const correctAudio = new Audio(attackAudio1);
+          correctAudio.play();
+          setTimeout(() => {
+            setShowExplosion(true);
+          }, 800);
+          setTimeout(() => {
+            setShowExplosion(false);
+          }, 2000);
           handleEnemyLogic(true);
           nextQuestion();
           break;
