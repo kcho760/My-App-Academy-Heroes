@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCurrentUser } from "../../store/session";
 import jwtFetch from "../../store/jwt";
@@ -22,6 +22,10 @@ const Profile = () => {
   const [toggleButton, setToggleButton] = useState(false);
   const [sellLoad, setSellLoad] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showCard, setShowCard] = useState(false);
+  const [timeoutId, setTimeoutId] = useState(null);
+
+  const cardRef = useRef();
 
   const pullCard = async () => {
     if (gold >= 10) {
@@ -38,10 +42,13 @@ const Profile = () => {
 
         if (response.ok) {
           setLoading(true);
-          setTimeout(() => {
+          setIsModalOpen(true);
+          const id = setTimeout(() => {
             setIsModalOpen(false);
+            setShowCard(true);
             setLoading(false);
           }, 8000);
+          setTimeoutId(id);
         } else {
           console.error("Failed to assign card:", response.status);
         }
@@ -54,6 +61,19 @@ const Profile = () => {
       alert("You don't have enough gold to pull a card.");
     }
   };
+
+  function handleOutsideClick(e) {
+    if (cardRef.current && !cardRef.current.contains(e.target)) {
+      setShowCard(false);
+    }
+  }
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
   const handleToggleCardSelection = async (cardId, isSelected) => {
     try {
       const response = await jwtFetch(`/api/cards/${cardId}`, {
@@ -234,7 +254,15 @@ const Profile = () => {
       {!loading && (
         <Modal
           isOpen={isModalOpen}
-          onRequestClose={() => setIsModalOpen(false)}
+          onRequestClose={() => {
+            setIsModalOpen(false);
+
+            setShowCard(true);
+            clearTimeout(timeoutId);
+            setTimeout(() => {
+              setShowCard(false);
+            }, 8000);
+          }}
           style={{
             content: {
               position: "absolute",
@@ -263,6 +291,14 @@ const Profile = () => {
             Your browser does not support the video tag.
           </video>
         </Modal>
+      )}
+      {showCard && (
+        <div className="card-animation-container">
+          <div ref={cardRef} className="card-animation">
+            <div className="star-effect"></div>
+            <Card card={playerCards[playerCards.length - 1]} />
+          </div>
+        </div>
       )}
     </div>
   );
