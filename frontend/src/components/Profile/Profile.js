@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCurrentUser } from "../../store/session";
 import jwtFetch from "../../store/jwt";
@@ -20,7 +20,12 @@ const Profile = () => {
   const [allCards, setAllCards] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [toggleButton, setToggleButton] = useState(false);
+  const [sellLoad, setSellLoad] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [showCard, setShowCard] = useState(false);
+  const [timeoutId, setTimeoutId] = useState(null);
+
+  const cardRef = useRef();
 
   const pullCard = async () => {
     if (gold >= 10) {
@@ -37,10 +42,13 @@ const Profile = () => {
 
         if (response.ok) {
           setLoading(true);
-          setTimeout(() => {
+          setIsModalOpen(true);
+          const id = setTimeout(() => {
             setIsModalOpen(false);
+            setShowCard(true);
             setLoading(false);
           }, 8000);
+          setTimeoutId(id);
         } else {
           console.error("Failed to assign card:", response.status);
         }
@@ -53,6 +61,19 @@ const Profile = () => {
       alert("You don't have enough gold to pull a card.");
     }
   };
+
+  function handleOutsideClick(e) {
+    if (cardRef.current && !cardRef.current.contains(e.target)) {
+      setShowCard(false);
+    }
+  }
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
   const handleToggleCardSelection = async (cardId, isSelected) => {
     try {
       const response = await jwtFetch(`/api/cards/${cardId}`, {
@@ -73,6 +94,24 @@ const Profile = () => {
       console.error("Error toggling card selection:", error);
     }
   };
+
+  const sellCard = async (cardId, owner) => {
+    setSellLoad(() => true);
+    try {
+      const response = await jwtFetch(`/api/cards/${cardId}`, {
+        method: "DELETE",
+        body: JSON.stringify({ userId: owner, gold: 5 }),
+      });
+      if (response.ok) {
+        dispatch(getCurrentUser());
+      }
+    } catch (error) {
+      console.error("Error selling card:", error);
+    } finally {
+      setSellLoad(() => false);
+    }
+  };
+
   const fetchallCards = async () => {
     try {
       const response = await jwtFetch("/api/cards", {
@@ -101,9 +140,11 @@ const Profile = () => {
     };
     fetchCurrentUser();
   }, [pulling, toggleButton, dispatch]);
+
   useEffect(() => {
     fetchallCards();
   }, []);
+
   const lastCardRarity =
     playerCards.length > 0 ? playerCards[playerCards.length - 1].rarity : null;
   return (
@@ -120,34 +161,31 @@ const Profile = () => {
           <p>gold: {gold} </p>
           <p>cards: {playerCards.length}</p>
           <div className="gachButton-wrapper">
-          <button onClick={pullCard} className="gachButton">
-            Pull a Card (Cost: 10 Gold)
-          </button>
-
+            <button onClick={pullCard} className="gachButton">
+              Pull a Card (Cost: 10 Gold)
+            </button>
           </div>
         </div>
         <div className="gach">
           <span className="profile-text">Your deck</span>
           <div className="profile-deck">
-
-          {playerCards
-            .filter((card) => card.selected)
-            .map((card, index) => (
-              <div key={index}>
-                <Card card={card} />
-                <div className="deck-deselect-button">
-                <button
-                  onClick={() =>
-                    handleToggleCardSelection(card._id, card.selected)
-                  }
-                  className="deselectButton"
-                >
-                  Deselect
-                </button>
-
+            {playerCards
+              .filter((card) => card.selected)
+              .map((card, index) => (
+                <div key={index}>
+                  <Card card={card} />
+                  <div className="deck-deselect-button">
+                    <button
+                      onClick={() =>
+                        handleToggleCardSelection(card._id, card.selected)
+                      }
+                      className="deselectButton"
+                    >
+                      Deselect
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
@@ -178,11 +216,12 @@ const Profile = () => {
                 <li key={index} className="cardContainer">
                   <Card card={card} />
                   <p>Amount owned: {amountOwned}</p>
-                  {isOwned &&
-                    playerCards.filter((card) => card.selected === true)
-                      .length < 4 && (
+                  {isOwned && (
+                  <>
+                    {playerCards.filter((card) => card.selected === true).length < 4 && (
                       <button
                         className="selectButton"
+                        disabled={sellLoad}
                         onClick={() =>
                           handleToggleCardSelection(
                             firstCard._id,
@@ -193,6 +232,18 @@ const Profile = () => {
                         {firstCard.selected ? "Deselect" : "Select"}
                       </button>
                     )}
+                    <button
+                      className="sellButton"
+                      disabled={sellLoad}
+                      onClick={() =>
+                        sellCard(firstCard._id, firstCard.owner)
+                      }
+                    >
+                      Sell: 5 Gold
+                    </button>
+                  </>
+                )}
+
                 </li>
               );
             })}
@@ -203,7 +254,15 @@ const Profile = () => {
       {!loading && (
         <Modal
           isOpen={isModalOpen}
-          onRequestClose={() => setIsModalOpen(false)}
+          onRequestClose={() => {
+            setIsModalOpen(false);
+
+            setShowCard(true);
+            clearTimeout(timeoutId);
+            setTimeout(() => {
+              setShowCard(false);
+            }, 8000);
+          }}
           style={{
             content: {
               position: "absolute",
@@ -232,6 +291,14 @@ const Profile = () => {
             Your browser does not support the video tag.
           </video>
         </Modal>
+      )}
+      {showCard && (
+        <div className="card-animation-container">
+          <div ref={cardRef} className="card-animation">
+            <div className="star-effect"></div>
+            <Card card={playerCards[playerCards.length - 1]} />
+          </div>
+        </div>
       )}
     </div>
   );
