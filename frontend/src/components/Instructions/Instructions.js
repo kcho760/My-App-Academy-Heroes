@@ -5,34 +5,34 @@ import '../NavBar/NavBar.css'
 
 function Instructions() {
 
-  const [activeTab, setActiveTab] = useState("generalTab");
+  const [instructionTab, setInstructionTab] = useState("generalTab");
 
   const handleTabClick = (tab) => {
-    setActiveTab(tab)
+    setInstructionTab(tab)
   };
 
   return (
     <div className="instructions-container">
       <div className="modal-tabs">
         
-        <button className={`tab ${activeTab === "generalTab" && "active"}`}
+        <button className={`tab ${instructionTab === "generalTab" && "instructionTab"}`}
           onClick={() => handleTabClick("generalTab")}>
             General
         </button>
 
-        <button className={`tab ${activeTab === "gameTab" && "active"}`}
+        <button className={`tab ${instructionTab === "gameTab" && "instructionTab"}`}
           onClick={() => handleTabClick("gameTab")}>
             Game
         </button>
 
-        <button className={`tab ${activeTab === "other" && "active"}`}
+        <button className={`tab ${instructionTab === "other" && "instructionTab"}`}
           onClick={() => handleTabClick("other")}>
             Warnings
         </button>
 
         </div>
       <div className="tab-contents">
-        {activeTab === "generalTab" && (
+        {instructionTab === "generalTab" && (
           <div className="tab">
             <h1 className= "generalHeader">**"Profile" and "Game" tabs only visible when logged in**</h1>
               <ul className="tabDescription">
@@ -43,24 +43,30 @@ function Instructions() {
               </ul>
           </div>
         )}
-        {activeTab === "gameTab" && (
+        {instructionTab === "gameTab" && (
           <div className="tab">
               <ul className="tabDescription">
               <li className="li-space">On the "game" tab; you'd see waves of enemies on the right side of the screen. </li>
               
               <li className="li-space">You deal damage by answering questions on the bottom left of the screen. </li>
               
-              <li className="li-space">For each correct question; you obtain a bit of gold. If you defeat a wave; you receive more </li>
+              <li className="li-space">For each correct question; you obtain a bit of gold. If you defeat a wave; you </li>
               
-              <li className="li-space">gold. After completing a weeks-worth of enemies; you will encounter a TA who will test your </li>
-              <li className="li-space">knowledge. They're just like the practice waves before but with some curveballs/caveats that </li>
-              <li className="li-space">you won't know until the day of but if you ran through the earlier waves at least 10x in half </li>
-              <li className="li-space">the recommended time; you're good unless your database breaks. If you make it past the TA; you </li>
-              <li className="li-space">obtain even more gold to spend on your gambling addiction in the shop. </li>
+              <li className="li-space">receive more gold. After completing a weeks-worth of enemies; you will encounter </li>
+      
+              <li className="li-space">a TA who will test your knowledge. They're just like the practice waves before but </li>
+      
+              <li className="li-space">with some curveballs/caveats that you won't know until the day of but if you ran </li> 
+             
+              <li className="li-space">through the earlier waves at least 10x in half the recommended time; you're good </li> 
+
+              <li className="li-space">unless your database breaks. If you make it past the TA; you obtain even more </li> 
+              
+              <li className="li-space"> gold to spend on your gambling addiction in the shop. </li>
               </ul>
           </div>
         )}
-        {activeTab === "other" && (
+        {instructionTab === "other" && (
           <div className="tab">
               <ul className="tabDescription">
               <li className="li-space">If for any reason your health bar reaches 0; your TA will be disappointed. </li>

@@ -22,7 +22,7 @@ const Enemy = ({ enemy, showExplosion }) => {
 
   useEffect(() => {
     sethideImages(enemy.name === 'Kin the Conqueror' || enemy.name === 'Kyletronic');
-    console.log(hideImages)
+    // console.log(hideImages)
   }, [enemy.name]);
 
   return (
