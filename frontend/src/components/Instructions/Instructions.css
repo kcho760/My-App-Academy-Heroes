@@ -109,7 +109,7 @@
 .tab {
   border: solid white;
   background-color: rgba(0, 0, 0, 0.421);
-  border-radius: 20px;
+  border-radius: 10px;
   color: white; 
   /* margin: 1%; */
   height: 100%;
