@@ -34,12 +34,14 @@ function Instructions() {
       <div className="tab-contents">
         {instructionTab === "generalTab" && (
           <div className="tab">
-            <h1 className= "generalHeader">**"Profile" and "Game" tabs only visible when logged in**</h1>
               <ul className="tabDescription">
+            <h1 className= "li-space">**"Profile" and "Game" tabs only visible when logged in**</h1>
                 <li className="li-space">Collect cohortmates for different effects that will help you progress in the game.</li>
                 <li className="li-space">Not all cohortmates are created equal though. Higher rarity have stronger effects </li> 
                 <li className="li-space">but are less likely to be obtained. To obtain them; pray to the RNG gods when using </li>
-                <li className="li-space"> "Pull a Card" on your "profile" tab which would give a new card for 10 gold.</li>
+                <li className="li-space"> "Pull a Card" on your "profile" tab which would give a new card for 10 gold. You're</li>
+                <li className="li-space">able to sell cards you don't want by clicking the "Sell" option underneathe the card.</li>
+
               </ul>
           </div>
         )}
