@@ -151,6 +151,7 @@
   transition: transform 0.2s;
   text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
   box-shadow: 0 0 50px rgb(143, 194, 239);
+  z-index: 2;
 }
 
 
@@ -223,6 +224,7 @@
   transition: transform 0.2s;
   text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
   box-shadow: 0 0 50px rgb(143, 194, 239);
+  z-index: 1;
 }
 
 .logout-button {

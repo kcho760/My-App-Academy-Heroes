@@ -184,8 +184,19 @@
   font-family: Futura;
 }
 
+.selectButton.selected {
+  background-color: red;
+}
+
 .sellButton {
   background-color: gold;
+}
+
+.sellButton:hover {
+  transition: transform 0.1s;
+  transform: scale(1.1);
+  color: ivory;
+  text-shadow: 0 0 20px yellow;
 }
 
 .selectButton:hover {
