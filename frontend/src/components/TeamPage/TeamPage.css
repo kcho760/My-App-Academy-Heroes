@@ -87,7 +87,9 @@
 
 .tab-contents {
   width: 100%;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .team-tab {
@@ -96,27 +98,25 @@
   border-radius: 20px;
   color: white;
   font-size: 20px;
-  top: 20%; 
-  height: 50%;
+  height: 70%;
   width: 50%;
-  position: relative;
   flex-direction: column;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  left: 25%;
   overflow: auto;
+  position: relative;
   
-  /* box-sizing: border-box; */
 }
-
+/* 
 .team-tab {
   box-sizing: border-box;
   height: 50%;
   width: 50%;
-  position: relative;
   flex-direction: column;
   align-items: center;
   display: relative;
-}
+} */
 
 .team-tab::-webkit-scrollbar{
   width: 8px; /* Width of the scrollbar */
@@ -227,8 +227,9 @@
 
 .teamPhoto {
   position: relative;
-  height: 75%;
-  width: 100%;
+  display: flex;
+  height: 130px;
+  width: 130px;
   top: 0.8%;
   border-radius: 15px;
   box-shadow: 0 0 20px turquoise;
