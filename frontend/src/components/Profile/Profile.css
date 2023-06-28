@@ -184,6 +184,10 @@
   font-family: Futura;
 }
 
+.selectButton.selected {
+  background-color: red;
+}
+
 .sellButton {
   background-color: gold;
 }
