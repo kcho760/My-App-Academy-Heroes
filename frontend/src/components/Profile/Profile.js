@@ -24,11 +24,13 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const [showCard, setShowCard] = useState(false);
   const [timeoutId, setTimeoutId] = useState(null);
+  const [pullLoad, setPullLoad] = useState(false);
 
   const cardRef = useRef();
 
   const pullCard = async () => {
     if (gold >= 10) {
+      setPullLoad(true);
       setIsModalOpen(true);
       try {
         setPulling(true);
@@ -55,7 +57,10 @@ const Profile = () => {
       } catch (error) {
         console.error("Error assigning card:", error);
       } finally {
-        setPulling(false); // Set pulling back to false after the request is complete
+        setTimeout(() => {
+          setPulling(false); // Set pulling back to false after the request is complete
+          setPullLoad(false);
+        }, 1500);
       }
     } else {
       alert("You don't have enough gold to pull a card.");
@@ -161,7 +166,11 @@ const Profile = () => {
           <p>gold: {gold} </p>
           <p>cards: {playerCards.length}</p>
           <div className="gachButton-wrapper">
-            <button onClick={pullCard} className="gachButton">
+            <button
+              onClick={pullCard}
+              className="gachButton"
+              disabled={currentUser.gold < 10 || pullLoad}
+            >
               Pull a Card (Cost: 10 Gold)
             </button>
           </div>
@@ -217,33 +226,31 @@ const Profile = () => {
                   <Card card={card} />
                   <p>Amount owned: {amountOwned}</p>
                   {isOwned && (
-                  <>
-                    {playerCards.filter((card) => card.selected === true).length < 4 && (
+                    <>
+                      {playerCards.filter((card) => card.selected === true)
+                        .length < 4 && (
+                        <button
+                          className="selectButton"
+                          disabled={sellLoad}
+                          onClick={() =>
+                            handleToggleCardSelection(
+                              firstCard._id,
+                              firstCard.selected
+                            )
+                          }
+                        >
+                          {firstCard.selected ? "Deselect" : "Select"}
+                        </button>
+                      )}
                       <button
-                        className="selectButton"
+                        className="sellButton"
                         disabled={sellLoad}
-                        onClick={() =>
-                          handleToggleCardSelection(
-                            firstCard._id,
-                            firstCard.selected
-                          )
-                        }
+                        onClick={() => sellCard(firstCard._id, firstCard.owner)}
                       >
-                        {firstCard.selected ? "Deselect" : "Select"}
+                        Sell: 5 Gold
                       </button>
-                    )}
-                    <button
-                      className="sellButton"
-                      disabled={sellLoad}
-                      onClick={() =>
-                        sellCard(firstCard._id, firstCard.owner)
-                      }
-                    >
-                      Sell: 5 Gold
-                    </button>
-                  </>
-                )}
-
+                    </>
+                  )}
                 </li>
               );
             })}

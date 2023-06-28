@@ -139,7 +139,7 @@
   /* left: 30%; */
 }
 
-.gachButton:hover {
+.gachButton:enabled:hover {
   transition: transform 0.1s;
   transform: scale(1.1);
 }
@@ -274,6 +274,11 @@
   border-radius: 50%;
 
   animation: glow 2s ease-in-out infinite;
+}
+
+.gachButton:disabled{
+  background: gray;
+  color: white;
 }
 
 @keyframes glow {
