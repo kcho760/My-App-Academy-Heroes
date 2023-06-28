@@ -41,6 +41,8 @@ function Instructions() {
                 <li className="li-space">but are less likely to be obtained. To obtain them; pray to the RNG gods when using </li>
                 <li className="li-space"> "Pull a Card" on your "profile" tab which would give a new card for 10 gold. You're</li>
                 <li className="li-space">able to sell cards you don't want by clicking the "Sell" option underneathe the card.</li>
+                <li className="li-space">You can only carry 4 cards at a time so pick wisely. Read "Game" and "Warning" too.</li>
+
 
               </ul>
           </div>

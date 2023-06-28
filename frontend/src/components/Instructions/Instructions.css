@@ -41,6 +41,7 @@
   transition: transform 0.2s;
   text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
   box-shadow: 0 0 50px rgb(143, 194, 239);
+  z-index: 1;
 }
 
 .instructions-container {
@@ -132,6 +133,8 @@
 .tab-contents > * {
   padding: 2% 5%;
   box-sizing: border-box;
+  height: 100%;
+  width: 100%;
 }
 
 .tabDescription::-webkit-scrollbar{
