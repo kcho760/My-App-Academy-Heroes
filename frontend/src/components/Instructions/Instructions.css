@@ -32,12 +32,13 @@
 .tabDescription {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   height: 100%;
   width: 100%;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   /* font-weight: bold; */
-  text-align: center;
+  text-align: left;
+
 }
 
 .modal-tabs button.tab {
@@ -60,6 +61,7 @@
 
 .li-space {
   margin-bottom: 10px;
+  list-style-type: disc;
 }
 
 .tab-contents {

@@ -64,8 +64,7 @@ function Instructions() {
               </li> */}
               <li className="li-space">
                 Make an account by clicking "SIGNUP"and providing a valid email/username/password.
-                <br/> 
-                <br/>
+                <br/><br/>
                 **Optional**<br/>Use the
                 camera to make an AI profile icon.
               </li>
@@ -94,21 +93,21 @@ function Instructions() {
                 {/* On the top left; you'd see your player icon as well as your stats such as your health
                 (HP), your Attack power, and amount of Gold (currency in this
                 game). */}
-                The top left contains your:<br/> 
-                -Player icon<br/>
-                -Health (HP)<br/>
-                -Attack power<br/>
-                -Gold.
+                The top left contains your:<br/>
+                - Player icon<br/>
+                - Health (HP)<br/>
+                - Attack power<br/>
+                - Gold
               </li>
 
               <li className="li-space">
                 {/* On the bottom left; you'd see the questions you need to answer
                 along with the possible answer choices underneath. */}
-                -The bottom left contains the questions and answer choices.
+                The bottom left contains the questions and answer choices.
               </li>
 
               <li className="li-space">
-                -Answer a question by clicking on one of the
+                Answer a question by clicking on one of the
                 answers.
               </li>
 
@@ -135,27 +134,32 @@ function Instructions() {
               <li className="li-space">
                 {/* When the enemy health hits "0"; your "Round" increases and a new
                 wave of enemies will spawn. */}
-                -When the enemy health hits "0"; you move on to the next round.<br/>
-                -Enemies get stronger every 2 rounds
+                When the enemy health hits "0"; you move on to the next round.
+              </li>
+              <li className="li-space">
+                Enemies get stronger every 2 rounds
               </li>
 
               <li className="li-space">
-                -For every correct answer; you receive some
+                For every correct answer; you receive some
                 gold. Defeating an enemy grants additional gold.
               </li>
 
               <li className="li-space">
-                -The gold you earn can be used on your "Profile" tab to obtain
+                The gold you earn can be used on your "Profile" tab to obtain
                 "cards".
               </li>
 
               <li className="li-space">
-                -Cards that are selected will appear on the bottom right with their names and effects.<br/>
-                -These cards can only be used once and will refresh after killing the boss.<br/>
-                -If your health reaches 0; you lose your selected cards.
+                Cards that are selected will appear on the bottom right with their names and effects.<br/>
               </li>
 
               <li className="li-space">
+                These cards can only be used once and will refresh after killing the boss.<br/>
+              </li>
+
+              <li className="li-space">
+                If your health reaches 0; you lose your selected cards.
               </li>
             </ol>
           </div>

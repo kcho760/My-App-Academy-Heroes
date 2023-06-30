@@ -4,14 +4,12 @@ import "./PlayerStat.css";
 const PlayerStat = ({playerAttack}) => {
   const player = useSelector((state) => state.session.user);
 
-
-  
   return (
     <div className="player-stat-badge">
-      <div className="player-stat-content left player-img">
+      <div className="avatar-container">
         <img className="player-stat-avatar" src={player.imageUrl} alt="player avatar" />
       </div>
-      <div className="player-stat-content right">
+      <div className="player-stat-content">
         <h2>{player.username}</h2>
         <p className="player-info">Gold: {player.gold}</p>
         <p className="player-attack">Attack: {playerAttack}</p>

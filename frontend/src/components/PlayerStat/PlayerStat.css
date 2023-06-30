@@ -12,9 +12,16 @@
   }
   
   .player-stat-content {
-
     box-sizing: border-box;
     position: relative;
+  }
+
+  .avatar-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 5px;
   }
 
   .player-attack {
@@ -22,18 +29,18 @@
   }
 
   .player-info{
-    font-size: 25px;
-    margin-bottom: 5px;
+    font-size: 20px;
+    /* margin-bottom: 5px; */
   }
 
   .player-stat-content h2 {
     width: 100%;
     font-weight: bold;
-    font-size: 50px;
-    margin-bottom: 10px;
+    font-size: 40px;
+    /* margin-bottom: 10px; */
   }
   
-  .player-stat-content .player-stat-avatar {
+  .player-stat-avatar {
     border-radius: 5px;
     overflow: hidden;
     position: absolute;
