@@ -51,6 +51,10 @@
   align-items: center;
 }
 
+.input-field input {
+  padding: 3px 8px;
+}
+
 .session-btn,
 .capture-button {
   /* border: none; */
@@ -63,6 +67,7 @@
   font-weight: bold;
   background-image: linear-gradient(to right, #ff7f50, #ff4f00);
   font-size: 18px;
+  padding: 3px 8px;
 }
 
 .session-btn:enabled:hover,

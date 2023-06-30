@@ -11,9 +11,12 @@
   height: 100%;
 }
 
-.question-title {
+.question-title, .answer-ins {
   font-size: 22px;
+  text-shadow: 1px 1px 5px rgb(255, 255, 82);
+  margin-bottom: 3px;
 }
+
 
 .question-tag {
   font-size: 18px;

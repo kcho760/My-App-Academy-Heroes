@@ -1,41 +1,3 @@
-.displayInstructions {
-  font-size: 25px;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  transform: skewX(-10deg);
-  font-family: Futura;
-  border: outset rgb(115, 115, 207);
-  color: slateblue;
-  background-image: linear-gradient(
-    to bottom, rgb(143, 194, 239), rgb(124, 226, 226), purple
-  );
-  box-shadow: 0 0 20px rgb(143, 194, 239);
-  border-top-left-radius: 25px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 5px;
-  position: relative;
-  left: 56%;
-  top: 46%;
-  height: 54%;
-  width: 11%;
-  display: block;
-  text-shadow:0 0 20px rgba(137, 43, 226, 0.76);
-}
-
-.displayInstructions::before {
-  content: "";
-  display: block;
-  width: calc(100% - 18px);
-  height: calc(100% - 18px);
-  position: absolute;
-  border: outset aquamarine;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 20px;
-}
-
 .displayInstructions:hover {
   transform: scale(1.2);
   transition: transform 0.2s;
@@ -47,7 +9,6 @@
 
 .instructions-container {
   border-radius: 10px;
-  /* background-color: rgb(159, 157, 45); */
   background: linear-gradient(to right, goldenrod, rgb(185, 146, 146), goldenrod);
   width: 100%;
   height: 100%;
@@ -62,7 +23,6 @@
 }
 
 .generalHeader {
-  position: flex;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,15 +30,13 @@
 }
 
 .tabDescription {
-  position: flex;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
   width: 100%;
-  /* margin-top: 10%; */
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-weight: bold;
+  /* font-weight: bold; */
   text-align: center;
 }
 
@@ -101,7 +59,7 @@
 }
 
 .li-space {
-  margin-bottom: 10%;
+  margin-bottom: 10px;
 }
 
 .tab-contents {

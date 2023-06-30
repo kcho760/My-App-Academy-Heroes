@@ -21,7 +21,7 @@ const Question = ({
 
   return (
     <div className="question-field">
-      <h2 className="question-title">Question: {title}</h2>
+      <h2 className="question-title"><span>Question:</span> {title}</h2>
       <p className="question-tag">
         Tag: {Object.values(...question.tags).join(",")}
       </p>
@@ -29,6 +29,7 @@ const Question = ({
         <hr />
       </div>
       {message}
+      <span className="answer-ins">Choose your answer:</span>
       <div className="answer-group">
         {possibleAnswers.map((answer) => {
           return (

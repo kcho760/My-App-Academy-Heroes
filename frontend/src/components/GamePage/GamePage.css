@@ -1,7 +1,5 @@
 .game-page-container {
   width: 100%;
-  /* display: grid; */
-  /* grid-template-columns: 40% 59%; */
   display: flex;
   column-gap: 1%;
   height: calc(100vh - 100px);
@@ -19,7 +17,7 @@
 .game-page-content.left {
   width: 40%;
   display: grid;
-  grid-template-rows: 34% 5% 57%;
+  grid-template-rows: 30% 10% 56%;
   row-gap: 2%;
   box-sizing: border-box;
   background-image: url(https://img.freepik.com/free-vector/modern-technological-elements-with-transparent-background_1035-7108.jpg?w=2000);
@@ -76,6 +74,7 @@
 
 .game-questions {
   height: 100%;
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .game-content.enemy-board {
@@ -98,6 +97,8 @@
 .answered-stats {
   display: flex;
   font-size: 20px;
+  align-items: center;
+  padding: 5px 10px;
 }
 
 .answered-stats > div:not(:last-child) {

@@ -3,10 +3,12 @@
   top: 0;
   background: linear-gradient(to right, #ff7f50, goldenrod, red);
   border: solid black;
-  display: flex;
   height: 100px;
   box-sizing: border-box;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 18% 80%;
+  column-gap: 2%;
 }
 
 .logo {
@@ -22,231 +24,148 @@
   transition: transform 0.4s;
 }
 
-.links-auth {
-  height: 100%;
-  width: 100%;
+.nav-right {
+  display: grid;
+  grid-template-columns: 45% 45%;
+  column-gap: 10%;
 }
 
-.loginButton {
+.links-nav,
+.links-auth, .info-modals {
+  display: flex;
+  align-items: flex-end;
+  justify-content: left;
+}
+
+.info-modals, .links-auth {
+margin-right: 20px;
+justify-content: right;
+}
+
+.logout-button {
+  border: none;
+  font-family: Futura;
+}
+
+.log-btn {
   color: white;
-  background-color:transparent;
+  background-color:rgba(0, 0, 0, 0.5);
   text-decoration: none;
   font-size: 23px;
   border-radius: 5px;
-  position: relative;
-  display: fixed;
-  left: 81%;
-  top: 65%;
-  /* margin-left: 1120px;
-  margin-right: 10px; */
   padding: 5px;
   font-style: italic;
-  /* margin-top: 4px; */
+  margin-left: 20px;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 2% 5%;
+  border: 2px goldenrod solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.signupButton {
-  color:white;
-  background-color: transparent;
-  text-decoration: none;
-  font-size: 23px;
-  border-radius: 5px;
-  position: relative;
-  display: fixed;
-  top: 65%;
-  left: 81%;
-  padding: 5px;
-  font-style: italic;
-  /* margin-top: 4px; */
-  /* margin-left: 85%; */
+.log-btn span {
+  line-height: 100%;
 }
 
-
-.loginButton:hover {
+.log-btn:hover {
   color: red;
   background-color: black;
-  border: solid goldenrod;
-  border-radius: 8x;
-  font-weight: bold;
-  z-index: 1;
-}
-
-.signupButton:hover {
-  color: red;
-  background-color: black;
-  border: solid goldenrod;
+  border: solid goldenrod 2px;
   border-radius: 8px;
   font-weight: bold;
   z-index: 1;
 }
 
-/* .links-nav a {
-  text-decoration: none;
-  margin-top: 42px;
-  padding: 10px;
-  display: inline-block;
-  font-size: 25px;
-  width: 200px;
-  border: outset ivory;
-  color: slateblue;
-  background-color: aliceblue;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  display: fixed;
-  align-items: center;
-  text-align: center;
-}
-
-.links-nav a:hover {
-  transform: scale(1.2);
-  transition: transform 0.1s;
-} */
-
-.profile-link {
-  line-height: 50px;
+.profile-link,
+.game-link,
+.displayInstructions,
+.displayTeamName {
   text-decoration: none;
   font-size: 25px;
+  padding: 0 5%;
+  box-sizing: border-box;
+  height: 40px;
+  line-height: 40px;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  transform: skewX(-10deg);
   font-family: Futura;
   border: outset rgb(115, 115, 207);
   color: slateblue;
   background-image: linear-gradient(
-    to bottom, rgb(143, 194, 239), rgb(124, 226, 226), purple
+    to bottom,
+    rgb(143, 194, 239),
+    rgb(124, 226, 226),
+    purple
   );
   box-shadow: 0 0 20px rgb(143, 194, 239);
   border-top-left-radius: 25px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 5px;
-  position: absolute;
-  margin-top: 37.5px;
-  height: 54%;
-  width: 11%;
-  display: block;
-  text-shadow:0 0 20px rgba(137, 43, 226, 0.76);
+  border-bottom-right-radius: 25px;
+  position: relative;
+  text-shadow: 0 0 20px rgba(137, 43, 226, 0.76);
   align-items: center;
   text-align: center;
-  left: 18%;
-  /* animation: profileAnimation 2s ease-out infinite;
-  background-size: 100% 200%; */
 }
 
-.profile-link::before {
+.profile-link::before,
+.game-link::before,
+.displayInstructions:before,
+.displayTeamName:before {
+  box-sizing: border-box;
   content: "";
   display: flex;
-  width: calc(100% - 18px);
-  height: calc(100% - 18px);
+  width: 90%;
+  height: 96%;
   position: absolute;
+  top: 0;
+  left: 0;
+  margin: 2% 5%;
   border: outset aquamarine;
   border-top-left-radius: 20px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 20px;
-  margin: 5px;
 }
 
-.profile-link:hover {
+.profile-link:hover,
+.game-link:hover {
   transform: scale(1.1);
   transition: transform 0.2s;
-  text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
+  text-shadow: 0 0 10px rgba(137, 43, 226, 0.234);
   box-shadow: 0 0 50px rgb(143, 194, 239);
   border-bottom-right-radius: 25px;
   z-index: 2;
 }
 
-
-.game-link {
-  line-height: 50px;
-  text-decoration: none;
-  font-size: 25px;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  transform: skewX(-10deg);
-  font-family: Futura;
-  border: outset rgb(115, 115, 207);
-  color: slateblue;
-  background-image: linear-gradient(
-    to bottom, rgb(143, 194, 239), rgb(124, 226, 226), purple
-    );
-    box-shadow: 0 0 20px rgb(143, 194, 239);
-    border-top-left-radius: 25px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 5px;
-    position: absolute;
-    margin-top: 37.5px;
-    height: 54%;
-    width: 11%;
-    left: 29%;
-    display: block;
-    text-shadow:0 0 20px rgba(137, 43, 226, 0.76);
-    align-items: center;
-    text-align: center;
-  }
-  
-  .active-link {
-    z-index: 1;
-    border-bottom-right-radius: 25px;
-    transform: scale(1.1);
-    transition: transform 0.2s;
-    animation: profileAnimation 2s linear infinite;
-    background-size: 100% 200%;
-    color: aliceblue;
-    font-size: 30px;
-    background-image: linear-gradient(
-      to bottom, rgb(143, 194, 239) 0%, rgb(124, 134, 226) 15%, rgba(110, 33, 173, 0.521) 30%, purple 45%, rgb(56, 15, 206) 60%, rgb(124, 129, 226) 75%, rgb(143, 194, 239) 90%
-    );
-  }
-  
-  @keyframes profileAnimation {
-    0%{
-      background-position: 0 100%;
-    }
-    100%{
-      background-position: 0 -100%;
-    }
-  }
-.game-link::before {
-  content: "";
-  display: block;
-  width: calc(100% - 18px);
-  height: calc(100% - 18px);
-  position: absolute;
-  border: outset aquamarine;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 20px;
-  margin: 5px;
-}
-
-.game-link:hover {
-  transform: scale(1.2);
-  transition: transform 0.2s;
-  text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
-  box-shadow: 0 0 50px rgb(143, 194, 239);
-  border-bottom-right-radius: 25px;
+.active-link {
   z-index: 1;
+  border-bottom-right-radius: 25px;
+  transform: scale(1.1);
+  transition: transform 0.2s;
+  animation: profileAnimation 2s linear infinite;
+  background-size: 100% 200%;
+  color: aliceblue;
+  /* font-size: 30px; */
+  background-image: linear-gradient(
+    to bottom,
+    rgb(143, 194, 239) 0%,
+    rgb(124, 134, 226) 15%,
+    rgba(110, 33, 173, 0.521) 30%,
+    purple 45%,
+    rgb(56, 15, 206) 60%,
+    rgb(124, 129, 226) 75%,
+    rgb(143, 194, 239) 90%
+  );
 }
 
-.logout-button {
-  font-size: 25px;
-  color: white;
-  background-color: transparent;
-  border-radius: 5px;
-  font-style: italic;
-  font-family: Futura;
-  display: flex;
-  position: absolute;
-  left: 93%;
-  top: 55px;
-}
-
-.logout-button:hover {
-  color: red;
-  background-color: black;
-  border: solid goldenrod;
-  border-radius: 8px;
-  font-weight: bold;
+@keyframes profileAnimation {
+  0% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 0 -100%;
+  }
 }
