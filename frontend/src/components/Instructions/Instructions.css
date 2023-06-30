@@ -76,8 +76,9 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  margin-top: 10%;
+  /* margin-top: 10%; */
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: bold;
   text-align: center;
 }
 

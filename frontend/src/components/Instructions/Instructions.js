@@ -77,6 +77,7 @@ function Instructions() {
                 There's also a "Demo Log In" on the "LOGIN" form which lets you
                 test out the game without making an account.
               </li>
+              
             </ul>
           </div>
         )}
@@ -84,25 +85,25 @@ function Instructions() {
           <div className="tab">
             <ul className="tabDescription">
               <li className="li-space">
-                The "Game" tab is where the actual gameplay takes place.
+                The "Game" tab is where the actual gameplay takes place.{" "}
               </li>
 
               <li className="li-space">
                 The game tab has a left and right side. On the top left; you'd
                 see your player icon as well as your stats such as your health
                 (HP), your Attack power, and amount of Gold (currency in this
-                game).
+                game).{" "}
               </li>
 
               <li className="li-space">
                 On the bottom left; you'd see the questions you need to answer
-                along with the possible answer choices underneath.
+                along with the possible answer choices underneath.{" "}
               </li>
 
               <li className="li-space">
                 Answer a question by hovering and clicking on one of the
                 available choices. The answer choice should turn from black to
-                red when hovered over.
+                red when hovered over.{" "}
               </li>
 
               <li className="li-space">
@@ -110,24 +111,24 @@ function Instructions() {
                 will pop up and you'd see an animation effect on the right side
                 where your red robot will perform an attack causing the enemy on
                 the top right to take damage. The amount of damage the enemy
-                takes depends on your "Attack" power on the top left.
+                takes depends on your "Attack" power on the top left.{" "}
               </li>
 
               <li className="li-space">
                 If you answer incorrectly, you'd see a "red" indicator below the
                 question and your character will take damage; your HP will
-                decrease depending on the enemy.
+                decrease depending on the enemy.{" "}
               </li>
 
               <li className="li-space">
                 On the middle left; you'd see a counter for the amount of
                 questions answered as well as the amount you answered correctly
-                and incorrectly.
+                and incorrectly.{" "}
               </li>
 
               <li className="li-space">
                 When the enemy health hits "0"; your "Round" increases and a new
-                wave of enemies will spawn.
+                wave of enemies will spawn.{" "}
               </li>
 
               <li className="li-space">
@@ -139,16 +140,16 @@ function Instructions() {
                 The gold you earn can be used on your "Profile" tab to obtain
                 "cards". 4 cards can be selected at once and would provide
                 different effects ranging from Attack boost/HP
-                recovery/defeating a wave of enemies altogether.
+                recovery/defeating a wave of enemies altogether.{" "}
               </li>
 
               <li className="li-space">
-                Cards that are selected into battle will appear on the bottom right with their names and effects.
+                Cards that are selected into battle will appear on the bottom right with their names and effects.{" "}
               </li>
 
               <li className="li-space">
                 However, these cards can only be used once per cycle. Their use
-                will refresh afterwards.
+                will refresh afterwards.{" "}
               </li>
             </ul>
           </div>
@@ -193,16 +194,14 @@ function Instructions() {
           <div className="tab">
             <ul className="tabDescription">
               <li className="li-space">
-                If for any reason your health bar reaches 0; your TA will be
-                disappointed.{" "}
+                If your health bar reaches 0; you will lose all cards in your deck.{" "}
               </li>
 
               <li className="li-space">
-                They're understanding enough and instead of deleting you from
-                the cohort;{" "}
+                You can add new cards into your deck afterwards.{" "}
               </li>
 
-              <li className="li-space">
+              {/* <li className="li-space">
                 they'll just give you 4 strikes (your cards in hand for the
                 battle will be deleted).{" "}
               </li>
@@ -212,7 +211,7 @@ function Instructions() {
                 their patience and{" "}
               </li>
 
-              <li className="li-space"> your account may be deleted. </li>
+              <li className="li-space"> your account may be deleted. </li> */}
             </ul>
           </div>
         )}
