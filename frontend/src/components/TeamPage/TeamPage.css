@@ -13,7 +13,7 @@
   border-top-left-radius: 25px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 25px;
+  border-bottom-right-radius: 5px;
   position: relative;
   left: 56%;
   top: 46%;
@@ -41,6 +41,8 @@
   transition: transform 0.2s;
   text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
   box-shadow: 0 0 50px rgb(143, 194, 239);
+  border-bottom-right-radius: 15px;
+  z-index: 1;
 }
 
 .team-modal-container {
@@ -58,7 +60,7 @@
   overflow: hidden;
 }
 
-.team-tabs button.tab {
+/* .team-tabs button.tab {
   color: goldenrod;
   background-color: firebrick;
   border: solid black;
@@ -73,6 +75,35 @@
   color: white;
   transition: transform 0.3s;
   z-index: 2;
+} */
+
+.team-tabs-wrapper {
+  height: 100%;
+  width: 100%;
+  /* border: solid rgba(255, 68, 0, 0.407); */
+  padding: 2%;
+  border-radius: 15px;
+  background: radial-gradient(rgba(0, 128, 0, 0.609), rgba(128, 0, 128, 0.274), rgba(255, 166, 0, 0.494));
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.space {
+  padding: 10px;
+}
+
+.team-tabs {
+  color: yellow;
+  padding: 2%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100% - 10px;
+  border-radius: 15px;
+  border: solid rgba(178, 34, 34, 0.427);
+  background-color: rgba(250, 235, 215, 0.39);
+  text-align: center;
+  justify-content: space-evenly;
 }
 
 .activeTab {
@@ -176,61 +207,60 @@
 
 .linkedin-button {
   position: absolute;
-  width: 10%;
-  height: 10%;
-  top: 88%;
-  left: 30%;
-  background-color: rgba(64, 224, 208, 0.527);
+  width: 20%;
+  height: 20%;
+  top: 78%;
+  left: 15%;
+  /* background-color: rgba(64, 224, 208, 0.527); */
   border-radius: 10px;
 }
 
 .linkedin-button:hover {
   transform: scale(1.2);
   transition: transform 0.5s;
-  background-color: goldenrod;
-  box-shadow: 0 0 10px yellow;
+  /* background-color: goldenrod; */
+  box-shadow: 0 0 10px rgba(255, 68, 0, 0.479);
 }
 
 .git-button {
   position: absolute;
-  width: 10%;
-  height: 10%;
-  top: 88%;
-  left: 45%;
-  background-color: rgba(64, 224, 208, 0.527);
+  width: 20%;
+  height: 20%;
+  top: 78%;
+  left: 43.5%;
+  /* background-color: rgba(64, 224, 208, 0.527); */
   border-radius: 10px;
 }
 
 .git-button:hover {
   transform: scale(1.2);
   transition: transform 0.5s;
-  background-color: goldenrod;
-  box-shadow: 0 0 10px yellow;
+  /* background-color: goldenrod; */
+  box-shadow: 0 0 10px rgba(128, 0, 128, 0.274);
 }
 
 .wellfound-button {
   position: absolute;
-  width: 10%;
-  height: 10%;
-  top: 88%;
-  left: 60%;
-  background-color: rgba(64, 224, 208, 0.527);
+  width: 20%;
+  height: 20%;
+  top: 78%;
+  left: 70%;
+  /* background-color: rgba(64, 224, 208, 0.527); */
   border-radius: 10px;
 }
 
 .wellfound-button:hover {
   transform: scale(1.2);
   transition: transform 0.5s;
-  background-color: goldenrod;
-  box-shadow: 0 0 10px yellow;
+  box-shadow: 0 0 10px rgba(0, 128, 128, 0.676);
 }
 
 .teamPhoto {
   position: relative;
   display: flex;
-  height: 130px;
-  width: 130px;
-  top: 0.8%;
+  height: 40%;
+  width: 100%;
+  z-index: 1;
   border-radius: 15px;
-  box-shadow: 0 0 20px turquoise;
+  box-shadow: 0 0 20px rgba(255, 255, 0, 0.528);
 }

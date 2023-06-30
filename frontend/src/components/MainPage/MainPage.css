@@ -63,14 +63,13 @@ footer {
   /* margin-left: 950px;
   margin-top: -80px; */
   position: relative; 
-  left: 83%;
-  top: 20%;
+  left: 77%;
+  bottom: 10%;
 }
 
 .cardLogo2 {
   width: 11%;
   height: 15%;
-  left: 12%;
   bottom: 10%;
   /* margin-left: 80px;
   margin-top: -100px; */

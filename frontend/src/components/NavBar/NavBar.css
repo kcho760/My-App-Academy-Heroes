@@ -118,7 +118,7 @@
   border-top-left-radius: 25px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 25px;
+  border-bottom-right-radius: 5px;
   position: absolute;
   margin-top: 37.5px;
   height: 54%;
@@ -151,6 +151,7 @@
   transition: transform 0.2s;
   text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
   box-shadow: 0 0 50px rgb(143, 194, 239);
+  border-bottom-right-radius: 25px;
   z-index: 2;
 }
 
@@ -172,7 +173,7 @@
     border-top-left-radius: 25px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 25px;
+    border-bottom-right-radius: 5px;
     position: absolute;
     margin-top: 37.5px;
     height: 54%;
@@ -186,6 +187,7 @@
   
   .active-link {
     z-index: 1;
+    border-bottom-right-radius: 25px;
     transform: scale(1.1);
     transition: transform 0.2s;
     animation: profileAnimation 2s linear infinite;
@@ -224,6 +226,7 @@
   transition: transform 0.2s;
   text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
   box-shadow: 0 0 50px rgb(143, 194, 239);
+  border-bottom-right-radius: 25px;
   z-index: 1;
 }
 
