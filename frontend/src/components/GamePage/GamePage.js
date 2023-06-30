@@ -22,9 +22,9 @@ import attackAudio2 from "../../assets/audio/yamatoCannon3.mp3";
 import explosionAudio from "../../assets/audio/Explosion2.mp3";
 
 const GamePage = () => {
-  const defaultPlayerAttack = 25;
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
+  const defaultPlayerAttack = user.username === "deku" ? 75 : 25;
   const questions = useSelector((state) => Object.values(state.questions));
   const [idx, setIdx] = useState(0);
   const [totalAnswered, setTotalAnswered] = useState(0);
