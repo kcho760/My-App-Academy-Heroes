@@ -67,13 +67,14 @@ const GamePage = () => {
   const max = questions.length;
   const question = questions[idx];
   const correctAnswers = Object.values(question.correct_answers)
-    .map((correct, idx) => {
-      if (correct === "true") {
-        return Object.values(question.answers)[idx];
-      } else return null;
-    })
-    .filter((ans) => ans);
-
+  .map((correct, idx) => {
+    if (correct === "true") {
+      return Object.values(question.answers)[idx];
+    } else return null;
+  })
+  .filter((ans) => ans);
+  
+  // console.log(correctAnswers)
 
   const correct = (ans) =>
     correctAnswers.find((correctAns) => correctAns === ans);
