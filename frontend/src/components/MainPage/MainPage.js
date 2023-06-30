@@ -7,15 +7,14 @@ function MainPage() {
       
         <div className="MainSplashDiv">
           <div className="logoHolder">
-            <img src={CardLogo} className="cardLogo1"></img>
               <div className="gameIntro">
                 <div className="introText">
                   Welcome to MyAppAcademy Hero; 
-                  where the goal of the game is to waste your time and take 
-                  your money.
+                  where Trading Card Games (TCG) meets coding.
                 </div>
               </div>
-            <img src={CardLogo} className="cardLogo2"></img>
+            <img src={CardLogo} className="cardLogo1" alt="none"></img>
+            <img src={CardLogo} className="cardLogo2" alt="none"></img>
           </div>
         </div>
         <footer>

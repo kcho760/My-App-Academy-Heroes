@@ -13,9 +13,9 @@
   border-top-left-radius: 25px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 25px;
+  border-bottom-right-radius: 5px;
   position: relative;
-  left: 57%;
+  left: 56%;
   top: 46%;
   height: 54%;
   width: 11%;
@@ -41,6 +41,7 @@
   transition: transform 0.2s;
   text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
   box-shadow: 0 0 50px rgb(143, 194, 239);
+  border-bottom-right-radius: 15px;
   z-index: 1;
 }
 
@@ -68,7 +69,7 @@
   margin-top: 10%;
 }
 
-/* .tabDescription {
+.tabDescription {
   position: flex;
   display: flex;
   flex-direction: column;
@@ -76,8 +77,9 @@
   height: 100%;
   width: 100%;
   margin-top: 10%;
-  overflow: auto;
-} */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+}
 
 .modal-tabs button.tab {
   color: goldenrod;
