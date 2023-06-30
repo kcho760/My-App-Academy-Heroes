@@ -173,29 +173,26 @@ function Instructions() {
               </li> */}
               <li className="li-space">
                 {/* To the right is your "Collection" which are all the available cards that can be obtained. */}
-                -Cards give you power-ups and can be obtained by using gold.<br/>
-                -All cards are visible on the right. Owned cards are glowing.
+                Cards give you power-ups and can be obtained by using gold.<br/>
               </li>
-              {/* <li className="li-space">
-                Cards that have been obtained will have a glowing effect surrounding the card.
-              </li> */}
+              <li className="li-space">
+                All cards are visible on the right. Owned cards are glowing.
+              </li>
               <li className="li-space">
                 There are 3 rarities:<br/>
-                -Normal (Green)<br/>
-                -Rare (Purple)<br/>
-                -Super-Rare(Orange)
+                - Normal (Green)<br/>
+                - Rare (Purple)<br/>
+                - Super-Rare(Orange)
               </li>
               <li className="li-space">
                 {/* Underneath each card you own; you have an option to "Select" if your cards in your deck is less than 4. 
                 Otherwise it would say "Deselect". You can also sell cards you own but don't want for 5 gold. */}
-                -You can select up to 4 owned cards to be in your deck.<br/>
+                You can select up to 4 owned cards to be in your deck.<br/>
                 {/* -You can deselect cards from your deck on the left.<br/> */}
-                -You can sell cards you own but don't want for 5 gold.
               </li>
-              {/* <li className="li-space">
-                On the left; you'd see your profile information on the top left as well as the amount of gold you currently
-                have and amount of cards you've obtained.
-              </li> */}
+              <li className="li-space">
+                You can sell cards you own but don't want for 5 gold.
+              </li>
               {/* <li className="li-space">
                 On the bottom left is your deck. You can only have 4 cards at once in your deck. You can "Deselect" cards you
                 don't want in your deck in order to make room for something else.
@@ -203,9 +200,10 @@ function Instructions() {
               <li className="li-space">
                 {/* In the middle of the left screen; you'd see the option to "Pull a Card". Pulling a card will cost 10 gold and 
                 would give you a random card from the collection whether you already own it or not. */}
-                -You can pull a card for 10 gold. This will give you a random card from the pool.
+                You can pull a card for 10 gold. This will give you a random card from the pool.
               </li>
               <li className="li-space">
+                Card Abilities:<br/>
                   -Heal: Regenerates HP <br/>
                   -Atk Up: Increases your attack power for one round<br/>
                   -Atk Multiplier: Multiplies your attack power for one round<br/>
