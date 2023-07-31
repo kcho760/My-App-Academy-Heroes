@@ -12,7 +12,7 @@ function TeamPage() {
           Kevin Cho
           <break className="space" />
           <img
-            src="https://media.licdn.com/dms/image/C4E03AQGnqjeC6DL6aQ/profile-displayphoto-shrink_200_200/0/1626712341805?e=1692835200&v=beta&t=83yndSDi2c96grxXQu6MY0NTziiIQohJ8nVUZotDzQM"
+            src="https://media.licdn.com/dms/image/D4E03AQG0aVcOclSSfw/profile-displayphoto-shrink_800_800/0/1690827138168?e=1696464000&v=beta&t=qVOXMyZXqRYcAI9m2eUBKiBK74gYC79D8S3dCslZzsg"
             width={450}
             height={250}
             className="teamPhoto"
