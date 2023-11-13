@@ -1,18 +1,9 @@
-.displayTeamName:hover {
-  transform: scale(1.2);
-  transition: transform 0.2s;
-  text-shadow:0 0 10px rgba(137, 43, 226, 0.234);
-  box-shadow: 0 0 50px rgb(143, 194, 239);
-  border-bottom-right-radius: 15px;
-  z-index: 1;
-}
-
 .team-modal-container {
   border-radius: 10px;
   background: linear-gradient(to right, goldenrod, rgb(185, 146, 146), goldenrod);
   width: 100%;
   height: 100%;
-  position: relative;
+  /* position: relative; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,162 +14,84 @@
 }
 
 .team-tabs-wrapper {
-  height: 100%;
+  display: grid;
   width: 100%;
-  padding: 2%;
+  height: 100%;
+  grid-template-columns: 23% 23% 23% 23%;
+  justify-content: space-between;
   border-radius: 15px;
+  box-sizing: border-box;
   background: radial-gradient(rgba(0, 128, 0, 0.609), rgba(128, 0, 128, 0.274), rgba(255, 166, 0, 0.494));
-  display: flex;
-  justify-content: space-evenly;
 }
 
-.space {
-  padding: 10px;
-}
-
-.team-tabs {
-  color: yellow;
-  padding: 2%;
-  position: relative;
+.team-tabs{
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100% - 10px;
-  border-radius: 15px;
-  border: solid rgba(178, 34, 34, 0.427);
-  background-color: rgba(250, 235, 215, 0.39);
-  text-align: center;
-  justify-content: space-evenly;
-}
-
-.team-tab {
-  border: solid turquoise;
-  background-color: rgba(0, 0, 0, 0.421);
-  border-radius: 20px;
-  color: white;
-  font-size: 20px;
-  height: 70%;
-  width: 50%;
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  overflow: auto;
-  position: relative;
+}
+
+.team-tabs:hover {
+  box-shadow: 0 0 20px rgba(100, 100, 100, 0.7);
+  border-radius: 10px;
+  transform: scale(1.2);
+  transition: transform 0.5s;
+  background-color: rgba(120, 120, 120, 0.8);
+}
+
+.pos-info {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  height: 15%;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.team-pos {
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.team-tabs:hover .pos-info {
   
 }
 
-.team-tab::-webkit-scrollbar{
-  width: 8px; /* Width of the scrollbar */
+.team-tabs img {
+  width: 90%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
-.team-tab::-webkit-scrollbar-thumb {
-  background-color: #8f8f8f; /* Color of the scrollbar thumb */
-  border-radius: 4px; /* Radius of the scrollbar thumb */
-}
+.link-section {
+  display: grid;
+  grid-template-columns: 25% 25% 25%;
+  justify-content: space-evenly;
 
-.team-tab::-webkit-scrollbar-track {
-  background-color: #e1e1e1; /* Color of the scrollbar track */
-  border-radius: 4px;
 }
-
-.teamDescription {
-  position: absolute;
-  display: relative;
-  top: 0;
-  left: 0;
+.link-section a {
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 100%;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  /* background-color: rgba(0, 0, 0, 0.421); */
-  background-color: rgba(0, 0, 0, 0.75);
 }
-
-.team-tab:hover .teamDescription {
-  box-sizing: border-box;
-  padding: 9px;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* left: 30%; */
-  /* top: 15%; */
-  opacity: 2;
-  text-shadow: 0 0 15px rgba(255, 255, 0, 0.658);
-}
-
-/* .photo {
-  position: relative;
-  display: relative;
-  flex-direction: column;
-  align-items: center;
-  bottom: 1%;
-  opacity: 1;
-  color: black;
-  background-color: lightblue;
-  font-size: 30px;
-  text-shadow: 0 0 20px navy;
-  border-radius: 12px;
+.link-section svg {
   width: 100%;
-  text-align: center;
-} */
+  height: 100%
+}
 
-.linkedin-button {
-  position: absolute;
+
+.team-social-icon {
   width: 20%;
   height: 20%;
-  top: 78%;
-  left: 15%;
-  /* background-color: rgba(64, 224, 208, 0.527); */
-  border-radius: 10px;
 }
 
-.linkedin-button:hover {
+.team-social-icon:hover {
   transform: scale(1.2);
   transition: transform 0.5s;
-  /* background-color: goldenrod; */
-  box-shadow: 0 0 10px rgba(255, 68, 0, 0.479);
-}
-
-.git-button {
-  position: absolute;
-  width: 20%;
-  height: 20%;
-  top: 78%;
-  left: 43.5%;
-  /* background-color: rgba(64, 224, 208, 0.527); */
-  border-radius: 10px;
-}
-
-.git-button:hover {
-  transform: scale(1.2);
-  transition: transform 0.5s;
-  /* background-color: goldenrod; */
-  box-shadow: 0 0 10px rgba(128, 0, 128, 0.274);
-}
-
-.wellfound-button {
-  position: absolute;
-  width: 20%;
-  height: 20%;
-  top: 78%;
-  left: 70%;
-  /* background-color: rgba(64, 224, 208, 0.527); */
-  border-radius: 10px;
-}
-
-.wellfound-button:hover {
-  transform: scale(1.2);
-  transition: transform 0.5s;
-  box-shadow: 0 0 10px rgba(0, 128, 128, 0.676);
-}
-
-.teamPhoto {
-  position: relative;
-  display: flex;
-  height: 40%;
-  width: 100%;
-  z-index: 1;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255, 255, 0, 0.528);
+  fill: rgba(255, 255, 255, 0.8)
 }
