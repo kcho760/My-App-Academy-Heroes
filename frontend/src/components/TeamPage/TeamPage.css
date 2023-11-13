@@ -5,6 +5,7 @@
   box-shadow: 0 0 50px rgb(143, 194, 239);
   border-bottom-right-radius: 15px;
   z-index: 1;
+  background-color: white;
 }
 
 .team-modal-container {
@@ -32,7 +33,7 @@
   justify-content: space-evenly;
 }
 
-.space {
+/* .space {
   padding: 10px;
 }
 
@@ -48,9 +49,9 @@
   background-color: rgba(250, 235, 215, 0.39);
   text-align: center;
   justify-content: space-evenly;
-}
+} */
 
-.team-tab {
+/* .team-tab {
   border: solid turquoise;
   background-color: rgba(0, 0, 0, 0.421);
   border-radius: 20px;
@@ -68,16 +69,16 @@
 }
 
 .team-tab::-webkit-scrollbar{
-  width: 8px; /* Width of the scrollbar */
+  width: 8px;
 }
 
 .team-tab::-webkit-scrollbar-thumb {
-  background-color: #8f8f8f; /* Color of the scrollbar thumb */
-  border-radius: 4px; /* Radius of the scrollbar thumb */
+  background-color: #8f8f8f;
+  border-radius: 4px;
 }
 
 .team-tab::-webkit-scrollbar-track {
-  background-color: #e1e1e1; /* Color of the scrollbar track */
+  background-color: #e1e1e1;
   border-radius: 4px;
 }
 
@@ -90,7 +91,6 @@
   height: 100%;
   opacity: 0;
   transition: opacity 0.6s ease;
-  /* background-color: rgba(0, 0, 0, 0.421); */
   background-color: rgba(0, 0, 0, 0.75);
 }
 
@@ -101,77 +101,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* left: 30%; */
-  /* top: 15%; */
   opacity: 2;
   text-shadow: 0 0 15px rgba(255, 255, 0, 0.658);
-}
-
-/* .photo {
-  position: relative;
-  display: relative;
-  flex-direction: column;
-  align-items: center;
-  bottom: 1%;
-  opacity: 1;
-  color: black;
-  background-color: lightblue;
-  font-size: 30px;
-  text-shadow: 0 0 20px navy;
-  border-radius: 12px;
-  width: 100%;
-  text-align: center;
 } */
 
-.linkedin-button {
-  position: absolute;
-  width: 20%;
-  height: 20%;
-  top: 78%;
-  left: 15%;
-  /* background-color: rgba(64, 224, 208, 0.527); */
-  border-radius: 10px;
-}
-
-.linkedin-button:hover {
-  transform: scale(1.2);
-  transition: transform 0.5s;
-  /* background-color: goldenrod; */
-  box-shadow: 0 0 10px rgba(255, 68, 0, 0.479);
-}
-
-.git-button {
-  position: absolute;
-  width: 20%;
-  height: 20%;
-  top: 78%;
-  left: 43.5%;
-  /* background-color: rgba(64, 224, 208, 0.527); */
-  border-radius: 10px;
-}
-
-.git-button:hover {
-  transform: scale(1.2);
-  transition: transform 0.5s;
-  /* background-color: goldenrod; */
-  box-shadow: 0 0 10px rgba(128, 0, 128, 0.274);
-}
-
-.wellfound-button {
-  position: absolute;
-  width: 20%;
-  height: 20%;
-  top: 78%;
-  left: 70%;
-  /* background-color: rgba(64, 224, 208, 0.527); */
-  border-radius: 10px;
-}
-
-.wellfound-button:hover {
-  transform: scale(1.2);
-  transition: transform 0.5s;
-  box-shadow: 0 0 10px rgba(0, 128, 128, 0.676);
-}
 
 .teamPhoto {
   position: relative;
@@ -181,4 +114,20 @@
   z-index: 1;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(255, 255, 0, 0.528);
+}
+
+
+.team-social-icon {
+  width: 20%;
+  height: 20%;
+}
+
+.team-social-icon:hover {
+  transform: scale(1.2);
+  transition: transform 0.5s;
+  box-shadow: 0 0 10px rgba(0, 128, 128, 0.676);
+}
+
+.team-tab {
+  width: 20%;
 }
