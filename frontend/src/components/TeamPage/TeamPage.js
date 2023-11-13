@@ -6,17 +6,22 @@ import { ReactComponent as LinkedInIcon } from "../../assets/images/linkedin_ico
 import { ReactComponent as GitHubIcon } from "../../assets/images/github_icon.svg";
 import { ReactComponent as WellFoundIcon } from "../../assets/images/wellfound_icon.svg";
 
+import KevinPP from "../../assets/images/pp_kevin.jpg";
+import JiaminPP from "../../assets/images/pp_jiamin.jpg";
+import HongPP from "../../assets/images/pp_hong.jpg";
+import HenryPP from "../../assets/images/pp_henry.jpg";
+
 function TeamPage() {
   return (
     <div className="team-modal-container">
       <div className="team-tabs-wrapper">
         <div className="team-tabs">
           <div className="pos-info">
-            <h2>Team Lead</h2>
+            <h2 className="team-pos">Team Lead</h2>
             <h2>Kevin Cho</h2>
           </div>
           <img
-            src="https://media.licdn.com/dms/image/D4E03AQG0aVcOclSSfw/profile-displayphoto-shrink_800_800/0/1690827138168?e=1696464000&v=beta&t=qVOXMyZXqRYcAI9m2eUBKiBK74gYC79D8S3dCslZzsg"
+            src={KevinPP}
             className="teamPhoto"
             alt="none"
           />
@@ -50,11 +55,11 @@ function TeamPage() {
 
         <div className="team-tabs">
           <div className="pos-info">
-            <h2>Flex Lead</h2>
+            <h2 className="team-pos">Flex Lead</h2>
             <h2>Jiamin Zou</h2>
           </div>
           <img
-            src="https://media.licdn.com/dms/image/C5603AQFquSA1WwtuwQ/profile-displayphoto-shrink_200_200/0/1622231453344?e=1692835200&v=beta&t=slhpoyvo6u1h4zXm5dEgQY14pnRHlPF0z25a6uIhDis"
+            src={JiaminPP}
             className="teamPhoto"
             alt="none"
           />
@@ -88,11 +93,11 @@ function TeamPage() {
 
         <div className="team-tabs">
           <div className="pos-info">
-            <h2>Backend Lead</h2>
+            <h2 className="team-pos">Backend Lead</h2>
             <h2>Hong Chen</h2>
           </div>
           <img
-            src="https://media.licdn.com/dms/image/D4E03AQELXDBSjifD5A/profile-displayphoto-shrink_200_200/0/1687233362344?e=1692835200&v=beta&t=7OxRu_nSrpiNkeNKQz_I5P5K5NC2t9v4dqu3-IEepOk"
+            src={HongPP}
             className="teamPhoto"
             alt="none"
           />
@@ -125,11 +130,11 @@ function TeamPage() {
         </div>
         <div className="team-tabs">
           <div className="pos-info">
-            <h2>Frontend Lead</h2>
+            <h2 className="team-pos">Frontend Lead</h2>
             <h2>Henry Lin</h2>
           </div>
           <img
-            src="https://media.licdn.com/dms/image/D4E03AQGUqDjUtMVwHQ/profile-displayphoto-shrink_200_200/0/1687049792940?e=1692835200&v=beta&t=Xz5Edx5-7PEM8fNBFr0StOsPwgMelBTwQZ7xy_fV2Fg"
+            src={HenryPP}
             className="teamPhoto"
             alt="none"
           />

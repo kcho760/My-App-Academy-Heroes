@@ -33,11 +33,11 @@
 }
 
 .team-tabs:hover {
-  box-shadow: 0 0 8px rgba(100, 100, 100, 0.5);
+  box-shadow: 0 0 20px rgba(100, 100, 100, 0.7);
   border-radius: 10px;
   transform: scale(1.2);
   transition: transform 0.5s;
-  background-color: rgba(150, 150, 150, 0.8);
+  background-color: rgba(120, 120, 120, 0.8);
 }
 
 .pos-info {
@@ -50,9 +50,26 @@
   text-align: center;
 }
 
+.team-pos {
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.team-tabs:hover .pos-info {
+  
+}
+
+.team-tabs img {
+  width: 90%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .link-section {
   display: grid;
-  grid-template-columns: 28% 28% 28%;
+  grid-template-columns: 25% 25% 25%;
   justify-content: space-evenly;
 
 }
@@ -76,5 +93,5 @@
 .team-social-icon:hover {
   transform: scale(1.2);
   transition: transform 0.5s;
-  fill: blue;
+  fill: rgba(255, 255, 255, 0.8)
 }
